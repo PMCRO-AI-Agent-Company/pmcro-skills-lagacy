@@ -2,52 +2,44 @@
 
 Hierarchical template for project-level and global **Agents** configuration.
 
-This repository is a ready-to-copy tree that mirrors the structure used by the **Agents Skill Directory Explorer** (MAUI app).
+Repo: copy-ready `.agents/` layouts + install scripts. Matches the **Agents Skill Directory Explorer** tree (AGENTS.md, skills, rules, commands, agents, workflows).
 
-## Project root layout
+## Layouts
+
+| Layout | Path | Install target |
+|--------|------|----------------|
+| **Project** | `template/project/` | Repository root |
+| **Global** | `template/global/` | User home (`~/`) |
+
+See [LAYOUTS.md](LAYOUTS.md) for the full tree diagrams.
+
+## Quick install
+
+```bash
+# Project layout into current directory
+./scripts/install-template.sh .
+
+# Project + global (~/.agents)
+./scripts/install-template.sh . --global
+
+# Windows
+./scripts/install-template.ps1 -Target . -Global
+```
+
+## Project tree (after install)
 
 ```
 your-project/
-├── AGENTS.md                 # Project instructions (committed)
-├── .mcp.json                 # Project-scoped MCP servers (committed)
-├── .worktreeinclude          # Gitignored files to copy into worktrees (committed)
+├── AGENTS.md
+├── .mcp.json
+├── .worktreeinclude
 └── .agents/
-    ├── settings.json         # Permissions, hooks, model (committed)
-    ├── settings.local.json   # Personal overrides (gitignored)
-    ├── rules/                # Path-scoped instruction files
-    │   ├── testing.md
-    │   └── api-design.md
-    ├── skills/               # Reusable skills (folder + SKILL.md)
-    │   └── security-review/
-    │       ├── SKILL.md
-    │       └── checklist.md
-    ├── commands/             # Single-file /slash commands
-    │   └── fix-issue.md
-    ├── output-styles/        # Shared output styles (optional)
-    ├── agents/               # Subagents with isolated context
-    │   └── code-reviewer.md
-    ├── workflows/            # Dynamic multi-agent workflows
-    └── agents-memory/        # Subagent persistent memory (autogen)
-        └── <agent-name>/
-            └── MEMORY.md
-```
-
-## Global (`~/`) layout
-
-```
-~/
-├── .agents.json              # App state, personal MCP servers (local)
-└── .agents/
-    ├── AGENTS.md             # Personal preferences (local)
-    ├── settings.json         # Default settings for all projects (local)
-    ├── keybindings.json
-    ├── themes/
-    ├── projects/             # Auto-memory per project (autogen)
+    ├── settings.json
+    ├── settings.local.json      # gitignored
     ├── rules/
     ├── skills/
     ├── commands/
     ├── output-styles/
-    │   └── teaching.md
     ├── agents/
     ├── workflows/
     └── agents-memory/
@@ -55,21 +47,18 @@ your-project/
 
 ## Badge legend
 
-| Badge        | Meaning                                      |
-|--------------|----------------------------------------------|
-| committed    | Tracked in git, shared with the team         |
-| gitignored   | Present in the tree but ignored by git       |
-| local        | Never committed (user-only)                  |
-| autogen      | Written/maintained by Agents automatically   |
+| Badge | Meaning |
+|-------|--------|
+| committed | Tracked in git, shared with the team |
+| gitignored | Present but ignored (e.g. settings.local.json) |
+| local | Never committed (user home) |
+| autogen | Written by Agents (memory) |
 
-## Quick start
+## Relation to pmcro-skills
 
-1. Copy the contents of `template/project/` into your repository root.
-2. Commit the files marked **committed**.
-3. Add `**/.agents/settings.local.json` to `.gitignore` (or rely on the global excludes file).
-4. Customize `AGENTS.md`, `rules/`, and `skills/` for your stack.
+- **pmcro-skills** — MAF skill *catalog* (`catalog/.../skills/`)
+- **This repo** — *consumer* layout (`ProjectName/.agents/`) that those skills install into
 
-## Related
+## Skill entrypoint
 
-- Source data model used by the Directory Explorer UI lives in `explorer-data.json`.
-- Example skill, rules, command, and subagent are included under `template/project/.agents/`.
+See [SKILL.md](SKILL.md) for agent-facing instructions.
