@@ -1,0 +1,13 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "personal"
+  },
+  "plugins": [
+    {
+      "name": "security-review",
+      "source": "./project/plugins/security-review",
+      "description": "Reviews code changes for security vulnerabilities, authentication gaps, and injection risks."
+    }
+  ]
+}

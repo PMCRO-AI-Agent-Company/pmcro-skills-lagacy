@@ -1,64 +1,51 @@
-# Agents Skill Directory
+# agent-skills
 
-Hierarchical template for project-level and global **Agents** configuration.
+Personal scaffold + plugin marketplace for AI coding agents, structured
+after [`dotnet/skills`](https://github.com/dotnet/skills).
 
-Repo: copy-ready `.agents/` layouts + install scripts. Matches the **Agents Skill Directory Explorer** tree (AGENTS.md, skills, rules, commands, agents, workflows).
+## Layout
 
-## Layouts
+| Path | What it is |
+|---|---|
+| `.claude-plugin/marketplace.json` | Marketplace manifest — lists every installable plugin |
+| `.agents/skills/` | Tooling for authoring *this repo* (e.g. `agent-skill`, which scaffolds new skills). Not distributed. |
+| `global/.agents/` | Template for a **machine-wide** `~/.agents` config (PMCRO agents: planner/maker/checker/reflector, global preferences) |
+| `project/.agents/` | Template for a **per-project** `.agents` overlay (project-specific agents, rules, commands) |
+| `project/plugins/` | Installable plugins — see `project/plugins/README.md` |
+| `tests/<plugin-or-skill>/eval.yaml` | Evals, one per skill, mirroring `dotnet/skills`' top-level `tests/` tree |
+| `eng/eval-quality/` | Structural quality gate that runs against every skill/plugin/eval |
 
-| Layout | Path | Install target |
-|--------|------|----------------|
-| **Project** | `template/project/` | Repository root |
-| **Global** | `template/global/` | User home (`~/`) |
+## Why two template trees (`global/` vs `project/`)?
 
-See [LAYOUTS.md](LAYOUTS.md) for the full tree diagrams.
+They answer different questions and should stay separate rather than merge:
 
-## Quick install
+- `global/` — "what should *every* project I touch inherit from me?"
+  (my planner/maker/checker/reflector agents, my style preferences).
+  Lives at `~/.agents` on a machine, independent of any repo.
+- `project/` — "what does *this specific* project need?" (its rules,
+  its plugins, its commands). Lives inside a project's own `.agents/`.
+
+**Open question raised during the last structure review:** does `global/`
+need to be a folder you hand-maintain and copy from, or could `project/`
+scaffold it on demand (an `agent-skill`-style bootstrap skill that writes
+`~/.agents` from a template the first time it's needed)? Left as-is for
+now — no rename or deletion — but if you build that bootstrap skill later,
+`global/` becomes its template *input* rather than something synced by
+hand, which is a cleaner mental model than maintaining two parallel trees
+forever. Worth revisiting once there's a second global-config consumer to
+justify the tooling.
+
+## Installing a plugin
+
+```
+/plugin marketplace add <path-to-this-repo>
+/plugin install security-review@agent-skills
+```
+
+## Contributing a new skill or plugin
+
+See `/.agents/skills/agent-skill/SKILL.md`. Quality bar and eval gate:
 
 ```bash
-# Project layout into current directory
-./scripts/install-template.sh .
-
-# Project + global (~/.agents)
-./scripts/install-template.sh . --global
-
-# Windows
-./scripts/install-template.ps1 -Target . -Global
+python eng/eval-quality/check_eval_quality.py
 ```
-
-## Project tree (after install)
-
-```
-your-project/
-├── AGENTS.md
-├── .mcp.json
-├── .worktreeinclude
-└── .agents/
-    ├── settings.json
-    ├── settings.local.json      # gitignored
-    ├── rules/
-    ├── skills/
-    ├── commands/
-    ├── output-styles/
-    ├── agents/
-    ├── workflows/
-    └── agents-memory/
-```
-
-## Badge legend
-
-| Badge | Meaning |
-|-------|--------|
-| committed | Tracked in git, shared with the team |
-| gitignored | Present but ignored (e.g. settings.local.json) |
-| local | Never committed (user home) |
-| autogen | Written by Agents (memory) |
-
-## Relation to pmcro-skills
-
-- **pmcro-skills** — MAF skill *catalog* (`catalog/.../skills/`)
-- **This repo** — *consumer* layout (`ProjectName/.agents/`) that those skills install into
-
-## Skill entrypoint
-
-See [SKILL.md](SKILL.md) for agent-facing instructions.
