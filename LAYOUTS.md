@@ -1,48 +1,44 @@
-# Layout reference — project vs global
+# DirectoryExplorer tree — fully implemented
 
-## Project layout (`template/project/` → repo root)
+Matches the Agents Skill Directory Explorer UI (Project + Global tabs).
+
+## Project (`template/project/`)
 
 ```
 your-project/
-├── AGENTS.md                 # committed — project instructions
-├── .mcp.json                 # committed — team MCP servers
-├── .worktreeinclude          # committed — gitignored files to copy into worktrees
+├── AGENTS.md                          # committed
+├── .mcp.json                          # committed
+├── .worktreeinclude                   # committed
 └── .agents/
-    ├── settings.json         # committed — permissions, hooks, model
-    ├── settings.local.json   # gitignored — personal overrides
-    ├── rules/                # committed — path-scoped rules
-    │   ├── testing.md
+    ├── settings.json                  # committed
+    ├── settings.local.json            # gitignored
+    ├── rules/
+    │   ├── testing.md                 # path-scoped
     │   └── api-design.md
-    ├── skills/               # committed — reusable skills
+    ├── skills/
     │   └── security-review/
     │       ├── SKILL.md
     │       └── checklist.md
-    ├── commands/             # committed — /slash commands
+    ├── commands/
     │   └── fix-issue.md
-    ├── output-styles/        # optional shared styles
-    ├── agents/               # subagents
+    ├── output-styles/
+    ├── agents/
     │   └── code-reviewer.md
-    ├── workflows/            # dynamic workflows
-    └── agents-memory/        # autogen subagent memory
+    ├── workflows/
+    └── agents-memory/                 # autogen
 ```
 
-Install:
-
-```bash
-./scripts/install-template.sh /path/to/your-project
-```
-
-## Global layout (`template/global/` → `~/`)
+## Global (`template/global/` → `~/`)
 
 ```
 ~/
-├── .agents.json              # local — app state, personal MCP
+├── .agents.json                       # local
 └── .agents/
-    ├── AGENTS.md             # local — personal preferences
-    ├── settings.json         # local — defaults for all projects
+    ├── AGENTS.md
+    ├── settings.json
     ├── keybindings.json
     ├── themes/
-    ├── projects/             # autogen auto-memory per project
+    ├── projects/                      # autogen memory
     ├── rules/
     ├── skills/
     ├── commands/
@@ -53,20 +49,7 @@ Install:
     └── agents-memory/
 ```
 
-Install:
-
 ```bash
-./scripts/install-template.sh . --global
+./scripts/install-template.sh /path/to/app
+./scripts/install-template.sh /path/to/app --global
 ```
-
-## Relation to pmcro-skills
-
-`pmcro-skills` is the **catalog** of MAF skills (`catalog/.../skills/<name>/`).
-
-Consuming projects pull those skills into:
-
-```text
-ProjectName/.agents/skills/     ← file-based MAF source (this layout)
-```
-
-This repo defines that **consumer** tree (`.agents/`), not the catalog itself.
