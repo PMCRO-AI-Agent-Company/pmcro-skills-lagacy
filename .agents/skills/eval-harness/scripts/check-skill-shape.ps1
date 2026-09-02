@@ -8,7 +8,6 @@ $missing = @()
 foreach ($item in $required) {
   if (-not (Test-Path (Join-Path $SkillPath $item))) { $missing += $item }
 }
-
 if ($missing.Count -gt 0) {
   Write-Error "Missing skill components: $($missing -join ', ')"
   exit 1
@@ -27,26 +26,24 @@ if (-not (Test-Path $templates)) {
   Write-Error 'Missing assets/templates directory'
   exit 1
 }
-
 if (-not (Get-ChildItem $templates -File | Select-Object -First 1)) {
   Write-Error 'assets/templates must contain at least one full-file template'
   exit 1
 }
 
-$skillFile = Join-Path $SkillPath 'SKILL.md'
-$skillText = Get-Content -LiteralPath $skillFile -Raw
+$skillText = Get-Content -LiteralPath (Join-Path $SkillPath 'SKILL.md') -Raw
 $documented = [regex]::Matches($skillText, '(?:(?:assets/templates|references|scripts)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)') |
   ForEach-Object { $_.Value } | Sort-Object -Unique
-
 $unimplemented = @()
 foreach ($relative in $documented) {
   $target = Join-Path $SkillPath ($relative -replace '/', '\')
   if (-not (Test-Path $target)) { $unimplemented += $relative }
 }
-
 if ($unimplemented.Count -gt 0) {
   Write-Error "SKILL.md references missing functionality/files: $($unimplemented -join ', ')"
   exit 1
 }
 
 Write-Host "PASS: complete skill shape and documented support references present at $SkillPath"
+
+# This gate proves artifact integrity; behavioral claims require actual evaluation.

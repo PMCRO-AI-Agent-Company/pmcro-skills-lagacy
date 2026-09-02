@@ -1,0 +1,4 @@
+# <workflow-name>
+
+# Define the workflow entrypoint and deterministic orchestration here.
+# This is a template, not an implementation.

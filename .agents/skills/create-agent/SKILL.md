@@ -45,6 +45,10 @@ project/.agents/agents/<persona-name>.md
 
 One flat file — no subfolders.
 
+Use `assets/templates/agent.md.template` as the starting shape (it
+matches the frontmatter + body structure `scripts/scaffold-agent.ps1`
+writes) rather than composing the file from scratch.
+
 ### Step 3: Write frontmatter
 
 ```yaml

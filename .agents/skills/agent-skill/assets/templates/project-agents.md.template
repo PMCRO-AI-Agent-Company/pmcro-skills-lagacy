@@ -1,0 +1,12 @@
+# Project conventions
+
+## Commands
+- Build: <command>
+- Test: <command>
+- Lint: <command>
+
+## Stack
+- <technology and version>
+
+## Rules
+- <project rule>

@@ -1,0 +1,3 @@
+# Files copied into git worktrees
+.env
+.env.local

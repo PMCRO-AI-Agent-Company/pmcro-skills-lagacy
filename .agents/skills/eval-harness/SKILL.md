@@ -28,6 +28,11 @@ collects evidence.
 If the run is worth preserving, record it in the repo's documented
 repository-memory location rather than inventing a second state store.
 
+### 6. Capability Integrity
+Before declaring a target skill usable, verify that every path, command,
+script, and operation claimed by its SKILL.md has a real implementation.
+Missing functionality is a blocking failure; implement it before use.
+
 ## Pitfalls
 - Reading a script is not an eval; actually run it against a scratch target.
 - Never write eval output into the repository itself.

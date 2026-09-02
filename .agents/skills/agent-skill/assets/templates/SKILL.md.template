@@ -29,6 +29,22 @@ license: MIT
 
 <Instructions.>
 
+## Full Skill Package Structure
+
+Every completed skill MUST have this structure, with real support files:
+
+```text
+<skill-name>/
+├── SKILL.md
+├── assets/
+│   └── templates/
+│       └── <full-file-template>
+├── references/
+│   └── <authoritative-reference>.md
+└── scripts/
+    └── <deterministic-helper>.ps1
+```
+
 ## Supporting Material
 
 Read `references/<reference>.md` when <condition>.
@@ -37,9 +53,22 @@ Run `scripts/<script>.ps1` when <condition>.
 
 ## Validation
 
-- [ ] <Invariant>
-- [ ] <Verification>
+- [ ] Every referenced asset/reference/script exists.
+- [ ] Every claimed capability has implementation backing.
+- [ ] The full package structure is present.
+- [ ] Relevant implementation and tests were actually executed.
 
-## Output Contract
+## Implementation Gate
 
-Always report <required result/evidence>.
+Before exposing a capability:
+
+1. Confirm the implementation exists.
+2. Run it against a safe fixture or scratch target.
+3. Confirm the documented output matches observed behavior.
+4. If implementation is missing, implement it before using or documenting the capability.
+
+## Completion Rule
+
+Structure alone is not sufficient. A skill is complete only after its declared implementation has been executed and its output verified.
+
+The generated package should include an executable `scripts/validate-skill.ps1` derived from the validator template.

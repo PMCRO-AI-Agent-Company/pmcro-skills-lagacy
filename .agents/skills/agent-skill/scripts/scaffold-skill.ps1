@@ -13,17 +13,22 @@ foreach ($dir in @('assets\templates','references','scripts')) {
 
 $skill = Join-Path $SkillPath 'SKILL.md'
 if (-not (Test-Path $skill)) {
-  Copy-Item (Join-Path $templates 'SKILL.md.template') $skill
+  Copy-Item (Join-Path $templates 'skill.md.template') $skill
 }
 
-$skillTemplate = Join-Path $SkillPath 'assets\templates\SKILL.md.template'
+$skillTemplate = Join-Path $SkillPath 'assets\templates\skill.md.template'
 if (-not (Test-Path $skillTemplate)) {
-  Copy-Item (Join-Path $templates 'SKILL.md.template') $skillTemplate
+  Copy-Item (Join-Path $templates 'skill.md.template') $skillTemplate
 }
 
-$agentsTemplate = Join-Path $SkillPath 'assets\templates\AGENTS.md.template'
+$agentsTemplate = Join-Path $SkillPath 'assets\templates\agents.md.template'
 if (-not (Test-Path $agentsTemplate)) {
-  Copy-Item (Join-Path $templates 'AGENTS.md.template') $agentsTemplate
+  Copy-Item (Join-Path $templates 'agents.md.template') $agentsTemplate
+}
+
+$validatorTemplate = Join-Path $SkillPath 'assets\templates\validate-skill.ps1.template'
+if (-not (Test-Path $validatorTemplate)) {
+  Copy-Item (Join-Path $templates 'validate-skill.ps1.template') $validatorTemplate
 }
 
 $reference = Join-Path $SkillPath 'references\README.md'
@@ -31,16 +36,14 @@ if (-not (Test-Path $reference)) {
   "# References`n`nAdd authoritative guidance used by this skill here." | Set-Content $reference -Encoding utf8
 }
 
-$validator = Join-Path $SkillPath 'scripts\validate.ps1'
+$validator = Join-Path $SkillPath 'scripts\validate-skill.ps1'
 if (-not (Test-Path $validator)) {
-  @'
-param([Parameter(Mandatory)] [string] $SkillPath)
-$ErrorActionPreference = 'Stop'
-foreach ($p in @('SKILL.md','assets','references','scripts')) {
-  if (-not (Test-Path (Join-Path $SkillPath $p))) { throw "Missing: $p" }
-}
-Write-Host "PASS: $SkillPath"
-'@ | Set-Content $validator -Encoding utf8
+  Copy-Item (Join-Path $templates 'validate-skill.ps1.template') $validator
 }
 
 Write-Host "Scaffolded complete skill: $SkillPath"
+Write-Host "Next: run scripts/validate-skill.ps1 before exposing the new skill."
+
+# Scaffold only creates artifacts; it never represents missing behavior as implemented.
+
+# The generated support files are a baseline; replace placeholders with actual implementations.
