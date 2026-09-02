@@ -1,0 +1,7 @@
+{
+  "name": "agent-design-patterns",
+  "version": "0.1.0",
+  "description": "Composable agent design patterns based on published Anthropic agent architecture guidance.",
+  "skills": ["./skills/"],
+  "agents": ["./agents/agent-design-patterns.agent.md"]
+}

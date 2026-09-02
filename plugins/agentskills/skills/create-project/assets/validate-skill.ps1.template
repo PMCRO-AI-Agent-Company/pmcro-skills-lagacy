@@ -1,0 +1,13 @@
+[CmdletBinding()]
+param([Parameter(Mandatory)][string]$Path)
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+foreach ($item in @('SKILL.md','assets','references','scripts')) {
+  if (-not (Test-Path (Join-Path $Path $item))) { throw "Missing $item" }
+}
+foreach ($support in @('assets','references','scripts')) {
+  if (@(Get-ChildItem (Join-Path $Path $support) -Directory).Count -gt 0) {
+    throw "Support directory must be flat: $support"
+  }
+}
+Write-Output "PASS: {{PLUGIN_NAME}} skill package"

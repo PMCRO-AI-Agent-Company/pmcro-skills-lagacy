@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory)] [string] $SkillPath
 )
 
@@ -15,7 +15,7 @@ if ($missing.Count -gt 0) {
 
 foreach ($dir in @('assets','references','scripts')) {
   $path = Join-Path $SkillPath $dir
-  if (-not (Get-ChildItem $path -File -Recurse | Select-Object -First 1)) {
+  if (-not (Get-ChildItem $path -File | Select-Object -First 1)) {
     Write-Error "Empty support directory: $dir"
     exit 1
   }
@@ -23,16 +23,16 @@ foreach ($dir in @('assets','references','scripts')) {
 
 $templates = Join-Path $SkillPath 'assets\templates'
 if (-not (Test-Path $templates)) {
-  Write-Error 'Missing assets/templates directory'
+  Write-Error 'Missing assets directory'
   exit 1
 }
 if (-not (Get-ChildItem $templates -File | Select-Object -First 1)) {
-  Write-Error 'assets/templates must contain at least one full-file template'
+  Write-Error 'assets must contain at least one full-file template'
   exit 1
 }
 
 $skillText = Get-Content -LiteralPath (Join-Path $SkillPath 'SKILL.md') -Raw
-$documented = [regex]::Matches($skillText, '(?:(?:assets/templates|references|scripts)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)') |
+$documented = [regex]::Matches($skillText, '(?:(?:assets|references|scripts)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)') |
   ForEach-Object { $_.Value } | Sort-Object -Unique
 $unimplemented = @()
 foreach ($relative in $documented) {

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pmcro-loop",
+  "version": "0.1.0",
+  "description": "Canonical PMCR-O cognitive loop: Orchestrator, Planner, Maker, Checker, Reflector plus one shared colony priority queue.",
+  "repository": "https://github.com/ShawnDelaineBellazanLoop/pmcro-loop"
+}

@@ -1,6 +1,0 @@
-{
-  "name": "security-review",
-  "version": "0.1.0",
-  "description": "Reviews code changes for security vulnerabilities, authentication gaps, and injection risks.",
-  "skills": ["./skills/"]
-}

@@ -1,0 +1,15 @@
+name: reflect-and-seed
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Reflect on a completed cycle, record a trail, extract earned constraints, and decide the next seed."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(reflect|trail|constraint|seed)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

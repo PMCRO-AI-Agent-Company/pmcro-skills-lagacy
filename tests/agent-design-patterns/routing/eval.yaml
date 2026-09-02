@@ -1,0 +1,12 @@
+name: routing
+version: 1
+stimuli:
+  - id: route
+    prompt: Route three task classes to the smallest suitable specialists and define the routing criteria.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(route|specialist|criteria)
+rubric:
+  - Uses explicit routing criteria.
+  - Selects the smallest suitable specialist.

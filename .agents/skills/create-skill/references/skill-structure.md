@@ -1,4 +1,4 @@
-# Skill Structure Reference
+﻿# Skill Structure Reference
 
 Every skill in this repository uses the canonical four-part shape:
 
@@ -67,7 +67,7 @@ fixture or scratch target.
 ```text
 agent-skill/
 ├── SKILL.md
-├── assets/templates/
+├── assets/
 │   ├── SKILL.md.template
 │   ├── AGENTS.md.template
 │   └── validate-skill.ps1.template

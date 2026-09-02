@@ -27,7 +27,6 @@ version: 1
     recognized subfolders, and warns on `references/*.md` files not
     linked from `SKILL.md`
 
-- Migrated `project/plugins/security-review/skills/security-review/`
   as the reference example of the new convention:
   - `checklist.md` moved to `references/checklist.md`, linked from a
     new `## References` section in `SKILL.md`

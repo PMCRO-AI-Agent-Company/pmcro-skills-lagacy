@@ -4,10 +4,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
-$templates = Join-Path $root 'assets\templates'
+$templates = Join-Path $root 'assets'
 
 New-Item -ItemType Directory -Force -Path $SkillPath | Out-Null
-foreach ($dir in @('assets\templates','references','scripts')) {
+foreach ($dir in @('assets','references','scripts')) {
   New-Item -ItemType Directory -Force -Path (Join-Path $SkillPath $dir) | Out-Null
 }
 
@@ -16,17 +16,17 @@ if (-not (Test-Path $skill)) {
   Copy-Item (Join-Path $templates 'skill.md.template') $skill
 }
 
-$skillTemplate = Join-Path $SkillPath 'assets\templates\skill.md.template'
+$skillTemplate = Join-Path $SkillPath 'assets\skill.md.template'
 if (-not (Test-Path $skillTemplate)) {
   Copy-Item (Join-Path $templates 'skill.md.template') $skillTemplate
 }
 
-$agentsTemplate = Join-Path $SkillPath 'assets\templates\agents.md.template'
+$agentsTemplate = Join-Path $SkillPath 'assets\agents.md.template'
 if (-not (Test-Path $agentsTemplate)) {
   Copy-Item (Join-Path $templates 'agents.md.template') $agentsTemplate
 }
 
-$validatorTemplate = Join-Path $SkillPath 'assets\templates\validate-skill.ps1.template'
+$validatorTemplate = Join-Path $SkillPath 'assets\validate-skill.ps1.template'
 if (-not (Test-Path $validatorTemplate)) {
   Copy-Item (Join-Path $templates 'validate-skill.ps1.template') $validatorTemplate
 }
@@ -41,9 +41,13 @@ if (-not (Test-Path $validator)) {
   Copy-Item (Join-Path $templates 'validate-skill.ps1.template') $validator
 }
 
+foreach ($dir in @('assets','references','scripts')) {
+  $gitkeep = Join-Path $SkillPath "$dir\.gitkeep"
+  if ((Get-ChildItem (Join-Path $SkillPath $dir) -Force | Measure-Object).Count -eq 0) {
+    New-Item -ItemType File -Path $gitkeep -Force | Out-Null
+  }
+}
+
 Write-Host "Scaffolded complete skill: $SkillPath"
+Write-Host "Support directories are flat: assets/, references/, scripts/."
 Write-Host "Next: run scripts/validate-skill.ps1 before exposing the new skill."
-
-# Scaffold only creates artifacts; it never represents missing behavior as implemented.
-
-# The generated support files are a baseline; replace placeholders with actual implementations.

@@ -1,0 +1,13 @@
+# AgentSkills Project Map
+
+## Project
+
+- Name: `{{PROJECT_NAME}}`
+- Display name: `{{DISPLAY_NAME}}`
+- Description: {{DESCRIPTION}}
+
+## Core boundaries
+
+- `.agents/` — project-local agent environment.
+- `plugins/` — distributable plugin boundary.
+- `tests/` — evaluation boundary.

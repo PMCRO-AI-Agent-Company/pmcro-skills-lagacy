@@ -1,0 +1,10 @@
+---
+name: <agent-name>
+description: <when to delegate>
+tools: Read, Grep, Glob
+---
+
+You are a specialized subagent.
+
+## Responsibilities
+- <responsibility>

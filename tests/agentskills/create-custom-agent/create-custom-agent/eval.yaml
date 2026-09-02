@@ -1,0 +1,8 @@
+﻿name: create-custom-agent
+description: Validate custom agent authoring.
+stimuli:
+  - id: scaffold
+    prompt: Create a custom agent without a fixed identity.
+    graders:
+      - type: content
+        expect: generated agent contains valid frontmatter and a focused responsibility

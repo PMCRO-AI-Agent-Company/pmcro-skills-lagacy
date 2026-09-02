@@ -1,0 +1,47 @@
+name: template-validation
+skill: template-validation
+
+defaults:
+  graders:
+    - type: rubric
+      rubric:
+        - Executes the skill's intended workflow rather than giving generic advice.
+        - Produces evidence-backed, actionable results.
+        - Reports validation failures truthfully.
+
+stimuli:
+  - prompt: "Validate a dotnet template before publishing it."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Diagnose an invalid template manifest."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Check template symbols, constraints, and generated output."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Run deterministic validation and report failures truthfully."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Verify a template change against a safe fixture."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.

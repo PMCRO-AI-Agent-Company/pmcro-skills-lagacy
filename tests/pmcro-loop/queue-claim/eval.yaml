@@ -1,0 +1,15 @@
+name: queue-claim
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Claim the highest-priority eligible open item from the single colony queue."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(queue|claim|priority|seed)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

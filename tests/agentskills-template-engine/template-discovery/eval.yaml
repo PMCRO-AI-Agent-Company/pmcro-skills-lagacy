@@ -1,0 +1,47 @@
+name: template-discovery
+skill: template-discovery
+
+defaults:
+  graders:
+    - type: rubric
+      rubric:
+        - Executes the skill's intended workflow rather than giving generic advice.
+        - Produces evidence-backed, actionable results.
+        - Reports validation failures truthfully.
+
+stimuli:
+  - prompt: "Find the best dotnet template for a requested project shape."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Discover installed templates matching a framework requirement."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Inspect template metadata before recommending a template."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Find why a requested template is not available."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Select a template using explicit project constraints."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.

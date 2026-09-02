@@ -1,0 +1,15 @@
+name: check-frame
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Independently validate Maker output against the plan and evidence before issuing a verdict."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(check|pass|fail|evidence|verdict)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

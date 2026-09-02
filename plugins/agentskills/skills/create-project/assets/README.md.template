@@ -1,0 +1,18 @@
+# {{DISPLAY_NAME}}
+
+{{DESCRIPTION}}
+
+This repository is generated from the AgentSkills project template.
+
+## Layout
+
+```text
+.agents/skills/       repository authoring skills
+plugins/              distributable plugins
+ tests/               evaluation contracts
+```
+
+## Marketplace
+
+Plugins are registered through the repository marketplace manifests and
+stored under `plugins/<plugin-name>/`.

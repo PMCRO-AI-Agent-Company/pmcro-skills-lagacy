@@ -1,0 +1,15 @@
+# {{DISPLAY_NAME}}
+
+This repository is an Agent Skills project generated from the canonical
+AgentSkills project template.
+
+## Project
+
+- Name: `{{PROJECT_NAME}}`
+- Description: {{DESCRIPTION}}
+
+## Rules
+
+Read this file and the repository README before editing. Preserve the
+plugin/skill/test boundaries. Treat marketplace manifests as generated
+registries and keep them synchronized.

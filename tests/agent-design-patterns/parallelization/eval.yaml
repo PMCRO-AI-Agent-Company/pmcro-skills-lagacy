@@ -1,0 +1,12 @@
+name: parallelization
+version: 1
+stimuli:
+  - id: smoke
+    prompt: Design a parallel workflow with independent workers, synchronization, and result aggregation.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(parallel|worker|aggregate)
+rubric:
+  - Uses explicit stage contracts and observable success criteria.
+  - Adds complexity only when the pattern requires it.

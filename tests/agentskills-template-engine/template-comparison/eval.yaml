@@ -1,0 +1,47 @@
+name: template-comparison
+skill: template-comparison
+
+defaults:
+  graders:
+    - type: rubric
+      rubric:
+        - Executes the skill's intended workflow rather than giving generic advice.
+        - Produces evidence-backed, actionable results.
+        - Reports validation failures truthfully.
+
+stimuli:
+  - prompt: "Compare two dotnet templates and explain behavioral differences."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Determine which template is the safer upgrade path."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Compare template symbols and defaults across versions."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Identify breaking changes between two template manifests."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Produce a concise comparison with evidence from both templates."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.

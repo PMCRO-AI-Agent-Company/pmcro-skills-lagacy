@@ -1,0 +1,18 @@
+name: understand-agentskills
+description: Evaluates Agent Skills repository orientation
+type: capability
+config:
+  timeout: 2m
+stimuli:
+  - name: Explains project boundaries
+    prompt: Explain the structure and boundaries of an Agent Skills project.
+    graders:
+      - type: exit-success
+      - type: output-matches
+        config:
+          pattern: (?i)(agents|plugins|marketplace|tests)
+      - type: prompt
+    rubric:
+      - Distinguishes global repository .agents from project-local .agents
+      - Identifies plugins as the distributable boundary
+      - Identifies tests as the evaluation boundary

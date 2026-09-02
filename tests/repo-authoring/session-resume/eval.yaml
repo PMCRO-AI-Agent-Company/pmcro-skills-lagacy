@@ -1,0 +1,47 @@
+name: session-resume
+skill: session-resume
+
+defaults:
+  graders:
+    - type: rubric
+      rubric:
+        - Executes the skill's intended workflow rather than giving generic advice.
+        - Produces evidence-backed, actionable results.
+        - Reports validation failures truthfully.
+
+stimuli:
+  - prompt: "Resume a previous agent session from a saved report."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Reconstruct the next safe action from session state."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Validate that a resume report is internally consistent."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Continue work without repeating completed actions."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Report missing session context instead of inventing it."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.

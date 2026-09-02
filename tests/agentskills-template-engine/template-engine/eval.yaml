@@ -1,0 +1,40 @@
+name: template-engine
+version: 1
+
+stimuli:
+  - id: discover
+    prompt: "Find the best dotnet new template for a Web API with authentication."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(template|validate|dotnet)
+  - id: compare
+    prompt: "Compare two installed dotnet new templates and recommend one using observed parameters."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(template|validate|dotnet)
+  - id: instantiate
+    prompt: "Create a .NET project from a template while respecting the workspace target framework and CPM."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(template|validate|dotnet)
+  - id: author
+    prompt: "Turn an existing .csproj into a reusable dotnet new template and validate template.json."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(template|validate|dotnet)
+  - id: validate
+    prompt: "Validate a custom template.json and then test installation and instantiation."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(template|validate|dotnet)
+
+rubric:
+  - "Uses the specialized template-engine skills rather than inventing template metadata."
+  - "Grounds exact parameter claims in current dotnet new inspection when inspection is requested."
+  - "Separates discovery, comparison, instantiation, authoring, smart defaults, and validation responsibilities."
+  - "Requires validation and observable results for authored templates."

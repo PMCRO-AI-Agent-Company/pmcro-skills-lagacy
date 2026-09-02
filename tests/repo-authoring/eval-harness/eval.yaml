@@ -1,0 +1,47 @@
+name: eval-harness
+skill: eval-harness
+
+defaults:
+  graders:
+    - type: rubric
+      rubric:
+        - Executes the skill's intended workflow rather than giving generic advice.
+        - Produces evidence-backed, actionable results.
+        - Reports validation failures truthfully.
+
+stimuli:
+  - prompt: "Run an evaluation harness against a skill and report graded results."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Add a regression case to an existing skill evaluation."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Diagnose why an evaluation has no effective grader."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Compare baseline and with-skill outputs."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.
+  - prompt: "Summarize evaluation evidence without claiming unsupported improvement."
+    graders:
+      - type: rubric
+        rubric:
+          - Satisfies the requested task using the skill workflow.
+          - Does not invent unavailable project facts.
+          - Includes observable validation or evidence.

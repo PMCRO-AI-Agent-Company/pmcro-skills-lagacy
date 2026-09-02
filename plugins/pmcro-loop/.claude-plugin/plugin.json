@@ -1,0 +1,7 @@
+{
+  "name": "pmcro-loop",
+  "version": "0.1.0",
+  "description": "PMCR-O loop plugin — Orchestrator, Planner, Maker, Checker, Reflector + colony priority queue. One shared backlog; C-suite only scopes domain.",
+  "skills": ["./skills/"],
+  "agents": ["./agents/"]
+}

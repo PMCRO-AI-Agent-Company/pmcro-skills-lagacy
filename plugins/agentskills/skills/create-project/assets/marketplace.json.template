@@ -1,0 +1,6 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "owner": { "name": "generated" },
+  "interface": { "displayName": "{{DISPLAY_NAME}}" },
+  "plugins": []
+}

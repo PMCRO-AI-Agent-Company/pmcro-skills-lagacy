@@ -1,0 +1,12 @@
+name: agent-loop
+version: 1
+stimuli:
+  - id: loop
+    prompt: Design a bounded agent loop with plan, act, observe, adjust, and termination checks.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(plan|act|observe|terminate)
+rubric:
+  - Uses an explicit bounded loop.
+  - Defines observable termination conditions.

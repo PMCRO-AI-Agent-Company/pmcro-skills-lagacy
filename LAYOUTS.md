@@ -1,4 +1,4 @@
-# Layouts — aligned with Agents Directory Explorer
+﻿# Layouts — aligned with Agents Directory Explorer
 
 Source of truth for consumer trees: Project + Global explorer nodes.
 
@@ -30,7 +30,7 @@ your-project/
     │   ├── testing.md
     │   └── api-design.md
     ├── skills/
-    │   └── security-review/
+    │   └── <skill-name>/
     │       ├── SKILL.md
     │       ├── checklist.md
     │       ├── scripts/
@@ -72,3 +72,4 @@ your-project/
 ## Generator → domain product
 
 `agent-skills` (marketplace) generates domain marketplaces (e.g. **dotnet-skills**) using the same triple-manifest + always `scripts/`/`references/`/`assets/` skill shape as github.com/dotnet/skills.
+

@@ -1,0 +1,15 @@
+name: orchestrate
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Runs one PMCR-O cycle using the single colony queue."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(orchestrate|plan|make|check|reflect|queue)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

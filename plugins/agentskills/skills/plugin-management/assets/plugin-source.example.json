@@ -1,0 +1,7 @@
+{
+  "name": "community-plugin",
+  "source": "https://github.com/example/community-plugin.git",
+  "ref": "v1.2.3",
+  "trust": "third-party",
+  "destination": "plugins/third-party/community-plugin"
+}

@@ -1,0 +1,15 @@
+# Project Agent Environment
+
+This `.agents/` directory belongs to the generated `{{PROJECT_NAME}}` project.
+It is project-local and must not be confused with the AgentSkills repository's
+own global authoring environment.
+
+## Agents
+
+Agent files are optional project artifacts. Define personas and handoffs only
+when the project requires them; there is no universal `agent0` identity.
+
+## Marketplace
+
+`.agents/plugins/marketplace.json` is the project-local marketplace registry.
+Keep it synchronized with the distributable `plugins/` tree.

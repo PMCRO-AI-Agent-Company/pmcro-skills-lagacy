@@ -1,0 +1,15 @@
+name: make-frame
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Execute a PlanFrame and report observable artifacts and evidence."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(make|evidence|artifact|ground.?truth)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

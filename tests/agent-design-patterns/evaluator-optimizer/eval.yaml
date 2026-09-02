@@ -1,0 +1,12 @@
+name: evaluator-optimizer
+version: 1
+stimuli:
+  - id: smoke
+    prompt: Design an evaluator-optimizer loop with a generator, evaluator, measurable criteria, and refinement.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(generator|evaluator|refinement)
+rubric:
+  - Uses explicit stage contracts and observable success criteria.
+  - Adds complexity only when the pattern requires it.

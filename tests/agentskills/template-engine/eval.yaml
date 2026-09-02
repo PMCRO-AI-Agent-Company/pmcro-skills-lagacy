@@ -1,0 +1,17 @@
+name: template-engine
+description: Evaluates Agent Skills template rendering
+type: capability
+config:
+  timeout: 2m
+stimuli:
+  - name: Renders a parameterized template
+    prompt: Render a project template using supplied project and plugin values.
+    graders:
+      - type: exit-success
+      - type: output-matches
+        config:
+          pattern: (?i)(render|template)
+      - type: prompt
+    rubric:
+      - Replaces declared template tokens deterministically
+      - Rejects unresolved template tokens

@@ -1,0 +1,19 @@
+name: agent-design-patterns
+description: Evaluates composable agent design pattern guidance
+type: capability
+defaults:
+  timeout: 5m
+  runs: 1
+stimuli:
+  - name: choose a composition
+    prompt: Design a small agent workflow for a task with two independent research subtasks and a final quality check.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (parallel|independent).*(evaluator|quality|check)|(evaluator|quality|check).*(parallel|independent)
+      - type: exit-success
+      - type: prompt
+    rubric:
+      - Chose a composition that can execute independent work concurrently
+      - Included a distinct quality or evaluation step before completion
+      - Kept the design simpler than a fully autonomous agent loop

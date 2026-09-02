@@ -26,7 +26,7 @@ Run `scripts/verify-entrypoints.ps1 -RepoRoot <path>` to confirm this
 repo's required entry points (`AGENTS.md`, `README.md`) exist before
 relying on step 3. It also reports, non-blockingly, whether the
 optional `.agents/skills/README.md` and `LAYOUTS.md` are present. Use
-`assets/templates/resume-report.md.template` as the starting shape for
+`assets/resume-report.md.template` as the starting shape for
 recording what was read and what work is in progress.
 
 ## References

@@ -1,0 +1,8 @@
+﻿name: create-skill
+description: Validate skill authoring.
+stimuli:
+  - id: scaffold
+    prompt: Create a skill with flat support directories.
+    graders:
+      - type: filesystem
+        expect: SKILL.md, assets, references, and scripts exist

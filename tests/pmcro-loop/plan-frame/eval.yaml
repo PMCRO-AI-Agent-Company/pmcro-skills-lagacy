@@ -1,0 +1,15 @@
+name: plan-frame
+version: 1
+
+stimuli:
+  - id: smoke
+    prompt: "Produce a PlanFrame from a seed intent, domain scope, and earned constraints."
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(planframe|plan|constraints|seed)
+
+rubric:
+  - "Uses the pmcro-loop skill contract and preserves the single shared colony queue."
+  - "Separates the role-specific responsibility from other PMCR-O phases."
+  - "Grounds state-changing claims in observable project state."

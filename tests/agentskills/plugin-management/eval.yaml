@@ -1,0 +1,20 @@
+name: plugin-management
+skill: plugin-management
+
+defaults:
+  timeout: 5m
+  runs: 1
+
+stimuli:
+  - name: safe-third-party-import
+    prompt: "Import a third-party Agent Skills plugin from a pinned Git source, validate it, and register it without executing its scripts."
+    graders:
+      - type: output-matches
+        config:
+          pattern: "(?i)(validate|staging|third-party|without executing)"
+      - type: exit-success
+    rubric:
+      - Rejects malformed plugin identifiers and missing manifests.
+      - Requires SKILL.md plus flat assets, references, and scripts directories.
+      - Supports local and third-party source provenance without executing scripts.
+      - Fails closed on existing destinations and path traversal.

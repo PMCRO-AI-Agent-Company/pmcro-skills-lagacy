@@ -1,10 +1,9 @@
 # workflows/
 
-Multi-step orchestrated workflows — sequences that chain multiple
-agents, skills, and/or commands together, as opposed to any single
-one of those running in isolation.
+Multi-step orchestrated workflows — sequences that chain multiple agents,
+skills, and/or commands together instead of running each in isolation.
 
-Part of the `.agents/` PMCRO runtime spec — see `../README.md`.
+Part of the `.agents/` project environment.
 
 ## Convention
 
@@ -16,22 +15,21 @@ name: <workflow-name>
 description: One-paragraph summary of what this closes out.
 steps:
   - kind: command | agent | plugin-skill
-    ref: <name matching the file/plugin it points to>
+    ref: <name matching the artifact it points to>
     args: <optional, for commands>
     plugin: <required if kind is plugin-skill>
     condition: <optional — when this step applies>
     gate: <optional — what blocks moving past this step>
-    does: One line, what this step actually does.
+    does: One line describing the step.
 ---
 ```
 
-Body is prose walking through the same steps in enough detail to run
-the workflow without re-deriving it from the frontmatter alone.
-Path-scoped `../rules/` aren't listed as steps — they're always-on
-wherever they match, not something a workflow invokes.
+The body explains the same sequence without forcing the runtime to rediscover
+it. Rules remain always-on and are not invoked as workflow steps.
 
 ## Current workflows
 
-- `fix-and-verify.md` — `/fix-issue` → `code-reviewer` agent →
-  `security-review` plugin skill (conditionally), the reference
-  workflow the convention above was written against.
+- `fix-and-verify.md` — command → code-reviewer agent → validation/testing.
+
+A workflow may dispatch skills and agents together, but each dependency must
+be discoverable from the repository's `.agents/` surfaces or installed plugin.

@@ -5,56 +5,36 @@ description: Agent Skills convention doc for this repo — governs .agents/skill
 
 # skills/
 
-Agent Skills — one subdirectory per skill, following the open Agent
-Skills format (`SKILL.md` + optional support files). Skills are meant
-to auto-trigger from conversational context based on their
-`description`, unlike `../commands/` (explicitly invoked).
-
-Part of the `.agents/` PMCRO runtime spec — see `../README.md`.
+Agent Skills use the open `SKILL.md` format. This repository adds a stable
+package contract: every distributed skill has `assets/`, `references/`, and
+`scripts/`, even when a surface currently contains only `.gitkeep`.
 
 ## Convention
 
-Structured layout, mirroring the `dotnet/skills` convention:
-
-```
+```text
 skills/<skill-name>/
 ├── SKILL.md          # required — frontmatter + lean instructions
-├── scripts/          # optional — executable code the skill invokes
-│                     #   (resolve paths relative to SKILL.md's own dir)
-├── references/       # optional — detail docs loaded on demand,
-│                     #   linked from SKILL.md's own "## References"
-│                     #   section instead of inlined
-└── assets/           # optional — templates, schemas, static data
-                      #   files the skill reads or copies out
+├── assets/           # flat templates, fixtures, static resources
+├── references/       # flat detail docs loaded on demand
+└── scripts/          # flat deterministic helpers
 ```
 
-Rules:
+Keep `SKILL.md` lean and route detailed material through explicit relative
+references. Keep support directories flat; do not create `assets/templates/`
+or other nested category trees.
 
-- **SKILL.md stays lean.** Push step-by-step detail, format specs, or
-  background reading into `references/*.md` and link out — don't
-  inline everything. Aim to keep `SKILL.md` itself well under 500
-  lines.
-- **`scripts/` holds executable code**, not documentation. A
-  PowerShell/Python/shell script the skill runs, referenced from
-  `SKILL.md` by a path resolved relative to `SKILL.md`'s own
-  directory (so it works regardless of the caller's cwd).
-- **`assets/` holds non-executable support files** — JSON schemas,
-  templates, sample data — that the skill reads, copies, or fills in.
-- **Small skills can stay flat** — just `SKILL.md` plus zero or one
-  plain sibling file — when there's nothing substantial enough to
-  warrant a subfolder. Don't create an empty `scripts/`/`references/`/
-  `assets/` folder speculatively; add each only once there's a real
-  file to put in it.
+## Composition
 
-See `/.agents/skills/agent-skill/` at the repo root for the skill that
-scaffolds new ones following this convention (it also decides whether a
-new skill belongs here, in an existing plugin, or as a new plugin under
-`../../plugins/`).
+Skills provide reusable procedural knowledge. Project-local `.agents/agents/`
+personas provide specialized roles, while `.agents/workflows/` compose agents,
+skills, and commands into multi-step execution. `.agents/commands/` remains an
+explicit authoring surface rather than a skill-discovery surface.
+
+When authoring a skill, inspect these sibling surfaces before adding artifacts.
+Add an agent or workflow only when the capability genuinely needs coordination.
 
 ## Current skills
 
-None yet directly under this project template — `security-review` was
-promoted to a real, installable plugin at `../../plugins/security-review/`
-once it needed its own `plugin.json`/versioning. Skills that are specific
-to *this* project (not meant to be distributed as a plugin) belong here;
-skills meant to be shared/installed belong under `../../plugins/`.
+Skills specific to this project belong here. Shared/installable skills belong
+under `../../plugins/`. Use the repository `create-skill` authoring skill to
+choose the correct boundary and preserve the package contract.

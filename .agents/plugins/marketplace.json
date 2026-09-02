@@ -1,12 +1,31 @@
 {
-  "name": "agent-skills",
-  "owner": { "name": "personal" },
-  "interface": { "displayName": "Agent Skills" },
-  "plugins": [
-    {
-      "name": "security-review",
-      "source": "./plugins/security-review",
-      "description": "Reviews code changes for security vulnerabilities, authentication gaps, and injection risks."
-    }
-  ]
+    "name":  "agent-skills",
+    "owner":  {
+                  "name":  "personal"
+              },
+    "interface":  {
+                      "displayName":  "Agent Skills"
+                  },
+    "plugins":  [
+                    {
+                        "name":  "agentskills",
+                        "source":  "./plugins/agentskills",
+                        "description":  "Creates, renders, understands, validates, and manages Agent Skills projects and plugins."
+                    },
+                    {
+                        "name":  "agentskills-template-engine",
+                        "source":  "./plugins/agentskills-template-engine",
+                        "description":  "Agent Skills plugin for .NET Template Engine workflows."
+                    },
+                    {
+                        "name":  "agent-design-patterns",
+                        "source":  "./plugins/agent-design-patterns",
+                        "description":  "Composable agent architecture patterns including augmented LLM, routing, parallelization, orchestrator-workers, evaluator-optimizer, and agent loops."
+                    },
+                    {
+                        "name":  "pmcro-loop",
+                        "source":  "./plugins/pmcro-loop",
+                        "description":  "Canonical PMCR-O cognitive loop: Orchestrator → Planner → Maker → Checker → Reflector with one shared colony priority queue."
+                    }
+                ]
 }

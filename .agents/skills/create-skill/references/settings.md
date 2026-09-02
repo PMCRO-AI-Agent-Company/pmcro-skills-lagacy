@@ -1,7 +1,7 @@
-# Settings
+﻿# Settings
 
 `settings.json` contains project configuration; `settings.local.json` is the local override and is normally gitignored.
 
-Templates: `../assets/templates/settings.json.template` and `../assets/templates/settings.local.json.template`.
+Templates: `../assets/settings.json.template` and `../assets/settings.local.json.template`.
 
 Validate JSON syntax and preserve the documented precedence between project, local, CLI, and managed settings.

@@ -1,0 +1,12 @@
+name: augmented-llm
+version: 1
+stimuli:
+  - id: augmentation
+    prompt: Design an augmented LLM with tools, retrieval, memory, and explicit validation boundaries.
+    graders:
+      - type: output-matches
+        config:
+          pattern: (?i)(tool|retrieval|memory|validation)
+rubric:
+  - Separates model reasoning from external capabilities.
+  - Defines observable validation boundaries.

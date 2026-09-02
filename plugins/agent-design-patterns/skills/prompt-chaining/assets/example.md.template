@@ -1,0 +1,8 @@
+﻿# prompt-chaining example
+
+Task: {{TASK}}
+
+Inputs: {{INPUTS}}
+
+Success: {{SUCCESS}}
+

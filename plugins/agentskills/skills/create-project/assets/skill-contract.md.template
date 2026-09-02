@@ -1,0 +1,5 @@
+# {{PLUGIN_NAME}} skill contract
+
+The skill must state its trigger, scope, workflow, constraints, and verification criteria.
+
+Generated projects must replace this starter contract before publishing.

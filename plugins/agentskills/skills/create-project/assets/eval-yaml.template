@@ -1,0 +1,10 @@
+name: {{PLUGIN_NAME}}
+plugin: {{PLUGIN_NAME}}
+skill: {{PLUGIN_NAME}}
+version: 1
+
+cases:
+  - id: smoke
+    prompt: "Describe the purpose of the {{PLUGIN_NAME}} skill."
+    expect:
+      non_empty: true
