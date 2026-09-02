@@ -1,0 +1,35 @@
+# Eval Transcript
+
+## Target
+
+- Skill: <skill-name>
+- Case set: <path>
+- Scratch target: <path>
+
+## Command
+
+```powershell
+<exact command>
+```
+
+## Output
+
+```text
+<full stdout/stderr>
+```
+
+## Resulting Shape
+
+```text
+<directory listing>
+```
+
+## Case Results
+
+| Case | Result | Evidence |
+|---|---|---|
+| <case> | PASS/FAIL | <evidence> |
+
+## Handoff
+
+Provide this transcript to the configured grader. Do not self-grade.

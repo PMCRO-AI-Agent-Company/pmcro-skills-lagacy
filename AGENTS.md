@@ -1,32 +1,35 @@
 # Repository instructions
 
-This repo is a plugin marketplace (`.claude-plugin/marketplace.json`) plus
-two scaffold templates (`global/`, `project/`) — see `README.md` for the
-full layout.
+This repo is a plugin marketplace plus reusable project/global Agent
+Skills templates. Treat `agents.config.json` (when present) as the
+machine-readable source of truth in the marketplace implementation;
+otherwise follow this repo's local README and `.agents/` conventions.
+
+**Before editing:**
+1. Read this file and the relevant README.
+2. Inspect the target plugin/skill structure before changing it.
+3. Check git status and preserve unrelated user changes.
 
 ## Working on skills, plugins, and evals
 
-Use `.agents/skills/agent-skill/SKILL.md` instead of improvising — it
-covers naming, the flat skill-folder convention, deciding standalone
-skill vs. new plugin, frontmatter shape, and writing an `eval.yaml`.
+Use `.agents/skills/agent-skill/SKILL.md` for skill creation and
+`.agents/skills/eval-harness/SKILL.md` for regression validation.
 
-Before committing a new or changed skill/plugin, run:
+Plugin skills use `SKILL.md` plus the default `assets/`, `references/`,
+and `scripts/` subfolders. Session-tooling skills under `.agents/skills/`
+are repository-development tools and are not marketplace products.
 
-```bash
-python eng/eval-quality/check_eval_quality.py
-```
+Before considering a changed skill/plugin complete, run the repository's
+structural quality gate and validate changed JSON manifests. Do not rely
+on an external CLI unless this repository explicitly declares it as a
+current dependency.
 
-It's a structural gate only (frontmatter shape, plugin manifest sync,
-eval schema) — it does not run the evals themselves, and it never
-interprets prose, so it can't fire on a well-written skill.
+## Conventions
 
-## Conventions worth knowing before you edit
-
-- Flat skill layout: `SKILL.md` + plain sibling files, never
-  `scripts/`/`references/`/`assets/` subfolders.
-- Every plugin needs `plugin.json` **and** a byte-for-byte-matching
-  `.claude-plugin/plugin.json` (name/version must agree) plus its own
-  `version.json`.
-- `project/.agents/` is a *template*, not itself a live project — don't
-  add project-specific content there; it belongs in the consuming
-  project's own `.agents/` after the template is copied in.
+- Keep marketplace manifests synchronized when both mirror files exist.
+- Keep plugin manifest copies synchronized according to the active
+  marketplace convention.
+- Never hardcode a machine-specific drive letter into committed content.
+- Keep project templates separate from this repository's own session
+  tooling.
+- Preserve existing architecture; make the smallest verified change.

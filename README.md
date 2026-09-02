@@ -1,51 +1,50 @@
 # agent-skills
 
-Personal scaffold + plugin marketplace for AI coding agents, structured
-after [`dotnet/skills`](https://github.com/dotnet/skills).
+Personal Agent Skills tooling and plugin marketplace, structured after
+the Agent Skills marketplace convention used by the reference project.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
-| `.claude-plugin/marketplace.json` | Marketplace manifest — lists every installable plugin |
-| `.agents/skills/` | Tooling for authoring *this repo* (e.g. `agent-skill`, which scaffolds new skills). Not distributed. |
-| `global/.agents/` | Template for a **machine-wide** `~/.agents` config (PMCRO agents: planner/maker/checker/reflector, global preferences) |
-| `project/.agents/` | Template for a **per-project** `.agents` overlay (project-specific agents, rules, commands) |
-| `project/plugins/` | Installable plugins — see `project/plugins/README.md` |
-| `tests/<plugin-or-skill>/eval.yaml` | Evals, one per skill, mirroring `dotnet/skills`' top-level `tests/` tree |
-| `eng/eval-quality/` | Structural quality gate that runs against every skill/plugin/eval |
+| `.claude-plugin/marketplace.json` | Marketplace manifest |
+| `.agents/skills/` | Tooling for authoring and validating this repo; not distributed |
+| `global/.agents/` | Template for machine-wide agent configuration |
+| `project/.agents/` | Template for a per-project agent configuration layer |
+| `project/plugins/` | Installable plugins and their skills |
+| `tests/` | Structural/evaluation cases for skills and plugins |
+| `eng/eval-quality/` | Structural quality gate |
 
-## Why two template trees (`global/` vs `project/`)?
+## Development `.agents/`
 
-They answer different questions and should stay separate rather than merge:
+The repository's own `.agents/` is session tooling, not the marketplace
+product tree. It now includes the authoring skill, agent-creation skill,
+evaluation harness, and session-resume pointer. Product skills remain
+under `project/plugins/` and are not duplicated into this directory.
 
-- `global/` — "what should *every* project I touch inherit from me?"
-  (my planner/maker/checker/reflector agents, my style preferences).
-  Lives at `~/.agents` on a machine, independent of any repo.
-- `project/` — "what does *this specific* project need?" (its rules,
-  its plugins, its commands). Lives inside a project's own `.agents/`.
+## Skill convention
 
-**Open question raised during the last structure review:** does `global/`
-need to be a folder you hand-maintain and copy from, or could `project/`
-scaffold it on demand (an `agent-skill`-style bootstrap skill that writes
-`~/.agents` from a template the first time it's needed)? Left as-is for
-now — no rename or deletion — but if you build that bootstrap skill later,
-`global/` becomes its template *input* rather than something synced by
-hand, which is a cleaner mental model than maintaining two parallel trees
-forever. Worth revisiting once there's a second global-config consumer to
-justify the tooling.
+A skill is a directory containing `SKILL.md`. Product skills should use
+the default `assets/`, `references/`, and `scripts/` subfolders so support
+material has a stable location even when initially empty. Session skills
+may remain lean when they do not need those subfolders.
 
 ## Installing a plugin
 
-```
-/plugin marketplace add <path-to-this-repo>
-/plugin install security-review@agent-skills
-```
+Use the marketplace manifest for the supported plugin host. Keep mirrored
+marketplace manifests synchronized whenever both are present.
 
-## Contributing a new skill or plugin
+## Contributing
 
-See `/.agents/skills/agent-skill/SKILL.md`. Quality bar and eval gate:
+Read `.agents/skills/agent-skill/SKILL.md` before creating a skill and
+`.agents/skills/eval-harness/SKILL.md` before treating a modified skill as
+validated.
+
+Run:
 
 ```bash
 python eng/eval-quality/check_eval_quality.py
 ```
+
+Then validate any changed JSON manifests with the repository's current
+validation mechanism. Do not assume an external CLI is installed.

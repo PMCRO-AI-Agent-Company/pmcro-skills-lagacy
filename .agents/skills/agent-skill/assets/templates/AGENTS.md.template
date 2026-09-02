@@ -1,0 +1,38 @@
+# Project Conventions
+
+## Purpose
+
+<Describe the repository and the assumptions agents must preserve.>
+
+## Commands
+
+- Build: `<build command>`
+- Test: `<test command>`
+- Lint: `<lint command>`
+- Format: `<format command>`
+
+## Stack
+
+- <Language/runtime>
+- <Framework>
+- <Major architectural dependency>
+
+## Rules
+
+- <Repository convention>
+- <Naming or structure convention>
+- <Testing convention>
+
+## Architecture
+
+- <Important boundary or invariant>
+- <Dependency rule>
+- <Failure/rollback rule>
+
+## Verification
+
+Before declaring work complete:
+
+1. Run the relevant validation commands.
+2. Inspect the resulting diff.
+3. Report verification evidence.

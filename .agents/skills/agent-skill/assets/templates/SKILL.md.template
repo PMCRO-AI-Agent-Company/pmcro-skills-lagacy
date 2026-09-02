@@ -1,0 +1,45 @@
+---
+name: <skill-name>
+description: >
+  <What the skill does and when it should be invoked.>
+license: MIT
+---
+
+# <Skill Title>
+
+<One-paragraph purpose and scope.>
+
+## When to Use
+
+- <Trigger 1>
+- <Trigger 2>
+
+## When Not to Use
+
+- <Boundary 1>
+- <Boundary 2>
+
+## Workflow
+
+### Step 1: <Action>
+
+<Instructions.>
+
+### Step 2: <Action>
+
+<Instructions.>
+
+## Supporting Material
+
+Read `references/<reference>.md` when <condition>.
+Use `assets/templates/<template>` when <condition>.
+Run `scripts/<script>.ps1` when <condition>.
+
+## Validation
+
+- [ ] <Invariant>
+- [ ] <Verification>
+
+## Output Contract
+
+Always report <required result/evidence>.

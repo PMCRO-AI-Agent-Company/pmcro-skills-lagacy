@@ -1,76 +1,65 @@
 ---
 name: agent-skill
-description: Scaffolds a new Agent Skill inside this repo, following the structured skill-folder convention (SKILL.md + optional scripts/references/assets subfolders) and the plugin-packaging convention (plugin.json + .claude-plugin/plugin.json + version.json + skills/). Use when creating a new skill, generating a SKILL.md, deciding whether a skill needs its own plugin, deciding whether support material belongs in scripts/references/assets, or writing an eval.yaml for it. Do not use for editing an existing skill's content, or for project/ template rules and agents (those aren't skills).
+description: Scaffolds and maintains Agent Skills in this repo using the canonical SKILL.md + assets + references + scripts structure. Use when creating a skill, generating templates, deciding support-material placement, or validating a skill package. Do not use for project rules, agents, or workflows.
 license: MIT
 ---
 
 # Agent Skill
 
-Scaffolds a new skill that conforms to the agentskills.io spec and this
-repo's conventions.
+Create skills that are complete, self-describing, and reusable.
 
-## Inputs
+## Canonical Shape
 
-| Input | Required | Description |
-|---|---|---|
-| Skill name | Yes | Lowercase, alphanumeric, hyphens only (e.g. `dependency-audit`) |
-| Description | Yes | What it does and when to use it, in the model's routing words (symptoms, error text, the phrase a person would actually type) — this is the *only* text the runtime sees when choosing whether to activate the skill |
-| Standalone or part of a plugin? | Yes | See decision table below |
+Every skill directory MUST contain:
 
-## 1. Decide: standalone skill or new plugin?
-
-| Situation | Where it lives |
-|---|---|
-| Fits an existing plugin's theme (e.g. another testing skill) | Add under `project/plugins/<existing-plugin>/skills/<name>/` |
-| New theme, meant to be distributed/installed | New `project/plugins/<name>/` — needs its own `plugin.json`, `.claude-plugin/plugin.json`, `version.json`, and an entry in the root `.claude-plugin/marketplace.json` |
-| Repo-authoring tool (helps *build* this repo, not something end users install) | `.agents/skills/<name>/` at repo root, no plugin wrapper |
-
-## 2. Scaffold the files
-
-```
+```text
 <skill-name>/
-├── SKILL.md          # required — frontmatter + lean instructions
-├── scripts/          # optional — executable code SKILL.md invokes
-├── references/       # optional — detail docs linked from SKILL.md,
-│                      #   not inlined (formats, deep background, tables)
-└── assets/            # optional — templates, schemas, static data
+├── SKILL.md
+├── assets/
+├── references/
+└── scripts/
 ```
 
-See `project/.agents/skills/README.md` for the full convention. In
-short: keep `SKILL.md` itself lean and link out to `references/*.md`
-for anything long; only add a subfolder once there's a real file for
-it — a trivial skill can still be just `SKILL.md` alone.
+Do not make exceptions for repository/tooling skills. If a directory
+has no material yet, keep the directory with a `.gitkeep` until useful
+content is authored.
 
+## Support-Material Contract
 
-### SKILL.md frontmatter
+- `assets/` contains full-file templates, fixtures, examples, and files
+  intended to be copied or filled in.
+- `references/` contains authoritative guidance consulted while running
+  the skill. A template in `assets/` should have a corresponding
+  reference when its usage needs explanation.
+- `scripts/` contains deterministic helpers for repeatable operations.
+  Document every script from `SKILL.md`.
 
-```yaml
----
-name: <skill-name>            # required, must match folder name
-description: >                # required, ≤1024 chars, this IS the routing signal
-  What it does and when to use it. Include the user's own words.
-  End with "DO NOT USE for X" to partition against sibling skills.
-license: MIT                  # optional
-disable-model-invocation: true # optional — set if explicit-invoke only
-argument-hint: <arg>           # optional — shown when explicitly invoked
----
-```
+Use `assets/templates/SKILL.md.template` as the baseline skill file.
+For project-instruction skills, use `assets/templates/AGENTS.md.template`.
 
-## 3. Write an eval
+## Location
 
-Add `tests/<plugin-or-root>/<skill-name>/eval.yaml` (see an existing one for
-the schema) with at least one `stimuli` entry and a grader. Then run:
+- Existing plugin: `project/plugins/<plugin>/skills/<name>/`
+- New distributed plugin: `project/plugins/<name>/`
+- Repo-authoring skill: `.agents/skills/<name>/`
 
-```bash
-python eng/eval-quality/check_eval_quality.py
-```
+## Workflow
 
-## 4. Quality bar
+1. Check for an existing skill that already covers the responsibility.
+2. Scaffold all four required components with `scripts/scaffold-skill.ps1`.
+3. Author `SKILL.md` with precise routing, scope, workflow, validation,
+   and an output contract.
+4. Add full-file templates to `assets/` when generated artifacts need
+   a starting shape.
+5. Add focused supporting guidance to `references/`.
+6. Add deterministic scripts only where repeatability benefits from code.
+7. Validate the resulting tree and inspect the diff.
 
-- **Actionable** — the agent can follow it without guesswork
-- **Minimal** — no scope creep; delete anything the model already does unaided
-- **Verifiable** — always give a way to check success
-- **Tool-conscious** — don't assume capabilities that might not exist in every runtime
+## Quality Bar
 
-Prefer "when A, do B, never C, verify D" tables over lists of alternatives,
-and end with a concrete output contract.
+- Actionable: no guesswork.
+- Minimal: no unnecessary scope.
+- Verifiable: concrete success checks.
+- Tool-conscious: use only available capabilities.
+- Complete: support directories exist and supporting material is linked
+  from the skill instructions.

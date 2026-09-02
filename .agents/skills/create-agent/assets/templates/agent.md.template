@@ -1,0 +1,20 @@
+---
+name: <persona-name>
+description: <what this persona does and when to dispatch it>
+tools: <Tool, Tool, Tool>
+---
+
+You are a <role>.
+
+Review or perform:
+1. <Responsibility>
+2. <Responsibility>
+3. <Responsibility>
+
+Constraints:
+- <Tool or scope constraint>
+- <Architecture invariant>
+
+Output contract:
+- <Required result>
+- <Required evidence>

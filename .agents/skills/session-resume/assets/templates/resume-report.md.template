@@ -1,0 +1,28 @@
+# Session Resume Report
+
+## Repository
+
+- Root: <repository root>
+- Branch: <branch>
+- Revision: <commit>
+
+## Entry Points Read
+
+- [ ] `agents.config.json`
+- [ ] `.agents/CONTEXT.md`
+- [ ] `.agents/INSTRUCTIONS.md`
+- [ ] `.agents/session-state.md`
+
+## Pending Work
+
+<Untriaged pending items, or `None`>
+
+## Resume Checklist
+
+1. <Step>
+2. <Step>
+3. <Step>
+
+## Verification
+
+<Commands/results used to verify the resumed state.>
