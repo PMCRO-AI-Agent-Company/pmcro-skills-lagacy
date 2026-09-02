@@ -28,3 +28,7 @@ relying on step 3. It also reports, non-blockingly, whether the
 optional `.agents/skills/README.md` and `LAYOUTS.md` are present. Use
 `assets/templates/resume-report.md.template` as the starting shape for
 recording what was read and what work is in progress.
+
+## References
+
+- [references/resume-order.md](references/resume-order.md) — deterministic resume ordering and entrypoint checks.

@@ -31,6 +31,6 @@ catches obviously-shaped secrets by regex, not logic-level auth or
 injection issues, and it can both miss real secrets and flag
 non-secrets.
 
-## References
+## Output template`r`n`r`nUse `assets/templates/security-review-report.md.template` as the baseline structure when producing a reusable review report. Keep evidence tied to the reviewed diff and do not treat the template as a substitute for analysis.`r`n`r`n## References
 
 - [references/checklist.md](references/checklist.md) — full review checklist

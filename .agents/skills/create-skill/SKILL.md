@@ -1,10 +1,10 @@
 ---
-name: agent-skill
+name: create-skill
 description: Scaffolds and maintains Agent Skills in this repo using the canonical SKILL.md + assets + references + scripts structure. Use when creating a skill, generating templates, deciding support-material placement, or validating a skill package. Do not use for project rules, agents, or workflows.
 license: MIT
 ---
 
-# Agent Skill
+# Create Skill
 
 Create skills that are complete, self-describing, and reusable.
 
@@ -45,13 +45,13 @@ implemented functionality.
 - `scripts/` contains deterministic helpers for repeatable operations.
   Document every script from `SKILL.md`.
 
-Use `assets/templates/SKILL.md.template` as the baseline skill file.
-For project-instruction skills, use `assets/templates/AGENTS.md.template`.
+Use `assets/templates/skill.md.template` as the baseline skill file.
+For project-instruction skills, use `assets/templates/agents.md.template`.
 
 ## Location
 
-- Existing plugin: `project/plugins/<plugin>/skills/<name>/`
-- New distributed plugin: `project/plugins/<name>/`
+- Existing plugin: `plugins/<plugin>/skills/<name>/`
+- New distributed plugin: `plugins/<name>/`
 - Repo-authoring skill: `.agents/skills/<name>/`
 
 ## Workflow
@@ -89,12 +89,12 @@ Before using or shipping a capability:
 ## Full Package Example
 
 ```text
-agent-skill/
+create-skill/
 ├── SKILL.md
 ├── assets/
 │   └── templates/
-│       ├── SKILL.md.template
-│       ├── AGENTS.md.template
+│       ├── skill.md.template
+│       ├── agents.md.template
 │       └── validate-skill.ps1.template
 ├── references/
 │   └── skill-structure.md
@@ -118,7 +118,7 @@ additional assets, references, tests, and scripts whenever their actual
 capabilities require them; the validator must keep those claims honest.
 
 
-The `agent-skill` package itself is the canonical full-structure example,
+The `create-skill` package itself is the canonical full-structure example,
 including a full-file `AGENTS.md` template and a dedicated validator.
 
 
@@ -159,3 +159,24 @@ See `references/artifact-catalog.md` for the complete artifact-to-template/refer
 
 ### Scripts
 Deterministic helpers include `scripts/scaffold-skill.ps1`, `scripts/validate-skill.ps1`, `scripts/inventory-artifacts.ps1`, `scripts/validate-templates.ps1`, `scripts/validate-references.ps1`, and `scripts/scaffold-artifact.ps1`. A script is only documented as functional when it exists and has been exercised successfully.
+
+
+
+
+## References
+
+Use these repository-local references when the task involves the corresponding artifact:
+
+- `references/skill-structure.md` — skill package structure and authoring rules.
+- `references/artifact-catalog.md` — artifact-to-template/reference/script mapping.
+- `references/agents-md.md` — AGENTS.md artifact guidance.
+- `references/agents.md` — subagent artifact guidance.
+- `references/commands.md` — command artifact guidance.
+- `references/mcp-json.md` — MCP configuration guidance.
+- `references/memory.md` — runtime-generated memory guidance.
+- `references/output-styles.md` — output-style guidance.
+- `references/rules.md` — scoped rule guidance.
+- `references/settings.md` — settings artifact guidance.
+- `references/themes.md` — theme artifact guidance.
+- `references/workflows.md` — workflow artifact guidance.
+- `references/worktreeinclude.md` — worktree include guidance.

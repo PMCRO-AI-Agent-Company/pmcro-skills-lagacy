@@ -1,50 +1,57 @@
 # agent-skills
 
-Personal Agent Skills tooling and plugin marketplace, structured after
-the Agent Skills marketplace convention used by the reference project.
+Personal Agent Skills repository and plugin marketplace, aligned with the
+repository conventions used by `dotnet/skills`.
 
 ## Layout
 
-| Path | What it is |
-|---|---|
-| `.claude-plugin/marketplace.json` | Marketplace manifest |
-| `.agents/skills/` | Tooling for authoring and validating this repo; not distributed |
-| `global/.agents/` | Template for machine-wide agent configuration |
-| `project/.agents/` | Template for a per-project agent configuration layer |
-| `project/plugins/` | Installable plugins and their skills |
-| `tests/` | Structural/evaluation cases for skills and plugins |
-| `eng/eval-quality/` | Structural quality gate |
+```text
+.
+├── .agents/
+│   ├── plugins/marketplace.json
+│   └── skills/
+│       ├── create-skill/
+│       ├── create-agent/
+│       ├── eval-harness/
+│       └── session-resume/
+├── .claude-plugin/marketplace.json
+├── plugins/
+│   └── security-review/
+│       ├── plugin.json
+│       ├── version.json
+│       ├── .claude-plugin/plugin.json
+│       ├── .codex-plugin/plugin.json
+│       └── skills/security-review/
+├── tests/
+│   └── security-review/security-review/eval.yaml
+└── eng/eval-quality/
+```
 
-## Development `.agents/`
+## Authoring skills
 
-The repository's own `.agents/` is session tooling, not the marketplace
-product tree. It now includes the authoring skill, agent-creation skill,
-evaluation harness, and session-resume pointer. Product skills remain
-under `project/plugins/` and are not duplicated into this directory.
+`.agents/skills/` contains skills used to author and validate this repository.
+`create-skill` is the canonical skill for creating and maintaining skills.
+These authoring skills are not themselves marketplace plugins.
 
-## Skill convention
+## Plugins
 
-A skill is a directory containing `SKILL.md`. Product skills should use
-the default `assets/`, `references/`, and `scripts/` subfolders so support
-material has a stable location even when initially empty. Session skills
-may remain lean when they do not need those subfolders.
+`plugins/<plugin>/` is the distributable boundary. Every plugin has a
+`plugin.json`, a version manifest, and one or more skills under `skills/`.
+The root `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`
+point to these plugin directories.
 
-## Installing a plugin
+## Tests
 
-Use the marketplace manifest for the supported plugin host. Keep mirrored
-marketplace manifests synchronized whenever both are present.
+Skill evaluations live under `tests/<plugin>/<skill-name>/`. Keep test
+fixtures and evaluation contracts outside the distributable plugin.
 
-## Contributing
+## Validation
 
-Read `.agents/skills/agent-skill/SKILL.md` before creating a skill and
-`.agents/skills/eval-harness/SKILL.md` before treating a modified skill as
-validated.
+Run the repository quality gate before committing:
 
-Run:
-
-```bash
+```text
 python eng/eval-quality/check_eval_quality.py
 ```
 
-Then validate any changed JSON manifests with the repository's current
-validation mechanism. Do not assume an external CLI is installed.
+For a skill, also run its own deterministic validation scripts and its
+matching `tests/<plugin>/<skill-name>/eval.yaml` evaluation when available.

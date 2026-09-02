@@ -1,6 +1,6 @@
 ---
 name: create-agent
-description: Scaffolds a new subagent persona under project/.agents/agents/, following this repo's name/description/tools frontmatter + plain-prose-body convention. Use when creating a new PMCRO subagent persona, deciding whether a task needs its own persona vs. reusing an existing one, or writing a persona's tool allow-list. Do not use for creating Agent Skills (use agent-skill instead) or for workflows/output-styles/commands.
+description: Scaffolds a new subagent persona under project/.agents/agents/, following this repo's name/description/tools frontmatter + plain-prose-body convention. Use when creating a new PMCRO subagent persona, deciding whether a task needs its own persona vs. reusing an existing one, or writing a persona's tool allow-list. Do not use for creating Agent Skills (use create-skill instead) or for workflows/output-styles/commands.
 license: MIT
 ---
 
@@ -17,7 +17,7 @@ Scaffolds a new subagent persona that conforms to this repo's
 
 ## When Not to Use
 
-- Creating an Agent Skill (`SKILL.md`) — use the `agent-skill` skill
+- Creating an Agent Skill (`SKILL.md`) — use the `create-skill` skill
 - Creating a workflow, output-style, or slash-command — those are
   separate `.agents/` folders with their own conventions
 
@@ -91,3 +91,7 @@ Add a one-line entry to `project/.agents/agents/README.md`'s
 | Description only says what, not when | Add the dispatch trigger explicitly |
 | Unrestricted `tools` by default | Only omit `tools` if the persona genuinely needs full access |
 | Body reads like a skill's step-by-step workflow | Personas are a role + checklist, not a procedure — keep it short |
+
+## References
+
+- [references/agent-frontmatter.md](references/agent-frontmatter.md) — required frontmatter and persona conventions.

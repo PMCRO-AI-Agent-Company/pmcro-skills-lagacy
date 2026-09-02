@@ -1,0 +1,26 @@
+# Security Review
+
+## Scope
+
+- Target: <branch-or-path>
+- Reviewer: <agent>
+
+## Findings
+
+### <severity>: <finding title>
+
+**Evidence:**
+
+<concrete evidence from the reviewed diff>
+
+**Impact:**
+
+<security impact>
+
+**Remediation:**
+
+<specific remediation>
+
+## Verdict
+
+<pass | pass-with-findings | fail>
