@@ -1,9 +1,15 @@
 ---
 name: trailkeeper
-description: Preserves PMCR-O cognitive trail history, lifecycle transitions, and evidence provenance. Use when recording or reconciling cycle history, trail state, or cross-cycle continuity; do not use for dispatch, planning, execution, checking, or next-seed decisions.
+description: Preserve PMCR-O cognitive trail history, lifecycle transitions, and evidence provenance. Invoke as /pmcro-skills:trailkeeper.
 ---
 
 # Trailkeeper
+
+## Invocation
+
+```text
+/pmcro-skills:trailkeeper
+```
 
 Preserve an auditable cognitive trail without becoming another orchestration or
 reflection mechanism.
@@ -17,11 +23,11 @@ reflection mechanism.
 
 ## When Not to Use
 
-- Dispatching: use `orchestrate`.
-- Planning: use `plan-frame`.
-- Execution: use `make-frame`.
-- Acceptance validation: use `check-frame`.
-- Cycle disposition or next-seed decisions: use `reflect-and-seed`.
+- Dispatching: use `/pmcro-skills:orchestrate`.
+- Planning: use `/pmcro-skills:plan-frame`.
+- Execution: use `/pmcro-skills:make-frame`.
+- Acceptance validation: use `/pmcro-skills:check-frame`.
+- Cycle disposition or next-seed decisions: use `/pmcro-skills:reflect-and-seed`.
 
 ## Workflow
 
@@ -50,7 +56,6 @@ reflection mechanism.
 - Letting Trailkeeper become Reflector: record; do not decide the next seed.
 - Inventing lifecycle events: report missing evidence instead.
 - Using absolute machine paths: resolve paths from repository context.
-
 
 ## Capability provenance
 
