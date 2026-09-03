@@ -9,4 +9,6 @@ builder.AddProject<Projects.AgentSkills_Api>("api")
 builder.AddProject<Projects.AgentSkills_Mcp_Terminal>("terminal-mcp")
     .WithEnvironment("Parameters__working-root", workingRoot);
 
+builder.AddProject<Projects.AgentSkills_AgentSystem>("agentskills-agentsystem");
+
 builder.Build().Run();

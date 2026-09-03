@@ -10,8 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Services\AgentSkills.Api\AgentSkills.Api.csproj" />
-    <ProjectReference Include="..\Mcps\AgentSkills.Mcp.Terminal\AgentSkills.Mcp.Terminal.csproj" />
+    <ProjectReference Include="..\AgentSkills.Api\AgentSkills.Api.csproj" />
+    <ProjectReference Include="..\Mcp\AgentSkills.Mcp.Terminal\AgentSkills.Mcp.Terminal.csproj" />
+    <ProjectReference Include="..\AgentSkills.AgentSystem\AgentSkills.AgentSystem.csproj" />
   </ItemGroup>
 
 </Project>

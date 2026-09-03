@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>AgentSkills.Core</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Framework-neutral platform kernel. Keep PMCR-O policy in Domain and
+       orchestration/execution in Application/Workflows/runtime. -->
+
+</Project>

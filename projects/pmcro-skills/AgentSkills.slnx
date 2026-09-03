@@ -1,12 +1,17 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AgentSkills.AgentSystem/AgentSkills.AgentSystem.csproj" />
+    <Project Path="src/AgentSkills.Api/AgentSkills.Api.csproj" />
+    <Project Path="src/AgentSkills.Core/AgentSkills.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Mcp/">
+    <Project Path="src/Mcp/AgentSkills.Mcp.Terminal/AgentSkills.Mcp.Terminal.csproj" />
+  </Folder>
   <Project Path="src/AgentSkills.AppHost/AgentSkills.AppHost.csproj" Id="bafa1377-7f55-4a9f-a69e-a1b529e8e77f" />
   <Project Path="src/AgentSkills.ServiceDefaults/AgentSkills.ServiceDefaults.csproj" Id="8e69be66-0db7-4519-a7fa-acce2752505a" />
   <Project Path="src/AgentSkills.Application/AgentSkills.Application.csproj" />
   <Project Path="src/AgentSkills.Domain/AgentSkills.Domain.csproj" />
   <Project Path="src/AgentSkills.Infrastructure/AgentSkills.Infrastructure.csproj" />
   <Project Path="src/AgentSkills.Workflows/AgentSkills.Workflows.csproj" />
-  <Project Path="src/Services/AgentSkills.Api/AgentSkills.Api.csproj" Id="5f5a3b6e-7c8d-4e9f-ca0b-1c2d3e4f5a6b" />
-  <Project Path="src/Mcps/AgentSkills.Mcp.Terminal/AgentSkills.Mcp.Terminal.csproj" />
   <Project Path="tests/AgentSkills.Workflows.Tests/AgentSkills.Workflows.Tests.csproj" />
-  <Project Path="tests/AgentSkills.Workflows.Aspire.Tests/AgentSkills.Workflows.Aspire.Tests.csproj" Id="d5b16f3e-5df7-4a47-a3aa-b1f7f86f4f7e" />
 </Solution>
