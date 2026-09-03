@@ -19,9 +19,15 @@
 - Additional topic files may live beside `MEMORY.md` and are read on demand.
 - Memory must never rewrite sealed trails or silently become colony law.
 
+## Execution architecture
+- This repository defines governance, contracts, skills, and state boundaries; it does not implement a second PMCR-O orchestration loop.
+- PMCR-O execution is owned by the runtime through the declarative workflow substrate (MAF/Aspire/MCP/HIL).
+- `engine/run-cycle.ps1` is deterministic queue/trail allocation support only; it never replaces the declarative workflow or performs reasoning.
+- `.agents/workflows/` is the local workflow catalog/documentation boundary. Canonical executable declarative workflows belong to the runtime execution host.
+
 ## Commands
-- Build/test: `dotnet test pmcro-skills.slnx`
-- Queue driver: `engine/run-cycle.ps1 -PmcroRoot .pmcro`
+- Build/test: `dotnet test AgentSkills.slnx`
+- Deterministic queue/trail support: `engine/run-cycle.ps1 -PmcroRoot .pmcro`
 
 ## Mutation
 - TYPE1 mutations require explicit recorded human approval unless bounded autonomous authority already applies.

@@ -1,9 +1,12 @@
 # .agents/
 
-Spec/input directory consumed by this repo's own PMCR-O engine
-(`../engine/PmcroEngine.psm1`, `../engine/run-cycle.ps1`) and by an
-agent reading these files as instructions — not auto-discovered by
-Claude Code's native `.claude/skills/` loader.
+Repository-local agent instruction, skill, command, memory, rule, and workflow
+catalog. It is consumed by agents and by the deterministic mechanics under
+`../engine/`; it is not itself a second PMCR-O workflow runtime.
+
+Executable PMCR-O orchestration is owned by the runtime through the declarative
+workflow substrate. This repository supplies the governance, contracts, and
+mechanics that the runtime must honor.
 
 ## Layout
 
@@ -19,9 +22,11 @@ Claude Code's native `.claude/skills/` loader.
 
 ## Lifecycle responsibility
 
-The core execution loop remains Orchestrator → Planner → Maker → Checker →
-Reflector. Trailkeeper is an adjacent continuity role, not a sixth phase and
-not a second orchestrator.
+The governed lifecycle remains Orchestrator → Planner → Maker → Checker →
+Reflector → Seal. The runtime expresses this lifecycle through the declarative
+workflow; this repository does not implement a competing orchestration loop.
+Trailkeeper is an adjacent continuity role, not a sixth phase or second
+orchestrator.
 
 Trailkeeper preserves cognitive trail history, lifecycle transitions, evidence
 provenance, and cross-cycle continuity. Reflector still owns cycle disposition,
