@@ -18,6 +18,12 @@ Maintain the historical cognitive trail of PMCR-O cycles and preserve
 provenance between lifecycle events, sealed trails, constraints, and agent
 memory. The trail is evidence of what happened; it is not a second queue.
 
+## Skill invocation
+
+When explicitly invoking a skill from this plugin, use `/pmcro-skills:<skill-name>`.
+Never use an unqualified `/skill-name` form. Record the namespaced selector in
+trail provenance when the invocation itself is material evidence.
+
 ## Boundaries
 
 - Do not dispatch cycles; Orchestrator owns dispatch.
