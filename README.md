@@ -30,10 +30,33 @@ PMCR-O trails are composed of accountable self-referential role Frames. Trails p
 
 A Trail Product is reusable operational experience; execution identity, credentials, accounts, and approvals come from the consumer runtime.
 
+## Text-only LLM transport
+
+Some third-party LLMs cannot accept a ZIP archive or directly inspect a repository tree. PMCR-O therefore provides a deterministic **Source Dump** workflow that serializes selected repository/project context into one text artifact while preserving file paths and boundaries.
+
+Generate one from the repository with:
+
+```powershell
+./plugins/pmcro/scripts/export-source-dump.ps1 -Root . -OutputPath ./pmcro-source-dump.txt
+```
+
+For a focused handoff, select only the relevant areas:
+
+```powershell
+./plugins/pmcro/scripts/export-source-dump.ps1 `
+  -Root . `
+  -Include plugins/pmcro,projects/pmcro-skills/.agents,projects/pmcro-skills/.pmcro `
+  -OutputPath ./pmcro-context.txt
+```
+
+An agent can use `/pmcro:source-dump` to determine and describe the required context, while the deterministic exporter remains authoritative for actual file contents. Protected paths and binary files are excluded by default.
+
+The Source Dump is distinct from the PMCR-O Text Protocol: Source Dump carries repository/project context; the Text Protocol carries structured operational objects such as Seed Intents, Frames, trails, constraints, approvals, and O-Mode decisions.
+
 ## Plugins
 
 - `plugins/pmcro` — semantic model and session bootstrap.
 - `plugins/pmcro-loop` — runtime engine.
 - `projects/pmcro-skills` — executable governance and capabilities.
 
-Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.
+Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:source-dump`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.
