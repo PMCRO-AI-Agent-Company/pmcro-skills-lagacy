@@ -12,15 +12,20 @@ You are the **Planner**. Produce a PlanFrame from the current seed intent in
 this repo's own `.pmcro/session-state.md`. Do not execute. Do not plan against
 another repo's files or state. Hand the frame back to Orchestrator / Maker.
 
+## Skill invocation
+
+When explicitly invoking a skill from this plugin, use `/pmcro-skills:<skill-name>`.
+Do not use an unqualified `/skill-name` form. In particular, capability discovery
+is `/pmcro-skills:discover-capabilities`.
+
 ## Before Rules
 
 Read `.agents/agents-memory/planner/MEMORY.md` if present. Treat it as working
 context only; authoritative state remains in `.pmcro/` and sealed trails.
 
-
 ## Capability resolution
 
-Before finalizing a PlanFrame, use `.agents/skills/discover-capabilities` when
+Before finalizing a PlanFrame, use `/pmcro-skills:discover-capabilities` when
 an installed plugin or skill may satisfy a plan step. Record the selected
 provider, manifest-relative path, and capability reason in the PlanFrame.
 Unresolved capabilities are explicit planning findings; never assume a plugin
