@@ -7,6 +7,21 @@ description: Generate a deterministic text-only source dump of selected reposito
 
 Generate a PMCR-O Source Dump for an external LLM or text-only runtime.
 
+## Skill resources
+
+This skill keeps its supporting resources inside its own skill directory, following the Agent Skills directory model:
+
+```text
+source-dump/
+├── SKILL.md
+├── references/
+│   └── source-dump.md
+└── scripts/
+    └── export-source-dump.ps1
+```
+
+Read `references/source-dump.md` for the format and safety contract. Use `scripts/export-source-dump.ps1` for deterministic filesystem enumeration and serialization.
+
 ## Inputs
 
 Accept an optional natural-language selection describing the context needed. When no selection is provided, use the repository's configured/default export scope rather than assuming the entire workspace is safe to export.
@@ -18,7 +33,7 @@ Accept an optional natural-language selection describing the context needed. Whe
 3. Include relevant source, skills, references, scripts, assets, templates, configuration, and selected `.pmcro` state when requested and permitted.
 4. Apply protected-path exclusions before reading file contents.
 5. Exclude secrets, credentials, tokens, private keys, environment files containing secrets, and other sensitive material unless a separate explicit capability and policy authorizes handling them.
-6. Use the deterministic exporter when available; do not ask the LLM to invent or reconstruct file contents.
+6. Use the bundled deterministic exporter when available; do not ask the LLM to invent or reconstruct file contents.
 7. Emit the `PMCR-O-SOURCE-DUMP/1` envelope and manifest metadata.
 8. Keep repository context distinct from PMCR-O operational state. Use the PMCR-O Text Protocol for Seed Intents, Frames, trails, constraints, approvals, and O-Mode decisions.
 
