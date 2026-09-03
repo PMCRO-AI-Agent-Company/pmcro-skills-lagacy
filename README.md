@@ -30,33 +30,28 @@ PMCR-O trails are composed of accountable self-referential role Frames. Trails p
 
 A Trail Product is reusable operational experience; execution identity, credentials, accounts, and approvals come from the consumer runtime.
 
-## Text-only LLM transport
+## Packaging and external LLM transport
 
-Some third-party LLMs cannot accept a ZIP archive or directly inspect a repository tree. PMCR-O therefore provides a deterministic **Source Dump** workflow that serializes selected repository/project context into one text artifact while preserving file paths and boundaries.
+PMCR-O keeps canonical skills in Agent Skills form and generates consumer-specific projections rather than maintaining duplicate source trees.
 
-Generate one from the repository with:
+Use `/pmcro:package` to project a plugin, skill, or selected project context as:
 
-```powershell
-./plugins/pmcro/scripts/export-source-dump.ps1 -Root . -OutputPath ./pmcro-source-dump.txt
+```text
+TXT       → one text artifact for text-only LLMs
+ZIP       → portable archive preserving structure
+directory → local materialized projection
+Gemini    → .gemini/skills/<skill>/...
+Agents    → .agents/skills/<skill>/...
 ```
 
-For a focused handoff, select only the relevant areas:
+The lower-level `/pmcro:source-dump` capability provides the `PMCR-O-SOURCE-DUMP/1` text transport used by the `txt` projection. The package system keeps runtime-specific layouts generated from the canonical source.
 
-```powershell
-./plugins/pmcro/scripts/export-source-dump.ps1 `
-  -Root . `
-  -Include plugins/pmcro,projects/pmcro-skills/.agents,projects/pmcro-skills/.pmcro `
-  -OutputPath ./pmcro-context.txt
-```
-
-An agent can use `/pmcro:source-dump` to determine and describe the required context, while the deterministic exporter remains authoritative for actual file contents. Protected paths and binary files are excluded by default.
-
-The Source Dump is distinct from the PMCR-O Text Protocol: Source Dump carries repository/project context; the Text Protocol carries structured operational objects such as Seed Intents, Frames, trails, constraints, approvals, and O-Mode decisions.
+Gemini CLI currently discovers workspace skills from `.gemini/skills/` and also supports the `.agents/skills/` alias; each skill is a self-contained directory with `SKILL.md` and optional `scripts/`, `references/`, and `assets/`. citeturn942087search0turn942087search1
 
 ## Plugins
 
-- `plugins/pmcro` — semantic model and session bootstrap.
+- `plugins/pmcro` — semantic model, lifecycle, and packaging/projection capabilities.
 - `plugins/pmcro-loop` — runtime engine.
 - `projects/pmcro-skills` — executable governance and capabilities.
 
-Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:source-dump`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.
+Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:package`, `/pmcro:source-dump`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.
