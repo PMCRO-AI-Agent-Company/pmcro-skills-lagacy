@@ -1,0 +1,6 @@
+{
+  "name": "github-skills",
+  "version": "0.1.0",
+  "description": "GitHub CLI setup and PR lifecycle (open/merge) operations for repos this colony works in.",
+  "skills": ["./skills/"]
+}

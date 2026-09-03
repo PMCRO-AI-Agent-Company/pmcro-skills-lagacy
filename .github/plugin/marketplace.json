@@ -26,6 +26,11 @@
                         "name":  "pmcro-loop",
                         "source":  "./plugins/pmcro-loop",
                         "description":  "Canonical PMCR-O cognitive loop: Orchestrator → Planner → Maker → Checker → Reflector with one shared colony priority queue."
+                    },
+                    {
+                        "name":  "github-skills",
+                        "source":  "./plugins/github-skills",
+                        "description":  "GitHub CLI setup and PR lifecycle (open/merge) operations for repos this colony works in."
                     }
                 ]
 }

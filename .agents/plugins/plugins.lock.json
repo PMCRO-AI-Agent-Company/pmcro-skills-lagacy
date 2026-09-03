@@ -23,15 +23,21 @@
       "name": "pmcro",
       "source": "./plugins/pmcro",
       "trust": "first-party",
-      "version": "0.2.2"
+      "version": "0.2.3"
     },
     {
       "name": "pmcro-loop",
       "source": "./plugins/pmcro-loop",
       "trust": "first-party",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "pinnedCommit": "43779e337c1225ecf408348fc71b99a087db62b7",
       "upstream": "https://github.com/ShawnDelaineBellazanLoop/pmcro-loop"
+    },
+    {
+      "name": "github-skills",
+      "source": "./plugins/github-skills",
+      "trust": "first-party",
+      "version": "0.1.0"
     },
     {
       "name": "pmcro-skills",
