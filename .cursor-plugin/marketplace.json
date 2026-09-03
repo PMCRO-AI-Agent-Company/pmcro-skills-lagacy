@@ -44,7 +44,7 @@
                     },
                     {
                         "name":  "pmcro-skills",
-                        "source":  "./projects/pmcro-skills",
+                        "source":  "./.agents",
                         "description":  "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, cross-repo reference docs."
                     }
                 ]

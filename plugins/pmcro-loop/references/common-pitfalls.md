@@ -2,7 +2,7 @@
 
 Shared by every role persona in `agents/*.md`. Consolidated from five
 identical pitfall tables previously duplicated across the nested
-`projects/pmcro-skills/plugins/pmcro-loop/skills/*-role/SKILL.md` files.
+`the pre-2026-09-03 nested projects/pmcro-skills/plugins/pmcro-loop/skills/*-role/SKILL.md (removed; see .pmcro/repo-topology.md)` files.
 
 | Pitfall | Response |
 |---|---|

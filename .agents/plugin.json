@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pmcro-skills",
+  "version": "0.1.0",
+  "description": "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, cross-repo reference docs. Skills are invoked with /pmcro-skills:<skill>.",
+  "license": "MIT"
+}

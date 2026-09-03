@@ -11,7 +11,7 @@ reference fills in both steps, and connects the result to
 ## The procedure
 
 1. **Discover.** Run `discover-capabilities`
-   (`projects/pmcro-skills/.agents/skills/discover-capabilities/scripts/discover-capabilities.ps1`
+   (`.agents/skills/discover-capabilities/scripts/discover-capabilities.ps1`
    + `resolve-capability.ps1`) against the resolved projects root. This
    already does partial, scored matching — a zero-score result and a
    low-score partial match are both "no confident single provider," not

@@ -46,12 +46,20 @@ Agents    → .agents/skills/<skill>/...
 
 The lower-level `/pmcro:source-dump` capability provides the `PMCR-O-SOURCE-DUMP/1` text transport used by the `txt` projection. The package system keeps runtime-specific layouts generated from the canonical source.
 
-Gemini CLI currently discovers workspace skills from `.gemini/skills/` and also supports the `.agents/skills/` alias; each skill is a self-contained directory with `SKILL.md` and optional `scripts/`, `references/`, and `assets/`. citeturn942087search0turn942087search1
+Gemini CLI currently discovers workspace skills from `.gemini/skills/` and also supports the `.agents/skills/` alias; each skill is a self-contained directory with `SKILL.md` and optional `scripts/`, `references/`, and `assets/`. citeturn942087search0turn942087search1
 
-## Plugins
+## Repository layout
+
+As of 2026-09-03 this repo's governance, colony state, and .NET solution
+all live at the true repo root — there is no separate nested project
+copy. See `.pmcro/repo-topology.md` for the authoritative directory map
+and the history of how this consolidation happened.
 
 - `plugins/pmcro` — semantic model, lifecycle, and packaging/projection capabilities.
 - `plugins/pmcro-loop` — runtime engine.
-- `projects/pmcro-skills` — executable governance and capabilities.
+- `.pmcro/` — this repo's own colony queue, session-state, trails, and constraints.
+- `.agents/` — this repo's own agent roster and PMCR-O-governed `pmcro-skills` capability skills.
+- `colony-laws.md`, `CONTEXT.md` (now `.agents/CONTEXT.md`) — cross-repo dispatch/queue/mutation/trail rules and this repo's own operating context.
+- `AgentSkills.slnx`, `src/`, `tests/`, `eng/` — the .NET solution and its build/eval tooling.
 
 Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:package`, `/pmcro:source-dump`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.

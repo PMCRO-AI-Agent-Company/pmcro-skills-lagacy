@@ -27,7 +27,7 @@ Describe 'PMCR-O <thing under test>' {
   assertions run against the actual function, not stdout/JSON
   round-tripping.
 - Use Pester's `$TestDrive` for a throwaway `.pmcro` root -- never point
-  a test at this repo's real `projects/pmcro-skills/.pmcro/`.
+  a test at this repo's real `.pmcro/`.
 - One `Describe` block per capability under test; one `It` per behavior,
   named as an assertion ("rejects a duplicate id"), not a step number.
 

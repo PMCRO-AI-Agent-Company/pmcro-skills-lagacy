@@ -52,8 +52,8 @@ Example:
 ```yaml
 include:
   - plugins/pmcro
-  - projects/pmcro-skills/.agents
-  - projects/pmcro-skills/.pmcro
+  - .agents
+  - .pmcro
 exclude:
   - .git
   - bin

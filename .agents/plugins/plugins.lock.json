@@ -47,7 +47,7 @@
     },
     {
       "name": "pmcro-skills",
-      "source": "./projects/pmcro-skills",
+      "source": "./.agents",
       "trust": "first-party",
       "version": "0.1.1"
     }

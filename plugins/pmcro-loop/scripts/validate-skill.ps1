@@ -1,6 +1,6 @@
 # Skill-local validation helper
 # Run from the skill directory. This script checks the canonical filesystem contract.
-# Promoted verbatim from the nested projects/pmcro-skills copy (5 byte-identical
+# Promoted verbatim from the (now-consolidated, see .pmcro/repo-topology.md) nested projects/pmcro-skills copy (5 byte-identical
 # duplicates consolidated into this single canonical file).
 $ErrorActionPreference = "Stop"
 $skillRoot = Split-Path -Parent $PSScriptRoot

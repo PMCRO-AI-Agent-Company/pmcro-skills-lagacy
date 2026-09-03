@@ -19,3 +19,7 @@
 *.zip binary
 *.dll binary
 *.exe binary
+
+# Generated lock files for GitHub Actions agentic workflows -- exclude
+# from GitHub's language/diff stats like any other generated artifact.
+.github/workflows/*.lock.yml linguist-generated=true
