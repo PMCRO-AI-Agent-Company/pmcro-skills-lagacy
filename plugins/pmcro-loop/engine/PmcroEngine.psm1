@@ -69,6 +69,50 @@ function Save-PmcroQueue {
     Set-Content -Path (Join-Path $PmcroRoot 'queue.jsonl') -Value ($lines -join "`n") -NoNewline
 }
 
+function Add-PmcroQueueItem {
+    <#
+    .SYNOPSIS
+      Append one fully-scoped work item to the shared colony queue.
+
+    .DESCRIPTION
+      For a raw, not-yet-classified message use Add-PmcroIntake instead
+      (see seed-intent-contract.md). This is queue-enqueue's actual
+      implementation: Reflector (follow-ups), CEO/CoS (directed work), or
+      a human hand off an item that already has a clear seed_intent, and
+      this function is what makes appending it validated and
+      duplicate-id-checked every time, instead of hand-written JSONL.
+    #>
+    param(
+        [Parameter(Mandatory)][string]$PmcroRoot,
+        [Parameter(Mandatory)][string]$Id,
+        [Parameter(Mandatory)][string]$SeedIntent,
+        [ValidateRange(0,4)][int]$Priority = 3,
+        $Domain = $null,
+        [string]$CreatedBy = 'human',
+        [string[]]$BlockedBy = @()
+    )
+    # @() wrap required -- see Add-PmcroIntake's own note: Get-PmcroQueue's
+    # array return is unrolled by PowerShell when the queue has exactly one
+    # item, and this function appends with +=, which needs a real array.
+    $queue = @(Get-PmcroQueue -PmcroRoot $PmcroRoot)
+    if ($queue | Where-Object { $_.id -eq $Id }) {
+        throw "Queue already contains an item with id '$Id' -- ids must be unique. Pick a different id, or update the existing item instead of duplicating it."
+    }
+    $item = [ordered]@{
+        id = $Id
+        priority = $Priority
+        domain = $Domain
+        status = 'open'
+        seed_intent = $SeedIntent
+        blocked_by = @($BlockedBy)
+        created_by = $CreatedBy
+        created_at = Get-PmcroUtcNowIso
+    }
+    $queue += [pscustomobject]$item
+    Save-PmcroQueue -PmcroRoot $PmcroRoot -Items $queue
+    return [pscustomobject]$item
+}
+
 # ---------------------------------------------------------------------------
 # Intake: the message queue as the durable ingress boundary (see
 # pmcro:foundation -> seed-intent-contract.md, and .agents/commands/send-message.md)
@@ -885,7 +929,7 @@ function Test-PmcroApproval {
 
 Export-ModuleMember -Function `
     Get-PmcroSessionState, Set-PmcroSessionState, `
-    Get-PmcroQueue, Save-PmcroQueue, `
+    Get-PmcroQueue, Save-PmcroQueue, Add-PmcroQueueItem, `
     Add-PmcroIntake, Find-PmcroUnresolvedIntake, Resolve-PmcroIntake, `
     Get-PmcroRuntimeInstanceId, `
     Update-PmcroLease, Test-PmcroLeaseStale, Find-PmcroRecoverableRuns, `

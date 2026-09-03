@@ -5,8 +5,8 @@ kind: constraint
 scope: any cycle exercising an external CLI/API (gh, and by the same
   reasoning any future wrapped tool) that already has, or plausibly
   should have, a home under a plugin's skills/*/scripts/
-status: provisional
-superseded_by:
+status: superseded
+superseded_by: rule-policy-20260903-182600-external-tool-use-must-be-scripted
 created_at: 2026-09-03T17:54:40Z
 
 ## Statement

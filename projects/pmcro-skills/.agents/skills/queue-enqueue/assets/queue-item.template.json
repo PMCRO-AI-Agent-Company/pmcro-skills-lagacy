@@ -1,0 +1,8 @@
+{
+  "Id": "task-<slug>",
+  "SeedIntent": "<Clear statement of what the next cycle should accomplish>",
+  "Priority": 3,
+  "Domain": null,
+  "CreatedBy": "human",
+  "BlockedBy": []
+}

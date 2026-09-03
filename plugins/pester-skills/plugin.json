@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pester-skills",
+  "version": "0.1.0",
+  "description": "Pester setup and test-run operations for PowerShell code in this colony (PmcroEngine.psm1 and its wrapper scripts).",
+  "license": "MIT"
+}

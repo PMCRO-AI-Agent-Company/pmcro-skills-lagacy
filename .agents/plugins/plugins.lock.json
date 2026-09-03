@@ -40,6 +40,12 @@
       "version": "0.1.0"
     },
     {
+      "name": "pester-skills",
+      "source": "./plugins/pester-skills",
+      "trust": "first-party",
+      "version": "0.1.0"
+    },
+    {
       "name": "pmcro-skills",
       "source": "./projects/pmcro-skills",
       "trust": "first-party",

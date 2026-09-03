@@ -58,6 +58,46 @@ function Save-PmcroQueue {
     foreach ($item in $Items) { $lines += (ConvertTo-Json -InputObject $item -Compress) }
     Set-Content -Path $path -Value ($lines -join "`n") -NoNewline
 }
+function Add-PmcroQueueItem {
+    <#
+      Appends one fully-scoped work item to this repo's own queue.jsonl.
+      Refuses a duplicate id rather than overwriting. status is always
+      'open' on creation -- later transitions belong to Claim-PmcroTask
+      and Reflector, not to this function. Ported from
+      plugins/pmcro-loop/engine/PmcroEngine.psm1's Add-PmcroQueueItem
+      (the shared, richer copy of this same module) so this project's
+      own /pmcro-skills:queue-enqueue has a real implementation instead
+      of hand-written JSONL.
+    #>
+    param(
+        [Parameter(Mandatory)][string]$PmcroRoot,
+        [Parameter(Mandatory)][string]$Id,
+        [Parameter(Mandatory)][string]$SeedIntent,
+        [ValidateRange(0,4)][int]$Priority = 3,
+        $Domain = $null,
+        [string]$CreatedBy = 'human',
+        [string[]]$BlockedBy = @()
+    )
+    $queue = @(Get-PmcroQueue -PmcroRoot $PmcroRoot)
+    if ($queue | Where-Object { $_.id -eq $Id }) {
+        throw "Queue already contains an item with id '$Id' -- ids must be unique. Pick a different id, or update the existing item instead of duplicating it."
+    }
+    $nowIso = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    $item = [ordered]@{
+        id = $Id
+        priority = $Priority
+        domain = $Domain
+        status = 'open'
+        seed_intent = $SeedIntent
+        blocked_by = @($BlockedBy)
+        created_by = $CreatedBy
+        created_at = $nowIso
+    }
+    $queue += [pscustomobject]$item
+    Save-PmcroQueue -PmcroRoot $PmcroRoot -Items $queue
+    return [pscustomobject]$item
+}
+
 function Claim-PmcroTask {
     <#
       Deterministic claim: picks the lowest-priority-number OPEN item
@@ -142,4 +182,4 @@ trail_sealed: false
 }
 
 Export-ModuleMember -Function Get-PmcroSessionState, Set-PmcroSessionState, `
-    Get-PmcroQueue, Save-PmcroQueue, Claim-PmcroTask, New-PmcroTrail
+    Get-PmcroQueue, Save-PmcroQueue, Add-PmcroQueueItem, Claim-PmcroTask, New-PmcroTrail

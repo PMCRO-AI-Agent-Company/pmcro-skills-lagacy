@@ -38,6 +38,11 @@
                         "description":  "GitHub CLI setup and PR lifecycle (open/merge) operations for repos this colony works in."
                     },
                     {
+                        "name":  "pester-skills",
+                        "source":  "./plugins/pester-skills",
+                        "description":  "Pester setup and test-run operations for PowerShell code in this colony (PmcroEngine.psm1 and its wrapper scripts)."
+                    },
+                    {
                         "name":  "pmcro-skills",
                         "source":  "./projects/pmcro-skills",
                         "description":  "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, cross-repo reference docs."
