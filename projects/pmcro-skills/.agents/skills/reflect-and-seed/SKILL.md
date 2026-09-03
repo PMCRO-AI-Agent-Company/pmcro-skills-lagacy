@@ -1,9 +1,17 @@
 ---
 name: reflect-and-seed
-description: Close the cycle. Write trail, promote earned constraints, set next seed intent or idle, mark queue item done/blocked, and optionally enqueue follow-ups. This is the autonomy engine.
+description: Close the cycle. Write trail, promote earned constraints, set next seed intent or idle, mark queue item done/blocked, and optionally enqueue follow-ups. This is the autonomy engine. Invoke as /pmcro-skills:reflect-and-seed.
 ---
 
 # Reflect and Seed
+
+## Invocation
+
+```text
+/pmcro-skills:reflect-and-seed
+```
+
+Use `/pmcro-skills:queue-enqueue` for follow-up queue writes.
 
 ## Inputs
 - PlanFrame, MakeFrame, CheckFrame
@@ -17,7 +25,7 @@ description: Close the cycle. Write trail, promote earned constraints, set next 
    - Before choosing `idle`, inspect the queue for any open backlog, including priority-4 opportunistic work.
    - Inspect `.pmcro/constraints/` for known gaps or newly surfaced constraints that imply follow-up work.
    - Inspect current session notes and unresolved earlier-session notes for unfinished work.
-   - If a natural follow-up exists → enqueue it via `queue-enqueue` and set session idle.
+   - If a natural follow-up exists → enqueue it via `/pmcro-skills:queue-enqueue` and set session idle.
    - If cycle complete with no qualifying follow-up → set `status: idle` and record why no next seed qualified in the trail.
 5. **Lessons** — short note for future Planners.
 
