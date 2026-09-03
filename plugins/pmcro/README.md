@@ -1,6 +1,6 @@
 # PMCR-O Semantic Model
 
-The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, convergence, and text-only context transport.
+The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, convergence, and external context transport.
 
 ## Core loop
 
@@ -69,38 +69,40 @@ Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is
 
 Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
 
-## Text-only source transport
+## Packaging and external LLM transport
 
-Use `/pmcro:source-dump` or `scripts/export-source-dump.ps1` to produce a text-only Source Dump for third-party LLMs that cannot directly consume ZIP files or repository trees.
-
-The Source Dump preserves repository-relative paths and file boundaries and can carry selected source, assets, references, scripts, skills, templates, configuration, and permitted state. Protected material is excluded by default.
-
-The Source Dump and PMCR-O Text Protocol are complementary:
+Use `/pmcro:package` to generate a consumer-specific projection from canonical PMCR-O source. Supported projections are text, ZIP, directory, Gemini, and Agent Skills directory layouts.
 
 ```text
-Repository/project context → Source Dump
-PMCR-O operational state   → Text Protocol
+Canonical PMCR-O source
+        ↓
+     /pmcro:package
+        ↓
+  ┌─────┼───────────┬──────────┬────────┐
+ TXT   ZIP       directory    Gemini   Agents
+  │                 │            │        │
+text-only       local tree   .gemini/  .agents/
+LLMs                         skills/   skills/
 ```
 
-See `references/source-dump.md` for the contract and format.
+The lower-level `/pmcro:source-dump` capability supplies the `PMCR-O-SOURCE-DUMP/1` text transport used by the `txt` projection. Runtime-specific layouts are generated projections, not alternate canonical source trees.
+
+Skill-specific resources remain colocated with their skill:
+
+```text
+skills/<skill>/
+├── SKILL.md
+├── references/
+├── scripts/
+└── assets/
+```
 
 ## Plugin boundaries
 
-- `pmcro` — semantic contracts and lifecycle.
+- `pmcro` — semantic contracts, lifecycle, and packaging/projection capabilities.
 - `pmcro-loop` — runtime/execution engine.
 - `pmcro-skills` — executable governance and capabilities.
-- Assets, templates, and generated artifact catalogs remain outside `pmcro` unless another capability explicitly consumes them.
 
 ## References
 
-- `references/architecture.md`
-- `references/seed-intent-contract.md`
-- `references/o-mode.md`
-- `references/accountability-and-trails.md`
-- `references/trail-frame-schema.md`
-- `references/governance-knowledge.md`
-- `references/knowledge-promotion.md`
-- `references/trail-as-product.md`
-- `references/session-bootstrap.md`
-- `references/intent-lifecycle.md`
-- `references/source-dump.md`
+Core semantic references remain under `plugins/pmcro/references/`. Skill-specific supporting material belongs inside its corresponding skill directory.
