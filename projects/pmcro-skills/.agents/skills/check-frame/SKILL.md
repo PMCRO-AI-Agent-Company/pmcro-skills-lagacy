@@ -1,9 +1,15 @@
 ---
 name: check-frame
-description: Independently validate Maker output against PlanFrame acceptance criteria. Produce pass/fail CheckFrame. Prefer read-only tools.
+description: Independently validate Maker output against PlanFrame acceptance criteria. Produce pass/fail CheckFrame. Prefer read-only tools. Invoke as /pmcro-skills:check-frame.
 ---
 
 # Check Frame
+
+## Invocation
+
+```text
+/pmcro-skills:check-frame
+```
 
 ## Inputs
 - PlanFrame
@@ -28,5 +34,6 @@ A `fail` verdict does **not** loop back directly to Maker or Planner within
 this cycle. Checker's only next step is to hand the CheckFrame (with
 `recommendation: retry | escalate` and findings/blockers) to Reflector.
 Reflector alone decides whether this becomes a new seed intent for a
-fresh next cycle. Checker must not re-invoke `make-frame` or `plan-frame`
-itself, even informally, to "give Maker another shot" mid-cycle.
+fresh next cycle. Checker must not re-invoke `/pmcro-skills:make-frame` or
+`/pmcro-skills:plan-frame` itself, even informally, to "give Maker another shot"
+mid-cycle.
