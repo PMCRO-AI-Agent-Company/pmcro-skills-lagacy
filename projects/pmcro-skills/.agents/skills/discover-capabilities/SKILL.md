@@ -32,6 +32,12 @@ filesystem manifests and declared skill paths are the installation evidence.
 4. If multiple providers match, preserve all candidates and let Planner/Maker
    choose according to the PlanFrame; discovery must not dispatch work.
 5. If no provider is installed, report unresolved capability rather than inventing one.
+   Before reporting a bare gap, check whether 2+ partial matches compose to cover the
+   need, and durably record the outcome (composition or gap) via
+   `New-PmcroCapabilityComposition` / `New-PmcroCapabilityGap` — see
+   `pmcro:foundation` -> `capability-gap-and-composition.md`. Also check
+   `.pmcro/capability-gaps/` for an existing open record before re-running a search
+   that was already done.
 
 ## Registry
 The bundled script writes a generated registry to `.pmcro/capability-registry.json`.

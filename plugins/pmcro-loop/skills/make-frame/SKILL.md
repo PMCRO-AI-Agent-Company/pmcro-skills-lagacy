@@ -22,6 +22,15 @@ description: Execute a PlanFrame. Maker role — perform the steps, produce arti
 
 Do **not** run Checker logic yourself.
 
+## Checkpointing long-running work
+Before starting a risky or long-running operation (build, install, external
+call), and after each meaningful step completes, record a Checkpoint via
+`../../scripts/checkpoint.ps1` (or `Set-PmcroCheckpoint`) with the current
+`phase: maker`, `last_completed_step`, and `in_progress_operation`. This
+also refreshes the Run's lease/heartbeat. See `pmcro:foundation ->
+run-recovery-lease.md` — a resuming runtime after an interruption depends
+on this checkpoint plus actual state inspection, not on guessing.
+
 ## Write discipline & portability
 - Use native write tools (Edit/Write) for all writes; never use shell echo or
   equivalent write shortcuts, so changes stay attributable and trail-visible.

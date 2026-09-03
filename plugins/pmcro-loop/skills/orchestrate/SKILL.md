@@ -10,6 +10,16 @@ description: Run one full PMCR-O cycle. Claims from the colony priority queue wh
 - Colony queue lives at `.pmcro/queue.jsonl` (single backlog for the whole colony).
 
 ## Algorithm
+-1. **Intake scan** — before the recovery scan, check for a queue item with
+    `status: intake` (a message durably captured by `/send-message` but
+    never classified — `pmcro:foundation` -> `seed-intent-contract.md`).
+    If found, do not proceed to recovery/claim/plan/make/check/reflect for
+    other work; resolve every unresolved intake item first
+    (`enqueued` | `informational` | `split`, via `Resolve-PmcroIntake`).
+0. **Recovery scan** — check for a claimed queue item
+   with a stale lease (`queue-claim`'s Recovery scan / `run-recovery-lease.md`).
+   If found, do not proceed to claim/plan/make/check/reflect for new work;
+   apply Recovery to the stale Run first.
 1. **Read session-state** (`.pmcro/session-state.md`).
 2. **If idle / no seed** → run `queue-claim`. If queue empty, stop and report idle.
 3. **Plan** → load `plan-frame` with current seed + domain + earned constraints.
@@ -30,12 +40,26 @@ description: Run one full PMCR-O cycle. Claims from the colony priority queue wh
 - Possibly updated `.pmcro/queue.jsonl` and `.pmcro/constraints/`
 
 ## Implementation
-Steps 1-2 (read state, claim if idle) and trail allocation are
-deterministic and implemented in `../../engine/PmcroEngine.psm1`,
-runnable via `../../engine/run-cycle.ps1 -PmcroRoot <path to .pmcro>`.
-This script performs no reasoning: it claims a task and writes a trail
-skeleton with PlanFrame/MakeFrame/CheckFrame/Reflection sections marked
-`PENDING`, then stops. Steps 3-6 (the actual Plan/Make/Check/Reflect
-content) require a model and are not automated by this script -- an
-agent must fill in the PENDING sections and seal the trail
-(`trail_sealed: true`).
+Steps -1-2 (intake scan, recovery scan, read state, claim if idle) and
+trail allocation are deterministic and implemented in
+`../../engine/PmcroEngine.psm1`, runnable via
+`../../engine/run-cycle.ps1 -PmcroRoot <path to .pmcro>`. This script
+performs no reasoning: it first checks for an unresolved `status: intake`
+item (`Find-PmcroUnresolvedIntake`) and refuses to claim new work if one
+exists, surfacing the raw message for classification; then checks for a
+stale-lease claimed item (`Find-PmcroRecoverableRuns`) and refuses to claim
+new work if one exists, surfacing checkpoint + git-status evidence instead
+of guessing; otherwise it claims a task (writing `lease_owner`/
+`heartbeat_at`/`lease_expires_at`/`checkpoint_ref` per
+`run-recovery-lease.md`) and writes a trail skeleton with PlanFrame/
+MakeFrame/CheckFrame/Reflection sections marked `PENDING`, then stops.
+`../../scripts/intake-message.ps1` and `../../scripts/resolve-intake.ps1`
+back `/send-message`'s durable capture and classification (see
+`.agents/commands/send-message.md`); `../../scripts/heartbeat.ps1` and
+`../../scripts/checkpoint.ps1` let an active role refresh the lease /
+record a checkpoint mid-cycle; `../../scripts/complete-run.ps1` closes the
+Run at terminal disposition (see `reflect-and-seed/SKILL.md`). Steps 3-6
+(the actual Plan/Make/Check/Reflect content, intake classification, and
+any resume/compensate/retry classification after a recovery scan) require
+a model and are not automated by this script -- an agent must fill in the
+PENDING sections and seal the trail (`trail_sealed: true`).

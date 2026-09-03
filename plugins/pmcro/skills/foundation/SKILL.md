@@ -23,6 +23,7 @@ Read only the references required for the current task; do not load the entire f
 - knowledge promotion and learning
 - session bootstrap and continuity
 - Trail Products and execution identity
+- Run, Checkpoint, Recovery, and Lease (live execution continuity)
 
 ## Boundary
 
