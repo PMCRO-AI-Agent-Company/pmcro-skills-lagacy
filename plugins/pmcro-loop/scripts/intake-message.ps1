@@ -10,7 +10,7 @@
   .agents/commands/send-message.md.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Message,
     [ValidateSet('human','agent','external','system')][string]$Source = 'human',
     [int]$Priority = 2,
@@ -22,6 +22,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = Add-PmcroIntake -PmcroRoot $PmcroRoot -Message $Message -Source $Source -Priority $Priority -Domain $Domain
 $result | ConvertTo-Json -Depth 5

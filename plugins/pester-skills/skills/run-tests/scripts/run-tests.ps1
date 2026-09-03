@@ -10,8 +10,12 @@
   setup-gh-cli: this script stays in its lane.
 
 .EXAMPLE
-  pwsh -File run-tests.ps1 -Path P:\source\pmcro-skills\tests\pmcro-loop
-  pwsh -File run-tests.ps1 -Path P:\source\pmcro-skills\tests\pmcro-loop\queue-enqueue\queue-enqueue.Tests.ps1
+  pwsh -File run-tests.ps1 -Path <repo-root>\tests\pmcro-loop
+  pwsh -File run-tests.ps1 -Path <repo-root>\tests\pmcro-loop\queue-enqueue\queue-enqueue.Tests.ps1
+
+  A relative path also works when run from inside the repo, e.g.
+  -Path .\tests\pmcro-loop -- this script does not assume any fixed
+  checkout location.
 #>
 [CmdletBinding()]
 param(

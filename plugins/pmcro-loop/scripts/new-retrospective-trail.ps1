@@ -10,7 +10,7 @@
   pmcro:foundation -> retrospective-trail-reconstruction.md.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Slug,
     [Parameter(Mandatory)][string]$SourceExport,
     [Parameter(Mandatory)][string]$ReconstructionBasis,
@@ -22,6 +22,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $trailPath = New-PmcroRetrospectiveTrail -PmcroRoot $PmcroRoot -Slug $Slug -SourceExport $SourceExport -ReconstructionBasis $ReconstructionBasis -RelatedTaskId $RelatedTaskId
 Write-Host "Retrospective trail skeleton written: $trailPath"

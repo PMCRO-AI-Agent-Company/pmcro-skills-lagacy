@@ -12,7 +12,7 @@
   that at least one trail is cited as evidence.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Slug,
     [Parameter(Mandatory)][ValidateSet('constraint','rule-policy','strategy-preference','skill-candidate','training-example','audit-record')][string]$Kind,
     [Parameter(Mandatory)][string]$Scope,
@@ -27,6 +27,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = New-PmcroConstraint -PmcroRoot $PmcroRoot -Slug $Slug -Kind $Kind -Scope $Scope -Statement $Statement -EvidenceTrailIds $EvidenceTrailIds -Status $Status -SupersededBy $SupersededBy
 $result | ConvertTo-Json -Depth 5

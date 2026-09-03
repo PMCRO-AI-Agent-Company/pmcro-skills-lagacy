@@ -12,7 +12,7 @@
   inspect-before-retry Recovery procedure that consumes it.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$TaskId,
     [Parameter(Mandatory)][ValidateSet('orchestrator','planner','maker','checker','reflector')][string]$Phase,
     [string]$LastCompletedStep = '',
@@ -28,6 +28,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = Set-PmcroCheckpoint -PmcroRoot $PmcroRoot -TaskId $TaskId -Phase $Phase `
     -LastCompletedStep $LastCompletedStep -InProgressOperation $InProgressOperation `

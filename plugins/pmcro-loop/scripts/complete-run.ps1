@@ -11,7 +11,7 @@
   pmcro:foundation -> run-recovery-lease.md "Relationship to Trail/Frame".
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$TaskId,
     [Parameter(Mandatory)][ValidateSet('done','blocked')][string]$FinalStatus
 )
@@ -21,6 +21,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 Complete-PmcroRun -PmcroRoot $PmcroRoot -TaskId $TaskId -FinalStatus $FinalStatus
 Write-Host "Run closed: $TaskId -> $FinalStatus (lease/checkpoint cleared)"

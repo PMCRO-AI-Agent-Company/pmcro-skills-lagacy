@@ -11,7 +11,7 @@
   contract). Refuses a duplicate id rather than silently overwriting.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Id,
     [Parameter(Mandatory)][string]$SeedIntent,
     [ValidateRange(0,4)][int]$Priority = 3,
@@ -25,6 +25,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $item = Add-PmcroQueueItem -PmcroRoot $PmcroRoot -Id $Id -SeedIntent $SeedIntent -Priority $Priority `
     -Domain $Domain -CreatedBy $CreatedBy -BlockedBy $BlockedBy

@@ -11,7 +11,7 @@
   first explaining why composition didn't suffice.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Slug,
     [Parameter(Mandatory)][string]$Need,
     [Parameter(Mandatory)][string]$CompositionConsidered,
@@ -27,6 +27,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = New-PmcroCapabilityGap -PmcroRoot $PmcroRoot -Slug $Slug -Need $Need -CompositionConsidered $CompositionConsidered -EvidenceTrailIds $EvidenceTrailIds -DiscoveryQuery $DiscoveryQuery -PartialMatches $PartialMatches -Status $Status -ResolvedBy $ResolvedBy
 $result | ConvertTo-Json -Depth 5

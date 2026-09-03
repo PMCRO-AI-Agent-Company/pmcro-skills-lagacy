@@ -12,7 +12,7 @@
   retro-), never asserted by the caller.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Slug,
     [Parameter(Mandatory)][string[]]$SourceTrailIds,
     [Parameter(Mandatory)][string]$Scope,
@@ -27,6 +27,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = New-PmcroTrailProduct -PmcroRoot $PmcroRoot -Slug $Slug -SourceTrailIds $SourceTrailIds -Scope $Scope -Version $Version -Assumptions $Assumptions -KnownLimitations $KnownLimitations -ReusableSkillReferences $ReusableSkillReferences
 $result | ConvertTo-Json -Depth 5

@@ -10,7 +10,7 @@
   pmcro:foundation -> seed-intent-contract.md.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$TaskId,
     [Parameter(Mandatory)][ValidateSet('enqueued','informational','split')][string]$Disposition,
     [string]$RefinedSeedIntent,
@@ -24,6 +24,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $params = @{ PmcroRoot = $PmcroRoot; TaskId = $TaskId; Disposition = $Disposition }
 if ($RefinedSeedIntent) { $params.RefinedSeedIntent = $RefinedSeedIntent }

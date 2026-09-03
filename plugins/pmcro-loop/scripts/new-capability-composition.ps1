@@ -11,7 +11,7 @@
   derived automatically from the evidence trail count, never asserted.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot,
+    [string]$PmcroRoot,
     [Parameter(Mandatory)][string]$Slug,
     [Parameter(Mandatory)][string]$Need,
     [Parameter(Mandatory)][string[]]$ComposedOf,
@@ -25,6 +25,11 @@ $ErrorActionPreference = 'Stop'
 
 $engine = Join-Path $PSScriptRoot '..\engine\PmcroEngine.psm1'
 Import-Module $engine -Force
+. (Join-Path $PSScriptRoot '..\engine\resolve-pmcro-root.ps1')
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $result = New-PmcroCapabilityComposition -PmcroRoot $PmcroRoot -Slug $Slug -Need $Need -ComposedOf $ComposedOf -HowItComposes $HowItComposes -EvidenceTrailIds $EvidenceTrailIds -Status $Status
 $result | ConvertTo-Json -Depth 5
