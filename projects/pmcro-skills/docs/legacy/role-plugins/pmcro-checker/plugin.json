@@ -1,0 +1,6 @@
+{
+  "name": "pmcro-checker",
+  "version": "0.1.0",
+  "description": "PMCR-O Checker role charter: independently validates Maker output against PlanFrame acceptance criteria, preferring read-only tools, on top of the pmcro-loop:check-frame mechanic.",
+  "skills": ["./skills/"]
+}

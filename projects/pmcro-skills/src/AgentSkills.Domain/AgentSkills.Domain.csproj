@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>AgentSkills.Domain</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Pure domain: no external package references. Central package
+       versions still resolve via Directory.Packages.props, but this
+       project intentionally references none. -->
+
+</Project>

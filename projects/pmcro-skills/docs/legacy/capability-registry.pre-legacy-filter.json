@@ -1,0 +1,857 @@
+﻿{
+    "schema_version":  "1.0",
+    "generated_at":  "2026-09-03T05:19:05.2531320Z",
+    "projects_root":  ".",
+    "provider_count":  24,
+    "providers":  [
+                      {
+                          "name":  "dotnet",
+                          "version":  "0.2.3",
+                          "description":  "C# language server (LSP) integration for coding agents and high-level .NET development skills.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet",
+                                                   "description":  "C# language server (LSP) integration for coding agents and high-level .NET development skills."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-advanced",
+                          "version":  "0.2.2",
+                          "description":  "Advanced .NET and C# skills for niche scenarios that are not part of the core dotnet plugin.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-advanced",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-advanced\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-advanced",
+                                                   "description":  "Advanced .NET and C# skills for niche scenarios that are not part of the core dotnet plugin."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-advanced"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-advanced\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-ai",
+                          "version":  "0.1.6",
+                          "description":  "AI and ML skills for .NET: technology selection, LLM integration, agentic workflows, RAG pipelines, MCP, and classic ML with ML.NET.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-ai",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-ai\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-ai",
+                                                   "description":  "AI and ML skills for .NET: technology selection, LLM integration, agentic workflows, RAG pipelines, MCP, and classic ML with ML.NET."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-ai"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-ai\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-aspnetcore",
+                          "version":  "0.1.1",
+                          "description":  "ASP.NET Core web development skills including middleware, endpoints, real-time communication, and API patterns.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-aspnetcore",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-aspnetcore\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-aspnetcore",
+                                                   "description":  "ASP.NET Core web development skills including middleware, endpoints, real-time communication, and API patterns."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-aspnetcore"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-aspnetcore\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-blazor",
+                          "version":  "0.1.1",
+                          "description":  "Skills for Blazor development: component authoring, interactivity, and web application patterns.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-blazor",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-blazor\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-blazor",
+                                                   "description":  "Skills for Blazor development: component authoring, interactivity, and web application patterns."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-blazor"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-blazor\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-data",
+                          "version":  "0.1.5",
+                          "description":  "Skills for .NET data access and Entity Framework related tasks.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-data",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-data\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-data",
+                                                   "description":  "Skills for .NET data access and Entity Framework related tasks."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-data"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-data\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-diag",
+                          "version":  "0.1.1",
+                          "description":  "Skills for .NET performance investigations, debugging, and incident analysis.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-diag",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-diag\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-diag",
+                                                   "description":  "Skills for .NET performance investigations, debugging, and incident analysis."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-diag"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "optimizing-dotnet-performance.agent.md",
+                                                   "description":  "Declared by dotnet-diag"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-diag\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/optimizing-dotnet-performance.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-diag\\agents\\optimizing-dotnet-performance.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-experimental",
+                          "version":  "0.1.2",
+                          "description":  "Experimental skills under active evaluation that may change or graduate to stable plugins.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-experimental",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-experimental\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-experimental",
+                                                   "description":  "Experimental skills under active evaluation that may change or graduate to stable plugins."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-experimental"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-experimental\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-maui",
+                          "version":  "0.1.16",
+                          "description":  "Skills for .NET MAUI development: environment setup, diagnostics, troubleshooting, navigation, data binding, dependency injection, layout, and theming.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-maui",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-maui\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-maui",
+                                                   "description":  "Skills for .NET MAUI development: environment setup, diagnostics, troubleshooting, navigation, data binding, dependency injection, layout, and theming."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-maui"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-maui\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-msbuild",
+                          "version":  "0.1.9",
+                          "description":  "Comprehensive MSBuild and .NET build skills: failure diagnosis, performance optimization, code quality, and modernization.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-msbuild",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-msbuild\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-msbuild",
+                                                   "description":  "Comprehensive MSBuild and .NET build skills: failure diagnosis, performance optimization, code quality, and modernization."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-msbuild"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "build-perf.agent.md",
+                                                   "description":  "Declared by dotnet-msbuild"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "msbuild-code-review.agent.md",
+                                                   "description":  "Declared by dotnet-msbuild"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "msbuild.agent.md",
+                                                   "description":  "Declared by dotnet-msbuild"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-msbuild\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/build-perf.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-msbuild\\agents\\build-perf.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/msbuild-code-review.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-msbuild\\agents\\msbuild-code-review.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/msbuild.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-msbuild\\agents\\msbuild.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-nuget",
+                          "version":  "0.1.1",
+                          "description":  "NuGet and .NET package management skills: dependency management and modernization.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-nuget",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-nuget\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-nuget",
+                                                   "description":  "NuGet and .NET package management skills: dependency management and modernization."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-nuget"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-nuget\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-template-engine",
+                          "version":  "0.1.4",
+                          "description":  ".NET Template Engine skills for dotnet new: create projects (console app, class library, web API, Blazor, MAUI), discover and search templates, inspect template parameters and frameworks (net8.0, net9.0, net10.0), scaffold solutions, author and validate custom templates, install template packages from NuGet.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-template-engine",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-template-engine\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-template-engine",
+                                                   "description":  ".NET Template Engine skills for dotnet new: create projects (console app, class library, web API, Blazor, MAUI), discover and search templates, inspect template parameters and frameworks (net8.0, net9.0, net10.0), scaffold solutions, author and validate custom templates, install template packages from NuGet."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-template-engine"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "template-engine.agent.md",
+                                                   "description":  "Declared by dotnet-template-engine"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-template-engine\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/template-engine.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-template-engine\\agents\\template-engine.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-test",
+                          "version":  "0.2.19",
+                          "description":  "Skills for running, generating, analyzing, and improving .NET tests: test execution, filtering, platform detection, coverage, testability, and MSTest workflows.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-test",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-test\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-test",
+                                                   "description":  "Skills for running, generating, analyzing, and improving .NET tests: test execution, filtering, platform detection, coverage, testability, and MSTest workflows."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-generator.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-researcher.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-planner.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-implementer.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-builder.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-tester.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-fixer.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "code-testing-linter.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "testability-migration.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "test-quality-auditor.agent.md",
+                                                   "description":  "Declared by dotnet-test"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-generator.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-generator.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-researcher.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-researcher.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-planner.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-planner.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-implementer.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-implementer.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-builder.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-builder.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-tester.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-tester.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-fixer.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-fixer.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/code-testing-linter.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\code-testing-linter.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/testability-migration.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\testability-migration.agent.md"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/test-quality-auditor.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test\\agents\\test-quality-auditor.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-test-migration",
+                          "version":  "0.1.8",
+                          "description":  "Skills and an orchestrator agent for migrating .NET test frameworks and platforms: MSTest and xUnit version upgrades, xUnit-to-MSTest conversion, and VSTest to Microsoft.Testing.Platform.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-test-migration",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-test-migration\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-test-migration",
+                                                   "description":  "Skills and an orchestrator agent for migrating .NET test frameworks and platforms: MSTest and xUnit version upgrades, xUnit-to-MSTest conversion, and VSTest to Microsoft.Testing.Platform."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-test-migration"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "test-migration.agent.md",
+                                                   "description":  "Declared by dotnet-test-migration"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test-migration\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/test-migration.agent.md",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-test-migration\\agents\\test-migration.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet-upgrade",
+                          "version":  "0.1.1",
+                          "description":  "Skills for migrating and upgrading .NET projects across framework versions, language features, and compatibility targets.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet-upgrade",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet-upgrade\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet-upgrade",
+                                                   "description":  "Skills for migrating and upgrading .NET projects across framework versions, language features, and compatibility targets."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet-upgrade"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet-upgrade\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "dotnet11",
+                          "version":  "0.1.1",
+                          "description":  "Skills for .NET 11 APIs and language features.",
+                          "project":  "dotnet-skills",
+                          "root":  "dotnet-skills\\plugins\\dotnet11",
+                          "manifest":  "dotnet-skills\\plugins\\dotnet11\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "dotnet11",
+                                                   "description":  "Skills for .NET 11 APIs and language features."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by dotnet11"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "dotnet-skills\\plugins\\dotnet11\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "github",
+                          "version":  "0.2.0",
+                          "description":  "Governed GitHub repository, pull request, Actions, MCP, security, release, issue, code-search, and Agent Skills operations for PMCR-O.",
+                          "project":  "github-skills",
+                          "root":  "github-skills\\plugins\\github",
+                          "manifest":  "github-skills\\plugins\\github\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "github",
+                                                   "description":  "Governed GitHub repository, pull request, Actions, MCP, security, release, issue, code-search, and Agent Skills operations for PMCR-O."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by github"
+                                               },
+                                               {
+                                                   "type":  "agent",
+                                                   "name":  "github-ops.agent.md",
+                                                   "description":  "Declared by github"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "github-skills\\plugins\\github\\skills\\"
+                                            },
+                                            {
+                                                "kind":  "agents",
+                                                "declared":  "./agents/github-ops.agent.md",
+                                                "exists":  true,
+                                                "path":  "github-skills\\plugins\\github\\agents\\github-ops.agent.md"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-skills",
+                          "version":  "0.1.0",
+                          "description":  "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, and cross-repo PMCR-O reference docs.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills",
+                          "manifest":  "pmcro-skills\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-skills",
+                                                   "description":  "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, and cross-repo PMCR-O reference docs."
+                                               }
+                                           ],
+                          "artifacts":  [
+
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-checker",
+                          "version":  "0.1.0",
+                          "description":  "PMCR-O Checker role charter: independently validates Maker output against PlanFrame acceptance criteria, preferring read-only tools, on top of the pmcro-loop:check-frame mechanic.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-checker",
+                          "manifest":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-checker\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-checker",
+                                                   "description":  "PMCR-O Checker role charter: independently validates Maker output against PlanFrame acceptance criteria, preferring read-only tools, on top of the pmcro-loop:check-frame mechanic."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-checker"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-checker\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-maker",
+                          "version":  "0.1.0",
+                          "description":  "PMCR-O Maker role charter: executes a PlanFrame and reports results without self-checking, honoring colony-laws.md mutation/trail and write-tool rules on top of the pmcro-loop:make-frame mechanic.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-maker",
+                          "manifest":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-maker\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-maker",
+                                                   "description":  "PMCR-O Maker role charter: executes a PlanFrame and reports results without self-checking, honoring colony-laws.md mutation/trail and write-tool rules on top of the pmcro-loop:make-frame mechanic."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-maker"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-maker\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-orchestrator",
+                          "version":  "0.1.0",
+                          "description":  "PMCR-O Orchestrator role charter: the only role permitted to dispatch a cycle, enforcing colony-laws.md dispatch and queue rules on top of the pmcro-loop:orchestrate mechanic.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-orchestrator",
+                          "manifest":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-orchestrator\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-orchestrator",
+                                                   "description":  "PMCR-O Orchestrator role charter: the only role permitted to dispatch a cycle, enforcing colony-laws.md dispatch and queue rules on top of the pmcro-loop:orchestrate mechanic."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-orchestrator"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-orchestrator\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-planner",
+                          "version":  "0.1.0",
+                          "description":  "PMCR-O Planner role charter: produces PlanFrames from seed intent without executing, honoring colony-laws.md queue-priority and portability rules on top of the pmcro-loop:plan-frame mechanic.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-planner",
+                          "manifest":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-planner\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-planner",
+                                                   "description":  "PMCR-O Planner role charter: produces PlanFrames from seed intent without executing, honoring colony-laws.md queue-priority and portability rules on top of the pmcro-loop:plan-frame mechanic."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-planner"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-planner\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-reflector",
+                          "version":  "0.1.0",
+                          "description":  "PMCR-O Reflector role charter: closes the cycle, promotes earned constraints, and is one of only two roles permitted to reorder the colony queue, on top of the pmcro-loop:reflect-and-seed mechanic.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-reflector",
+                          "manifest":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-reflector\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-reflector",
+                                                   "description":  "PMCR-O Reflector role charter: closes the cycle, promotes earned constraints, and is one of only two roles permitted to reorder the colony queue, on top of the pmcro-loop:reflect-and-seed mechanic."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-reflector"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\docs\\legacy\\role-plugins\\pmcro-reflector\\skills\\"
+                                            }
+                                        ]
+                      },
+                      {
+                          "name":  "pmcro-loop",
+                          "version":  "0.1.0",
+                          "description":  "Canonical PMCR-O lifecycle plugin: unified Orchestrator, Planner, Maker, Checker, and Reflector role mechanics under one shared queue and governance model.",
+                          "project":  "pmcro-skills",
+                          "root":  "pmcro-skills\\plugins\\pmcro-loop",
+                          "manifest":  "pmcro-skills\\plugins\\pmcro-loop\\plugin.json",
+                          "capabilities":  [
+                                               {
+                                                   "type":  "plugin",
+                                                   "name":  "pmcro-loop",
+                                                   "description":  "Canonical PMCR-O lifecycle plugin: unified Orchestrator, Planner, Maker, Checker, and Reflector role mechanics under one shared queue and governance model."
+                                               },
+                                               {
+                                                   "type":  "skill",
+                                                   "name":  "skills",
+                                                   "description":  "Declared by pmcro-loop"
+                                               }
+                                           ],
+                          "artifacts":  [
+                                            {
+                                                "kind":  "skills",
+                                                "declared":  "./skills/",
+                                                "exists":  true,
+                                                "path":  "pmcro-skills\\plugins\\pmcro-loop\\skills\\"
+                                            }
+                                        ]
+                      }
+                  ]
+}

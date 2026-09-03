@@ -1,0 +1,22 @@
+<Project>
+  <!--
+    Companion to Directory.Build.props. Props merge before the project file evaluates;
+    targets merge after, used here because test-project identity depends on the project.
+
+    Projects under tests/ are test projects by convention. Legacy VSTest references
+    are added only when the project has not opted into Microsoft.Testing.Platform.
+  -->
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('\tests\')) Or $(MSBuildProjectDirectory.Contains('/tests/'))">
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)' == 'true' And '$(IsTestingPlatformApplication)' != 'true'">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

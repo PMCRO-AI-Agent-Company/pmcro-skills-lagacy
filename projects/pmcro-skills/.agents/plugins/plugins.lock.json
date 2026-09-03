@@ -1,0 +1,11 @@
+{
+    "version":  1,
+    "plugins":  [
+                    {
+                        "name":  "pmcro-skills",
+                        "source":  "./",
+                        "trust":  "first-party",
+                        "version":  "0.1.0"
+                    }
+                ]
+}

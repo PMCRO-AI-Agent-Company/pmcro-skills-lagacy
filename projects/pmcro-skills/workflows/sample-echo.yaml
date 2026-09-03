@@ -1,0 +1,20 @@
+# Sample declarative workflow to prove the catalog -> executor pipeline
+# end to end (session-state.md step 5). Deliberately trivial: a single
+# echo step. Not a template for real workflows -- just a pipeline probe.
+#
+# NOTE: exact schema keys below are placeholders pending confirmation
+# against Microsoft.Agents.AI.Workflows.Declarative's actual YAML
+# contract (DeclarativeWorkflowBuilder.Build<string>) -- flagged for
+# verification alongside the Maf/DeclarativeWorkflowExecutor binding
+# in Infrastructure, not yet round-tripped through the real builder.
+
+id: sample-echo
+displayName: Sample Echo Workflow
+description: >
+  Minimal one-step workflow used to smoke-test the
+  AgentSkills.Workflows catalog + MCP server pipeline.
+
+steps:
+  - id: echo
+    type: message
+    input: "Hello from AgentSkills.Workflows"

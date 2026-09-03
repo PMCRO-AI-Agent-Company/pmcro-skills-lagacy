@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsTestProject>true</IsTestProject>
+    <IsTestingPlatformApplication>true</IsTestingPlatformApplication>
+    <IsAspireIntegrationTestProject>true</IsAspireIntegrationTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AgentSkills.AppHost\AgentSkills.AppHost.csproj" />
+    <PackageReference Include="Aspire.Hosting.Testing" />
+    <PackageReference Include="xunit.v3.mtp-v2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+</Project>

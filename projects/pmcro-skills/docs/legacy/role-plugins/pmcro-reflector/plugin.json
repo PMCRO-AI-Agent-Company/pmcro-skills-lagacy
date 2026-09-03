@@ -1,0 +1,6 @@
+{
+  "name": "pmcro-reflector",
+  "version": "0.1.0",
+  "description": "PMCR-O Reflector role charter: closes the cycle, promotes earned constraints, and is one of only two roles permitted to reorder the colony queue, on top of the pmcro-loop:reflect-and-seed mechanic.",
+  "skills": ["./skills/"]
+}

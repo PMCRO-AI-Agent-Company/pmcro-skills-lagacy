@@ -20,3 +20,12 @@ Write to trail or session as structured markdown/JSON containing:
 - `domain`
 
 Do **not** execute steps. Hand the PlanFrame to Maker via Orchestrator.
+
+
+## Capability discovery
+
+When the PlanFrame requires a tool, plugin, or specialized skill, invoke the
+`discover-capabilities` mechanic before assigning that step to Maker. Resolve
+against installed filesystem manifests, not marketplace registration alone.
+Record provider, manifest path, capability matched, and resolution reason in
+the PlanFrame so Checker and Trailkeeper can verify provenance later.

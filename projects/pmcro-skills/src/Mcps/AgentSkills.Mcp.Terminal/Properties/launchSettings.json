@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AgentSkills.Mcp.Terminal": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54055;http://localhost:54056"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.5.3">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AspireUseCliBundle>true</AspireUseCliBundle>
+    <UserSecretsId>d40bea4f-0f92-42b9-9fa2-6df729798347</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Services\AgentSkills.Api\AgentSkills.Api.csproj" />
+    <ProjectReference Include="..\Mcps\AgentSkills.Mcp.Terminal\AgentSkills.Mcp.Terminal.csproj" />
+  </ItemGroup>
+
+</Project>

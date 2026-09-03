@@ -1,0 +1,6 @@
+{
+  "name": "pmcro-planner",
+  "version": "0.1.0",
+  "description": "PMCR-O Planner role charter: produces PlanFrames from seed intent without executing, honoring colony-laws.md queue-priority and portability rules on top of the pmcro-loop:plan-frame mechanic.",
+  "skills": ["./skills/"]
+}

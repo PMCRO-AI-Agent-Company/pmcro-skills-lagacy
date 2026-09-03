@@ -30,7 +30,7 @@ if ($state.status -ne 'idle') {
 
 $task = Claim-PmcroTask -PmcroRoot $PmcroRoot
 if ($null -eq $task) {
-    Write-Host 'Queue empty. Remaining idle.'
+    Write-Host 'No queued task at dispatch snapshot. This is not a stop-the-line condition; Reflector must justify any idle disposition after checking backlog, constraints, and unresolved notes.'
     exit 0
 }
 

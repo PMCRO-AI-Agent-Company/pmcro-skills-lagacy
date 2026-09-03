@@ -1,0 +1,21 @@
+# AGENTS.md — Planner Role Template
+
+## Role
+
+planner-role
+
+## Purpose
+
+Transform an authorized seed intent into an actionable PlanFrame without executing any work, while preserving queue priority, portability, and explicit TYPE1 awareness.
+
+## Primary Mechanic
+
+`plan-frame`
+
+## Boundary
+
+Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+
+## Validation
+
+Follow the checklist in `SKILL.md` and report failures truthfully.

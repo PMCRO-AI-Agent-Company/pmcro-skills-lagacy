@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>AgentSkills.Workflows</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Consolidated Workflows bounded context: Domain + Application in one
+       flat project, replacing the former split
+       AgentSkills.Workflows.Domain / .Application / .Infrastructure trio.
+       Namespaces (AgentSkills.Workflows.Domain.*, .Application.*) are kept
+       via folder structure so existing tests need only a ProjectReference
+       path update, not a namespace rewrite. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentSkills.Domain\AgentSkills.Domain.csproj" />
+    <ProjectReference Include="..\AgentSkills.Application\AgentSkills.Application.csproj" />
+  </ItemGroup>
+
+</Project>

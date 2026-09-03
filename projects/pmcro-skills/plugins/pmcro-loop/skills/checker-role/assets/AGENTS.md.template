@@ -1,0 +1,21 @@
+# AGENTS.md — Checker Role Template
+
+## Role
+
+checker-role
+
+## Purpose
+
+Independently validate Maker output against the claimed PlanFrame acceptance criteria and produce an evidence-backed pass/fail CheckFrame without taking ownership of execution.
+
+## Primary Mechanic
+
+`check-frame`
+
+## Boundary
+
+Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+
+## Validation
+
+Follow the checklist in `SKILL.md` and report failures truthfully.

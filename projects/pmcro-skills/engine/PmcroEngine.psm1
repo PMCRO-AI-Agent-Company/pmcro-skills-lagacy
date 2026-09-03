@@ -3,59 +3,143 @@
 # This module does NOT call any model API. It only manages the files that
 # make up .pmcro/ (session-state.md, queue.jsonl, trails/). Frame reasoning
 # content is written as PENDING placeholders for an agent to fill in later.
-#
-# Robustness notes (colony/throughput-scale pass, 2026-09-02):
-# - All writes to queue.jsonl / session-state.md go through
-#   Set-PmcroFileAtomic (write temp file, then Move-Item) to avoid
-#   truncated/corrupt files if a process is killed mid-write.
-# - Claim-PmcroTask takes a file lock (.pmcro/.queue.lock) with retry so
-#   two concurrent invocations against the SAME .pmcro root cannot
-#   double-claim the same item. This does not coordinate across
-#   DIFFERENT repos' .pmcro roots -- each repo's queue stays independent
-#   per colony-laws.md.
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-function Set-PmcroFileAtomic {
-    param(
-        [Parameter(Mandatory)][string]$Path,
-        [Parameter(Mandatory)][string]$Content
-    )
-    $tmp = "$Path.tmp-$([guid]::NewGuid().ToString('N'))"
-    Set-Content -Path $tmp -Value $Content -NoNewline
-    Move-Item -Path $tmp -Destination $Path -Force
+function Get-PmcroSessionState {
+    param([Parameter(Mandatory)][string]$PmcroRoot)
+    $path = Join-Path $PmcroRoot 'session-state.md'
+    if (-not (Test-Path $path)) { throw "session-state.md not found at $path" }
+    $lines = (Get-Content -Raw $path) -split "`n"
+    $state = [ordered]@{}
+    foreach ($line in $lines) {
+        if ($line -match '^([a-z_]+):\s?(.*)$') {
+            $state[$matches[1]] = $matches[2].Trim()
+        }
+    }
+    return [pscustomobject]$state
 }
 
-function Lock-PmcroQueue {
+function Set-PmcroSessionState {
+    param(
+        [Parameter(Mandatory)][string]$PmcroRoot,
+        [Parameter(Mandatory)][hashtable]$Fields
+    )
+    $current = Get-PmcroSessionState -PmcroRoot $PmcroRoot
+    $merged = [ordered]@{}
+    foreach ($p in $current.PSObject.Properties) { $merged[$p.Name] = $p.Value }
+    foreach ($k in $Fields.Keys) { $merged[$k] = $Fields[$k] }
+    $out = @('# Session State', '')
+    foreach ($k in $merged.Keys) { $out += "$k`: $($merged[$k])" }
+    $path = Join-Path $PmcroRoot 'session-state.md'
+    Set-Content -Path $path -Value ($out -join "`n") -NoNewline
+}
+
+function Get-PmcroQueue {
+    param([Parameter(Mandatory)][string]$PmcroRoot)
+    $path = Join-Path $PmcroRoot 'queue.jsonl'
+    if (-not (Test-Path $path)) { return @() }
+    $items = @()
+    foreach ($line in (Get-Content $path)) {
+        if ([string]::IsNullOrWhiteSpace($line)) { continue }
+        $items += (ConvertFrom-Json $line)
+    }
+    return $items
+}
+
+function Save-PmcroQueue {
+    param(
+        [Parameter(Mandatory)][string]$PmcroRoot,
+        [Parameter(Mandatory)][array]$Items
+    )
+    $path = Join-Path $PmcroRoot 'queue.jsonl'
+    $lines = @()
+    foreach ($item in $Items) { $lines += (ConvertTo-Json -InputObject $item -Compress) }
+    Set-Content -Path $path -Value ($lines -join "`n") -NoNewline
+}
+function Claim-PmcroTask {
     <#
-      Acquires a simple file-based lock at <PmcroRoot>/.queue.lock,
-      retrying up to $TimeoutMs. Returns the lock file path to pass to
-      Unlock-PmcroQueue. Throws on timeout.
+      Deterministic claim: picks the lowest-priority-number OPEN item
+      (0 = stop-the-line, 4 = backlog), marks it claimed, and updates
+      session-state.md accordingly. Does NOT invent a task if queue is
+      empty -- returns $null and leaves state idle.
+    #>
+    param([Parameter(Mandatory)][string]$PmcroRoot)
+    $queue = Get-PmcroQueue -PmcroRoot $PmcroRoot
+    $open = @($queue | Where-Object { $_.status -eq 'open' })
+    if ($open.Count -eq 0) {
+        Set-PmcroSessionState -PmcroRoot $PmcroRoot -Fields @{ status = 'idle'; notes = 'Queue empty at ' + (Get-Date -Format 'o') }
+        return $null
+    }
+    $next = $open | Sort-Object priority | Select-Object -First 1
+    $nowIso = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    foreach ($item in $queue) {
+        if ($item.id -eq $next.id) {
+            $item.status = 'claimed'
+            $item | Add-Member -NotePropertyName claimed_at -NotePropertyValue $nowIso -Force
+            $item | Add-Member -NotePropertyName claimed_by -NotePropertyValue 'orchestrator' -Force
+        }
+    }
+    Save-PmcroQueue -PmcroRoot $PmcroRoot -Items $queue
+    Set-PmcroSessionState -PmcroRoot $PmcroRoot -Fields @{
+        status       = 'active'
+        seed_intent  = $next.seed_intent
+        task_id      = $next.id
+        domain       = [string]$next.domain
+        priority     = [string]$next.priority
+    }
+    return $next
+}
+
+function New-PmcroTrail {
+    <#
+      Creates a trail file skeleton for a claimed task, with PlanFrame /
+      MakeFrame / CheckFrame / Reflection sections marked PENDING.
+      This function performs NO reasoning and calls NO model API --
+      it only allocates the trail id and file so an agent (human-invoked
+      or, later, API-driven) has a deterministic place to write into.
     #>
     param(
         [Parameter(Mandatory)][string]$PmcroRoot,
-        [int]$TimeoutMs = 5000,
-        [int]$PollMs = 100
+        [Parameter(Mandatory)][pscustomobject]$Task
     )
-    $lockPath = Join-Path $PmcroRoot '.queue.lock'
-    $waited = 0
-    while ($true) {
-        try {
-            $fs = [System.IO.File]::Open($lockPath, [System.IO.FileMode]::CreateNew, [System.IO.FileAccess]::Write)
-            $fs.Close()
-            return $lockPath
-        } catch [System.IO.IOException] {
-            if ($waited -ge $TimeoutMs) {
-                throw "Could not acquire queue lock at $lockPath after $TimeoutMs ms -- delete it manually only if you've confirmed no other process is running."
-            }
-            Start-Sleep -Milliseconds $PollMs
-            $waited += $PollMs
-        }
-    }
+    $dateSlug = Get-Date -Format 'yyyyMMdd-HHmmss'
+    $trailId = "cycle-$dateSlug-$($Task.id)"
+    $trailsDir = Join-Path $PmcroRoot 'trails'
+    New-Item -ItemType Directory -Force -Path $trailsDir | Out-Null
+    $trailPath = Join-Path $trailsDir "$trailId.md"
+    $body = @"
+# Trail: $trailId
+
+trail_id: $trailId
+task_id: $($Task.id)
+domain: $($Task.domain)
+priority: $($Task.priority)
+opened: $(Get-Date -Format 'yyyy-MM-dd')
+engine_generated: true
+
+## Seed intent
+$($Task.seed_intent)
+
+## PlanFrame (Planner)
+PENDING -- requires agent/model reasoning.
+
+## MakeFrame (Maker)
+PENDING -- requires agent/model reasoning.
+
+## CheckFrame (Checker)
+PENDING -- requires agent/model reasoning.
+
+## Reflection (Reflector)
+PENDING -- requires agent/model reasoning.
+
+trail_sealed: false
+"@
+    Set-Content -Path $trailPath -Value $body -NoNewline
+    Set-PmcroSessionState -PmcroRoot $PmcroRoot -Fields @{ last_cycle_id = $trailId }
+    return $trailPath
 }
 
-function Unlock-PmcroQueue {
-    param([Parameter(Mandatory)][string]$LockPath)
-    if (Test-Path $LockPath) { Remove-Item -Path $LockPath -Force }
-}
+Export-ModuleMember -Function Get-PmcroSessionState, Set-PmcroSessionState, `
+    Get-PmcroQueue, Save-PmcroQueue, Claim-PmcroTask, New-PmcroTrail

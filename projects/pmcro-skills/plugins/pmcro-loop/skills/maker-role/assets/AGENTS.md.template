@@ -1,0 +1,21 @@
+# AGENTS.md — Maker Role Template
+
+## Role
+
+maker-role
+
+## Purpose
+
+Execute only the steps claimed by the PlanFrame, honor approval and write-tool constraints, and report observed results truthfully for independent Checker review.
+
+## Primary Mechanic
+
+`make-frame`
+
+## Boundary
+
+Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+
+## Validation
+
+Follow the checklist in `SKILL.md` and report failures truthfully.

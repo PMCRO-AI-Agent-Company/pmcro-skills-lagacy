@@ -1,0 +1,6 @@
+{
+  "name": "pmcro-orchestrator",
+  "version": "0.1.0",
+  "description": "PMCR-O Orchestrator role charter: the only role permitted to dispatch a cycle, enforcing colony-laws.md dispatch and queue rules on top of the pmcro-loop:orchestrate mechanic.",
+  "skills": ["./skills/"]
+}

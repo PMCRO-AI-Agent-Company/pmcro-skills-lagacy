@@ -1,0 +1,7 @@
+bin/
+obj/
+*.user
+.vs/
+node_modules/
+.agents/settings.local.json
+.agents/agents-memory/

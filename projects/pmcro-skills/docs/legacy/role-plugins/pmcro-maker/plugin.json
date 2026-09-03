@@ -1,0 +1,6 @@
+{
+  "name": "pmcro-maker",
+  "version": "0.1.0",
+  "description": "PMCR-O Maker role charter: executes a PlanFrame and reports results without self-checking, honoring colony-laws.md mutation/trail and write-tool rules on top of the pmcro-loop:make-frame mechanic.",
+  "skills": ["./skills/"]
+}

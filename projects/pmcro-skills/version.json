@@ -6,6 +6,10 @@
     "engine/",
     "colony-laws.md",
     "trail-format.md",
-    "plugin.json"
+    "plugin.json",
+    ".claude-plugin/",
+    ".codex-plugin/",
+    ".cursor-plugin/",
+    "plugins/"
   ]
 }
