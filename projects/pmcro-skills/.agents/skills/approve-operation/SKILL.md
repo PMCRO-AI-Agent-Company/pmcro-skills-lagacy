@@ -1,9 +1,15 @@
 ---
 name: approve-operation
-description: Orchestrator approval gate for delegated autonomous TYPE1 operations. Records bounded authority before state-changing execution.
+description: Orchestrator approval gate for delegated autonomous TYPE1 operations. Records bounded authority before state-changing execution. Invoke as /pmcro-skills:approve-operation.
 ---
 
 # Approve Operation
+
+## Invocation
+
+```text
+/pmcro-skills:approve-operation
+```
 
 ## Purpose
 Provide an explicit, auditable authorization boundary for TYPE1 mutations.
