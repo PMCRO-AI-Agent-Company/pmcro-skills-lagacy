@@ -1,9 +1,15 @@
 ---
 name: queue-enqueue
-description: Append one or more work items to this repo's own colony priority queue. Used by Reflector (follow-ups) or humans.
+description: Append one or more work items to this repo's own colony priority queue. Used by Reflector (follow-ups) or humans. Invoke as /pmcro-skills:queue-enqueue.
 ---
 
 # Queue Enqueue
+
+## Invocation
+
+```text
+/pmcro-skills:queue-enqueue
+```
 
 ## Target
 `.pmcro/queue.jsonl` (this repo's own — append-only preferred; rewrite if you must update status of existing ids).
