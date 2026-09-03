@@ -1,9 +1,15 @@
 ---
 name: discover-capabilities
-description: Discover installed project plugins and resolve task capabilities from local manifests without hardcoding a provider. Use before planning or execution when work may require an installed plugin or skill.
+description: Discover installed project plugins and resolve task capabilities from local manifests without hardcoding a provider. Use before planning or execution when work may require an installed plugin or skill. Invoke as /pmcro-skills:discover-capabilities.
 ---
 
 # Discover Capabilities
+
+## Invocation
+
+```text
+/pmcro-skills:discover-capabilities
+```
 
 ## Purpose
 Build a current, file-backed view of capabilities actually installed under the
