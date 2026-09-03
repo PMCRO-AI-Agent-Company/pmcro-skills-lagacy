@@ -8,3 +8,5 @@ node_modules/
 Thumbs.db
 .agents/settings.local.json
 .agents/agents-memory/
+
+Claude outputs/
