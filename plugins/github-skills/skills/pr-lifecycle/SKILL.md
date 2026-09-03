@@ -10,6 +10,17 @@ Two paths to the same outcome -- a branch landed on the default branch
 with a clear merge commit -- depending on whether `gh` is actually usable
 right now.
 
+## Before cloning or touching any repo
+
+Run `scripts/inspect-repo.ps1 -Repo <owner>/<name>` first -- what's
+actually there (branches, recent commits, whether it's really the empty
+scaffold it looks like from the outside) beats a stale assumption, and
+it's cheaper than a `git clone` just to look. This is not optional
+polish: the recon this script wraps was originally run ad hoc mid-task
+and is exactly the kind of gh usage that should go through an
+implemented, tested script instead -- see
+`.pmcro/constraints/constraint-20260903-175440-adhoc-tool-use-must-be-scripted.md`.
+
 ## Preferred path: real PRs via gh
 
 1. Run `setup-gh-cli`'s `install-gh-portable.ps1` and confirm
@@ -65,5 +76,7 @@ judgment versus flagging it to a human first.
 
 ## Scripts
 
+- `scripts/inspect-repo.ps1` — read-only recon (metadata, branches,
+  directory contents, recent commits) before cloning or opening a PR.
 - `scripts/open-pr.ps1` — `gh pr create` wrapper.
 - `scripts/merge-pr.ps1` — `gh pr merge` wrapper (merge-commit strategy).
