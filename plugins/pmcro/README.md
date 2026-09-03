@@ -63,8 +63,6 @@ PMCR-O distinguishes **laws/principles**, **constraints**, **rules/policies**, *
 
 Trails can be promoted into scoped constraints, rules/policies, strategy evidence, skill candidates, training examples, evaluation cases, or audit-only history. A Trail Product packages validated operational experience for reuse; execution identity, credentials, accounts, and approvals come from the consumer runtime.
 
-Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is optional and is not a prerequisite for the core runtime.
-
 ## Session bootstrap
 
 Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
@@ -72,18 +70,6 @@ Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilitie
 ## Packaging and external LLM transport
 
 Use `/pmcro:package` to generate a consumer-specific projection from canonical PMCR-O source. Supported projections are text, ZIP, directory, Gemini, and Agent Skills directory layouts.
-
-```text
-Canonical PMCR-O source
-        ↓
-     /pmcro:package
-        ↓
-  ┌─────┼───────────┬──────────┬────────┐
- TXT   ZIP       directory    Gemini   Agents
-  │                 │            │        │
-text-only       local tree   .gemini/  .agents/
-LLMs                         skills/   skills/
-```
 
 The lower-level `/pmcro:source-dump` capability supplies the `PMCR-O-SOURCE-DUMP/1` text transport used by the `txt` projection. Runtime-specific layouts are generated projections, not alternate canonical source trees.
 
@@ -97,12 +83,12 @@ skills/<skill>/
 └── assets/
 ```
 
+The cross-cutting PMCR-O semantic contracts are owned by the `foundation` Agent Skill at `skills/foundation/`.
+
 ## Plugin boundaries
 
-- `pmcro` — semantic contracts, lifecycle, and packaging/projection capabilities.
+- `pmcro` — plugin manifests and discovery boundary.
 - `pmcro-loop` — runtime/execution engine.
 - `pmcro-skills` — executable governance and capabilities.
 
-## References
-
-Core semantic references remain under `plugins/pmcro/references/`. Skill-specific supporting material belongs inside its corresponding skill directory.
+The plugin directory does not carry a plugin-level `references/` or `scripts/` tree. Supporting material belongs to the Agent Skill that owns it.
