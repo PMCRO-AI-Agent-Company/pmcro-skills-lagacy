@@ -1,6 +1,6 @@
 {
   "name": "pmcro",
-  "version": "0.2.0",
-  "description": "Canonical PMCR-O semantic model for Goal, Messy Seed Intent, executable Seed Intent, self-referential cycles, O-Mode: Dynamic Resonance, accountability Frames, learning, and convergence.",
+  "version": "0.2.1",
+  "description": "Canonical PMCR-O semantic model for Goal, Messy Seed Intent, executable Seed Intent, self-referential cycles, O-Mode: Dynamic Resonance, accountability Frames, learning, convergence, and text-only source transport.",
   "skills": ["./skills/"]
 }

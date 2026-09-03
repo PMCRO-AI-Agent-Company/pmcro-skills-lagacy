@@ -1,6 +1,6 @@
 # PMCR-O Semantic Model
 
-The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, and convergence.
+The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, convergence, and text-only context transport.
 
 ## Core loop
 
@@ -69,6 +69,21 @@ Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is
 
 Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
 
+## Text-only source transport
+
+Use `/pmcro:source-dump` or `scripts/export-source-dump.ps1` to produce a text-only Source Dump for third-party LLMs that cannot directly consume ZIP files or repository trees.
+
+The Source Dump preserves repository-relative paths and file boundaries and can carry selected source, assets, references, scripts, skills, templates, configuration, and permitted state. Protected material is excluded by default.
+
+The Source Dump and PMCR-O Text Protocol are complementary:
+
+```text
+Repository/project context → Source Dump
+PMCR-O operational state   → Text Protocol
+```
+
+See `references/source-dump.md` for the contract and format.
+
 ## Plugin boundaries
 
 - `pmcro` — semantic contracts and lifecycle.
@@ -88,3 +103,4 @@ Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilitie
 - `references/trail-as-product.md`
 - `references/session-bootstrap.md`
 - `references/intent-lifecycle.md`
+- `references/source-dump.md`
