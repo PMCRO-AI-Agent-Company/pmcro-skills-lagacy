@@ -1,0 +1,21 @@
+# Normalize line endings for all text files: store as LF in the
+# repository, check out using each platform's native convention (CRLF on
+# Windows, LF on Linux/macOS). Without this file, git had no explicit,
+# repo-scoped policy -- the Windows checkout only got consistent CRLF
+# checkout/LF-storage behavior from this machine's Git for Windows
+# installer default (system-level core.autocrlf=true, outside this
+# repo's control), and a clone or bridge without that default sees
+# whatever bytes happen to be on disk. This file makes the policy
+# explicit and reproducible regardless of any one machine's git config.
+* text=auto
+
+# Explicitly binary -- never subject to line-ending or diff normalization.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.dll binary
+*.exe binary
