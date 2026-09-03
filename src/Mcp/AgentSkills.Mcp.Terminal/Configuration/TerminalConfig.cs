@@ -1,7 +1,7 @@
 // PROJECTNAME — MCP.TERMINAL
 // File     : Configuration/TerminalConfig.cs
 // Purpose  : Sandbox enforcer & command execution limits.
-// Law ref  : colony-laws.md — Portability (W-PORTABILITY-001: no literal
+// Law ref  : laws.md — Portability (W-PORTABILITY-001: no literal
 //            drive-letter paths in code/config; resolve relative to repo
 //            root or via environment). ResolveAndValidatePath below is the
 //            runtime enforcement of that rule for terminal commands.

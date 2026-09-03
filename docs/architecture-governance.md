@@ -3,11 +3,11 @@
 ## Purpose
 
 This document defines the minimum governance contract for architecture changes in pmcro-skills.
-It complements `colony-laws.md`; it does not override constitutional rules.
+It complements `laws.md`; it does not override constitutional rules.
 
 ## Authority
 
-- `colony-laws.md` is authoritative for dispatch, queue, mutation, trails, and portability.
+- `laws.md` is authoritative for dispatch, queue, mutation, trails, and portability.
 - `CONTEXT.md` describes repository topology and role boundaries.
 - `INSTRUCTIONS.md` describes operational invocation and handoffs.
 - Active cycle trails are the evidence record for individual changes.

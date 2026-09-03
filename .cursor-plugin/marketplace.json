@@ -8,13 +8,13 @@
                   },
     "plugins":  [
                     {
-                        "name":  "agentskills",
-                        "source":  "./plugins/agentskills",
+                        "name":  "pmcro-skill-creator",
+                        "source":  "./plugins/pmcro-skill-creator",
                         "description":  "Creates, renders, understands, validates, and manages Agent Skills projects and plugins."
                     },
                     {
-                        "name":  "agentskills-template-engine",
-                        "source":  "./plugins/agentskills-template-engine",
+                        "name":  "pmcro-template-engine",
+                        "source":  "./plugins/pmcro-template-engine",
                         "description":  "Agent Skills plugin for .NET Template Engine workflows."
                     },
                     {

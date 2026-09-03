@@ -2,14 +2,14 @@
   "version": 1,
   "plugins": [
     {
-      "name": "agentskills",
-      "source": "./plugins/agentskills",
+      "name": "pmcro-skill-creator",
+      "source": "./plugins/pmcro-skill-creator",
       "trust": "first-party",
       "version": "0.1.0"
     },
     {
-      "name": "agentskills-template-engine",
-      "source": "./plugins/agentskills-template-engine",
+      "name": "pmcro-template-engine",
+      "source": "./plugins/pmcro-template-engine",
       "trust": "first-party",
       "version": "0.1.0"
     },

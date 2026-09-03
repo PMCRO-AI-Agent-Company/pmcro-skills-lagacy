@@ -48,7 +48,7 @@ substitutes for current evidence.
 
 ## Governance
 
-`colony-laws.md` remains the authoritative cross-repo law. It lives at this
+`laws.md` remains the authoritative cross-repo law. It lives at this
 repo's true root (not duplicated into runtime constraints). `AGENTS.md` at
 the true root carries both the marketplace-wide repository conventions and
 (in its "PMCR-O project conventions" section) this project's own operating
@@ -70,7 +70,7 @@ don't treat them as independently authoritative.
 The `pmcro-loop` lifecycle plugin (skills: `orchestrate`, `plan-frame`,
 `make-frame`, `check-frame`, `reflect-and-seed`, `queue-claim`,
 `queue-enqueue`) lives at `plugins/pmcro-loop/`, a top-level plugin sibling
-to `plugins/agentskills` and `plugins/agent-design-patterns`, and is
+to `plugins/pmcro-skill-creator` and `plugins/agent-design-patterns`, and is
 registered in the marketplace manifests above. There is no longer a nested
 `projects/pmcro-skills/plugins/pmcro-loop/` duplicate — the orphaned
 role-named copy that once existed there (`orchestrator-role`,

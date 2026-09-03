@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "agentskills",
+  "name": "pmcro-skill-creator",
   "version": "0.1.0",
   "description": "Core Agent Skills project, marketplace, template, plugin-management, and repository-understanding capabilities.",
   "license": "MIT"

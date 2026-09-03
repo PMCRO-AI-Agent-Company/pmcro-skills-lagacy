@@ -11,13 +11,13 @@ that does the move — that discipline is the whole point of the file.
 Before this date the repo had two competing "project root" ideas:
 - `projects/pmcro-skills/` (created by commit `7fbbbbc`) held the real,
   live `.NET` solution and the entire live PMCR-O colony state
-  (`.pmcro/`, `colony-laws.md`, `CONTEXT.md`, `INSTRUCTIONS.md`, `.agents/`,
+  (`.pmcro/`, `laws.md`, `CONTEXT.md`, `INSTRUCTIONS.md`, `.agents/`,
   `.github/`, `eng/`, `tests/`) that every session actually operated from.
 - `project/` (singular, created by commit `9964a45`) was a frozen,
   intentionally-documented template/example of what a *consumer* repo's
   own root should contain (per the then-current `LAYOUTS.md`).
 
-`CONTEXT.md` itself claimed `colony-laws.md` was "kept at repository root"
+`CONTEXT.md` itself claimed `laws.md` was "kept at repository root"
 and described a separate `P:\agent-skills` monorepo root — neither was
 true; both were stale claims describing an earlier, already-abandoned
 topology. On explicit human instruction, both `projects/` and `project/`
@@ -37,7 +37,7 @@ Colony governance and runtime state:
 - `.pmcro/` — this repo's own colony queue (`queue.jsonl`), session-state,
   sealed trails, constraints, capability registry/gaps, approvals, and
   trail-product schemas. Self-contained; does not read another repo's queue.
-- `colony-laws.md` — cross-repo dispatch/queue/mutation/trail law.
+- `laws.md` — cross-repo dispatch/queue/mutation/trail law.
 - `trail-format.md` — sealed-trail schema classes.
 - `.agents/CONTEXT.md` — this project's own architecture/governance summary
   (narrower and more implementation-specific than this file).
@@ -75,8 +75,8 @@ skills):
 - `plugins/pmcro-loop/` — runtime lifecycle engine (`orchestrate`,
   `plan-frame`, `make-frame`, `check-frame`, `reflect-and-seed`,
   `queue-claim`, `queue-enqueue`).
-- `plugins/agentskills/` — whole-project generation (`create-project`).
-- `plugins/agentskills-template-engine/` — `.NET` Template Engine
+- `plugins/pmcro-skill-creator/` — whole-project generation (`create-project`).
+- `plugins/pmcro-template-engine/` — `.NET` Template Engine
   scaffolding skills.
 - `plugins/agent-design-patterns/` — routing/pattern-mapping skills.
 - `plugins/github-skills/` — `gh` CLI setup + PR lifecycle wrappers.

@@ -8,19 +8,24 @@
                   },
     "plugins":  [
                     {
-                        "name":  "agentskills",
-                        "source":  "./plugins/agentskills",
+                        "name":  "pmcro-skill-creator",
+                        "source":  "./plugins/pmcro-skill-creator",
                         "description":  "Creates, renders, understands, validates, and manages Agent Skills projects and plugins."
                     },
                     {
-                        "name":  "agentskills-template-engine",
-                        "source":  "./plugins/agentskills-template-engine",
+                        "name":  "pmcro-template-engine",
+                        "source":  "./plugins/pmcro-template-engine",
                         "description":  "Agent Skills plugin for .NET Template Engine workflows."
                     },
                     {
                         "name":  "agent-design-patterns",
                         "source":  "./plugins/agent-design-patterns",
                         "description":  "Composable agent architecture patterns including augmented LLM, routing, parallelization, orchestrator-workers, evaluator-optimizer, and agent loops."
+                    },
+                    {
+                        "name":  "pmcro",
+                        "source":  "./plugins/pmcro",
+                        "description":  "Canonical PMCR-O semantic model for Goal, Messy Seed Intent, executable Seed Intent, self-reference, O-Mode: Dynamic Resonance, accountability Frames, learning, and convergence. Invoke with /pmcro:<skill>."
                     },
                     {
                         "name":  "pmcro-loop",
@@ -36,6 +41,11 @@
                         "name":  "pester-skills",
                         "source":  "./plugins/pester-skills",
                         "description":  "Pester setup and test-run operations for PowerShell code in this colony (PmcroEngine.psm1 and its wrapper scripts)."
+                    },
+                    {
+                        "name":  "pmcro-skills",
+                        "source":  "./.agents",
+                        "description":  "Canonical PMCR-O meta-governance skill repo: colony laws, trail-format conventions, cross-repo reference docs. Skills are invoked with /pmcro-skills:<skill>."
                     }
                 ]
 }

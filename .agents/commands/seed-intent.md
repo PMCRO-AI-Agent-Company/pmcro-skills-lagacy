@@ -28,5 +28,5 @@ When the tool returns `sessionId` and `planArtifactPath`, hand the session to
 
 ## Governance
 - Never hand-edit `queue.jsonl`, `session-state.md`, or trails from this command.
-- TYPE1 mutations remain governed by `colony-laws.md` and the approval protocol.
+- TYPE1 mutations remain governed by `laws.md` and the approval protocol.
 - Missing API/MCP capability is a failure to report, not permission to bypass it.

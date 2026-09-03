@@ -1,10 +1,10 @@
 // AGENTSKILLS — MCP.TERMINAL
 // File   : Tools/TerminalTools.cs
-// Rule   : colony-laws.md — Mutation & trails: "TYPE1 (state-changing)
+// Rule   : laws.md — Mutation & trails: "TYPE1 (state-changing)
 //          mutations require explicit human approval before execution."
 //          RunCommand/RunScript/KillProcess below are TYPE1: they only
 //          ever return TYPE1_PENDING. Only the corresponding Execute*
-//          method actually runs anything, and per colony-laws.md that
+//          method actually runs anything, and per laws.md that
 //          method must only be invoked by the Orchestrator after HIL
 //          approval is recorded in the active trail.
 
@@ -53,7 +53,7 @@ public sealed class TerminalTools(TerminalConfig config)
         {
             tool,
             requested_action = requestedAction,
-            note = "TYPE1 tools require explicit human approval and are dispatched only by the Orchestrator (colony-laws.md).",
+            note = "TYPE1 tools require explicit human approval and are dispatched only by the Orchestrator (laws.md).",
         },
     }, JsonOptions);
 

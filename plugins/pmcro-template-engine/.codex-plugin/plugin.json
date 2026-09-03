@@ -1,5 +1,5 @@
 {
-  "name": "agentskills-template-engine",
+  "name": "pmcro-template-engine",
   "version": "0.1.0",
   "description": "Agent Skills plugin for .NET Template Engine workflows: discover, compare, instantiate, author, validate, and apply smart defaults to dotnet new templates.",
   "skills": ["./skills/"],

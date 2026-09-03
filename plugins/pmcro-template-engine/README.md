@@ -1,6 +1,6 @@
-# AgentSkills Template Engine
+# PMCR-O Template Engine
 
-The `agentskills-template-engine` plugin adapts the upstream .NET Template Engine skill family for this Agent Skills repository.
+The `pmcro-template-engine` plugin adapts the upstream .NET Template Engine skill family for this Agent Skills repository.
 
 ## Skills
 
@@ -21,4 +21,4 @@ The skill content is sourced from the current `dotnet/skills` `dotnet-template-e
 
 ## Boundary
 
-AgentSkills project scaffolding belongs in the `agentskills` plugin. This plugin owns .NET `dotnet new` template discovery, creation, authoring, comparison, defaults, and validation.
+AgentSkills project scaffolding belongs in the `pmcro-skill-creator` plugin. This plugin owns .NET `dotnet new` template discovery, creation, authoring, comparison, defaults, and validation.

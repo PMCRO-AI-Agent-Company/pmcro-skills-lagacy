@@ -9,7 +9,7 @@ identity, and persistent memory for this repository.
 - `.pmcro/session-state.md` — active cross-session continuity pointer.
 - `.pmcro/trails/` — sealed historical execution evidence.
 - `.pmcro/constraints/` — earned constraints; this baseline does not override
-  `colony-laws.md`.
+  `laws.md`.
 
 ## Agent surfaces
 

@@ -13,7 +13,7 @@ and generated project templates as the source for new instances.
 
 Use `.agents/skills/create-skill/SKILL.md` for individual skill creation,
 `.agents/skills/create-custom-agent/SKILL.md` for agent personas, and the installed
-`plugins/agentskills/skills/create-project/SKILL.md` for whole-project generation.
+`plugins/pmcro-skill-creator/skills/create-project/SKILL.md` for whole-project generation.
 
 Plugin skills use `SKILL.md` plus `assets/`, `references/`, and `scripts/` when
 those support materials are required by the capability.

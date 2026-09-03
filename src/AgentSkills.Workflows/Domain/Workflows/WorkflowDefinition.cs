@@ -2,7 +2,7 @@ namespace AgentSkills.Workflows.Domain.Workflows;
 
 /// <summary>
 /// Static description of a workflow: what it's called and which YAML file
-/// defines its steps. yamlPath must be relative — colony-laws.md
+/// defines its steps. yamlPath must be relative — laws.md
 /// W-PORTABILITY-001 forbids rooted/drive-letter paths in config, and this
 /// applies equally to workflow definitions.
 /// </summary>

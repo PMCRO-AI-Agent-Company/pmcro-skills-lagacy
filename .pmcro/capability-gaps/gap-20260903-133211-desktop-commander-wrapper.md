@@ -13,7 +13,7 @@ Documented, tested plugin scripts wrapping the Desktop Commander MCP connector's
 (none found)
 
 ## Why composition doesn't suffice
-No installed plugin covers filesystem or process-execution operations at all -- github-skills wraps gh, pester-skills wraps Pester, pmcro-loop wraps colony state/queue/trail mechanics, agentskills/agentskills-template-engine/agent-design-patterns are unrelated domains. There is nothing to compose; this is a bare gap, not a missing combination of existing capabilities.
+No installed plugin covers filesystem or process-execution operations at all -- github-skills wraps gh, pester-skills wraps Pester, pmcro-loop wraps colony state/queue/trail mechanics, pmcro-skill-creator/pmcro-template-engine/agent-design-patterns are unrelated domains. There is nothing to compose; this is a bare gap, not a missing combination of existing capabilities.
 
 ## Evidence (source trails)
 - cycle-20260903-175440-task-pmcro-runtime-collision-and-governance

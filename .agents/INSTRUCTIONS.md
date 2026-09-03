@@ -1,7 +1,7 @@
 # INSTRUCTIONS.md — pmcro-skills
 
 Operational guidelines for any agent acting inside this repo. Read
-`colony-laws.md` and `CONTEXT.md` first — this file is the "how", those are
+`laws.md` and `CONTEXT.md` first — this file is the "how", those are
 the "what's fixed."
 
 ## Lifecycle command invocation

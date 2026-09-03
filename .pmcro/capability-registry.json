@@ -1,4 +1,4 @@
-﻿{
+{
     "schema_version":  "1.0",
     "generated_at":  "2026-09-03T18:31:17.1892587Z",
     "projects_root":  ".",
@@ -23,16 +23,16 @@
                                         ]
                       },
                       {
-                          "name":  "agentskills",
+                          "name":  "pmcro-skill-creator",
                           "version":  "0.1.0",
                           "description":  "Core Agent Skills project, marketplace, template, plugin-management, and repository-understanding capabilities.",
                           "project":  "plugins",
-                          "root":  "plugins\\agentskills",
-                          "manifest":  "plugins\\agentskills\\plugin.json",
+                          "root":  "plugins\\pmcro-skill-creator",
+                          "manifest":  "plugins\\pmcro-skill-creator\\plugin.json",
                           "capabilities":  [
                                                {
                                                    "type":  "plugin",
-                                                   "name":  "agentskills",
+                                                   "name":  "pmcro-skill-creator",
                                                    "description":  "Core Agent Skills project, marketplace, template, plugin-management, and repository-understanding capabilities."
                                                }
                                            ],
@@ -41,16 +41,16 @@
                                         ]
                       },
                       {
-                          "name":  "agentskills-template-engine",
+                          "name":  "pmcro-template-engine",
                           "version":  "0.1.0",
                           "description":  "Agent Skills plugin for .NET Template Engine workflows: discover, compare, instantiate, author, validate, and apply smart defaults to dotnet new templates.",
                           "project":  "plugins",
-                          "root":  "plugins\\agentskills-template-engine",
-                          "manifest":  "plugins\\agentskills-template-engine\\plugin.json",
+                          "root":  "plugins\\pmcro-template-engine",
+                          "manifest":  "plugins\\pmcro-template-engine\\plugin.json",
                           "capabilities":  [
                                                {
                                                    "type":  "plugin",
-                                                   "name":  "agentskills-template-engine",
+                                                   "name":  "pmcro-template-engine",
                                                    "description":  "Agent Skills plugin for .NET Template Engine workflows: discover, compare, instantiate, author, validate, and apply smart defaults to dotnet new templates."
                                                }
                                            ],

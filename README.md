@@ -59,7 +59,7 @@ and the history of how this consolidation happened.
 - `plugins/pmcro-loop` — runtime engine.
 - `.pmcro/` — this repo's own colony queue, session-state, trails, and constraints.
 - `.agents/` — this repo's own agent roster and PMCR-O-governed `pmcro-skills` capability skills.
-- `colony-laws.md`, `CONTEXT.md` (now `.agents/CONTEXT.md`) — cross-repo dispatch/queue/mutation/trail rules and this repo's own operating context.
+- `laws.md`, `CONTEXT.md` (now `.agents/CONTEXT.md`) — cross-repo dispatch/queue/mutation/trail rules and this repo's own operating context.
 - `AgentSkills.slnx`, `src/`, `tests/`, `eng/` — the .NET solution and its build/eval tooling.
 
 Use namespaced invocation such as `/pmcro:initialize`, `/pmcro:package`, `/pmcro:source-dump`, `/pmcro:intent-model`, or `/pmcro-skills:orchestrate`.

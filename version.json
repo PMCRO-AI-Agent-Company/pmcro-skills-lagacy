@@ -4,7 +4,7 @@
     ".agents/",
     ".pmcro/",
     "engine/",
-    "colony-laws.md",
+    "laws.md",
     "trail-format.md",
     "plugin.json",
     ".claude-plugin/",

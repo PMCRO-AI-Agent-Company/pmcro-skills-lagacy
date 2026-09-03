@@ -3,8 +3,8 @@
   "owner": {"name": "personal"},
   "interface": {"displayName": "Agent Skills"},
   "plugins": [
-    {"name": "agentskills", "source": "./plugins/agentskills", "description": "Creates, renders, understands, validates, and manages Agent Skills projects and plugins."},
-    {"name": "agentskills-template-engine", "source": "./plugins/agentskills-template-engine", "description": "Agent Skills plugin for .NET Template Engine workflows."},
+    {"name": "pmcro-skill-creator", "source": "./plugins/pmcro-skill-creator", "description": "Creates, renders, understands, validates, and manages Agent Skills projects and plugins."},
+    {"name": "pmcro-template-engine", "source": "./plugins/pmcro-template-engine", "description": "Agent Skills plugin for .NET Template Engine workflows."},
     {"name": "agent-design-patterns", "source": "./plugins/agent-design-patterns", "description": "Composable agent architecture patterns including augmented LLM, routing, parallelization, orchestrator-workers, evaluator-optimizer, and agent loops."},
     {"name": "pmcro", "source": "./plugins/pmcro", "description": "Canonical PMCR-O semantic model for Goal, Messy Seed Intent, executable Seed Intent, self-reference, O-Mode: Dynamic Resonance, accountability Frames, learning, and convergence. Invoke with /pmcro:<skill>."},
     {"name": "pmcro-loop", "source": "./plugins/pmcro-loop", "description": "Canonical PMCR-O cognitive loop: Orchestrator → Planner → Maker → Checker → Reflector with one shared colony priority queue."},
