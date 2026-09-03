@@ -1,11 +1,20 @@
 ---
 name: create-custom-agent
-description: Creates or scaffolds an agent persona for this `.agents` workspace. Use when adding a new role under `.agents/agents/`, defining an agent's purpose, tool boundary, operating rules, or handoff responsibility. Aligns agent definitions with the repository's current PMCR-O roles and conventions. Do not use for reusable task skills under `.agents/skills/` or for editing an existing agent's behavior when a direct edit is sufficient.
+description: Creates or scaffolds an agent persona for this `.agents` workspace. Use when adding a new role under `.agents/agents/`, defining an agent's purpose, tool boundary, operating rules, or handoff responsibility. Aligns agent definitions with the repository's current PMCR-O roles and conventions. Invoke as /pmcro-skills:create-custom-agent. Do not use for reusable task skills under `.agents/skills/` or for editing an existing agent's behavior when a direct edit is sufficient.
 ---
 
 # Create Custom Agent
 
 Create a focused agent persona that fits this repository's PMCR-O system.
+
+## Invocation
+
+```text
+/pmcro-skills:create-custom-agent
+```
+
+Use `/pmcro-skills:<skill-name>` for all explicit invocations of skills owned by
+this plugin. Never generate an unqualified `/create-custom-agent` selector.
 
 ## When to Use
 
@@ -16,7 +25,7 @@ Create a focused agent persona that fits this repository's PMCR-O system.
 
 ## When Not to Use
 
-- Creating a reusable task procedure under `.agents/skills/`: use `create-skill`
+- Creating a reusable task procedure under `.agents/skills/`: use `/pmcro-skills:create-skill`
 - Changing an existing agent: edit that agent directly unless the change is a structural redesign
 - Changing the PMCR-O workflow itself: use the relevant cycle skill
 
@@ -111,6 +120,9 @@ State:
 - who consumes that result;
 - whether it may execute, modify, validate, or only report.
 
+When the handoff explicitly invokes a skill, use `/pmcro-skills:<skill-name>` for
+skills in this plugin and the owning namespace for skills in other plugins.
+
 Do not give a Checker permission to fix the work it is checking. Do not give a Planner execution responsibility. Preserve the current separation of plan → make → check → reflect.
 
 ### Step 6: Validate
@@ -122,6 +134,7 @@ Do not give a Checker permission to fix the work it is checking. Do not give a P
 - [ ] Repository/state boundaries are explicit
 - [ ] Ownership does not duplicate another agent
 - [ ] Handoff/output is explicit
+- [ ] Skill handoffs use `/pmcro-skills:<skill-name>` when applicable
 - [ ] No VS Code-only frontmatter was copied into this repository without a migration requirement
 - [ ] YAML frontmatter parses
 
@@ -136,3 +149,4 @@ Do not give a Checker permission to fix the work it is checking. Do not give a P
 | Planner executes commands | Planner produces the plan; Maker executes |
 | Absolute repository paths are embedded | Use the current workspace/repository context |
 | Agent claims work it did not perform | Report only actions and validation actually completed |
+| Skill is referenced without its namespace | Use `/pmcro-skills:<skill-name>` or the owning plugin namespace |
