@@ -2,22 +2,28 @@
 
 status: idle
 seed_intent: (idle -- queue.jsonl fully drained. Most recent work (trail
-  cycle-20260903-175440-task-pmcro-runtime-collision-and-governance) found
-  a second, concurrently-running Claude session already executing the
-  pmcro-runtime split on branch refactor/rename-projectname-and-seed-clean-architecture
-  in P:\source\pmcro-runtime -- stopped before altering anything there,
-  built and live-tested inspect-repo.ps1 (plugins/github-skills) in
-  response to a human process correction, and recorded that correction as
-  a provisional earned constraint rather than a colony-laws.md entry, per
-  runtime-baseline.md's separation of the two. Handoff: attempt a real
-  dotnet build/test pass on that other session's branch, since it flagged
-  it could not run one in its own sandbox.)
+  cycle-20260903-181500-task-execution-law-and-runtime-handoff) added a
+  colony-laws.md Dispatch clause: execution always happens inside a
+  dispatched PMCR-O cycle, Checker-caught errors resolve via Reflector's
+  next_seed_intent in the *next* cycle, not patched inline. Stopped an
+  in-progress ad hoc dotnet-build/fix loop in pmcro-runtime the moment
+  this was named, left two already-made XML-comment fixes uncommitted
+  there, and queued the remaining build/test verification plus a
+  human-requested AgentsRuntime.* rename (blocked on coordination with a
+  second, concurrently-running session) into pmcro-runtime's own
+  .pmcro/queue/pending/ -- that repo owns its own schema/queue per
+  trail-format.md, so its work lives there, not here.)
 task_id: null
 domain: null
 priority: null
-last_cycle_id: cycle-20260903-175440-task-pmcro-runtime-collision-and-governance
-notes: session-state.md itself was left stale through the collision-discovery
-  work this cycle documents -- see that trail's Reflection, "Process gap
-  noted, not fixed this cycle." pr-lifecycle's inspect-repo.ps1 is now
-  documented in its SKILL.md; open-pr.ps1/merge-pr.ps1 remain parse-verified
-  only, still not exercised against a real PR.
+last_cycle_id: cycle-20260903-181500-task-execution-law-and-runtime-handoff
+notes: Backlog, not yet scoped or queued anywhere: (1) git commits should
+  go through a plugin script, not raw git -- widens the provisional
+  ad-hoc-tool-use constraint's scope, needs a new record per its own
+  supersession rule, not an edit in place; (2) Desktop Commander (the MCP
+  connector this session uses for the linked Windows machine) needs its
+  own plugin, same reasoning; (3) PMCR-O <-> Anthropic agent-design-
+  pattern mapping belongs in plugins/agent-design-patterns/, not a new
+  doc. Also unresolved: pmcro-runtime/.pmcro/README.md's own Provider
+  rule ("does not wrap providers merely to rename them") is in tension
+  with (1)/(2) and should be reconciled when those are actually scoped.

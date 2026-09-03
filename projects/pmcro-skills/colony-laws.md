@@ -9,6 +9,11 @@ any future repo). Source: extracted from active `.clinerules` and
 - Orchestrator is the **only** role that dispatches a cycle.
 - C-suite / domain plugins supply domain scope (Owns / Does-not-own) —
   never their own loop.
+- Execution always happens inside a dispatched PMCR-O cycle — not as an
+  ad hoc fix applied outside Plan/Make/Check/Reflect the moment an error
+  is noticed, however small. When Checker catches an error, Reflector
+  records it as `next_seed_intent`; resolving it is the next cycle's
+  job, not a patch mid-cycle in the cycle that found it.
 
 ## Queue
 - One shared colony priority queue per repo (`.pmcro/queue.jsonl`).
