@@ -8,7 +8,8 @@ param(
     [string[]]$Exclude = @(
         '.git', '.github/CODEOWNERS', 'node_modules', 'bin', 'obj',
         '.venv', '__pycache__', '.pytest_cache', '.idea', '.vs',
-        'secrets', 'credentials'
+        'secrets', 'credentials', '.env', '.env.*',
+        '.pmcro/approvals.jsonl', '.pmcro/secrets', '.pmcro/credentials'
     ),
 
     [string]$OutputPath = '',
@@ -60,7 +61,6 @@ function Get-FileType {
     if ($lower -match '(^|/)(assets?)(/|$)') { return 'asset' }
     if ($lower -match '(^|/)(templates?)(/|$)') { return 'template' }
     if ($lower -match '(^|/)(\.pmcro|config|configuration)(/|$)' -or $lower -match '\.(json|jsonl|ya?ml|toml|xml|ini|editorconfig)$') { return 'configuration' }
-    if ($lower -match '(^|/)(\.pmcro)(/|$)') { return 'state' }
     return 'source'
 }
 
@@ -145,13 +145,11 @@ if ([string]::IsNullOrWhiteSpace($OutputPath)) {
     [Console]::Out.Write($output)
 }
 else {
-    $destination = Resolve-Path -LiteralPath (Split-Path -Parent $OutputPath) -ErrorAction SilentlyContinue
-    if (-not $destination) {
-        $parent = Split-Path -Parent $OutputPath
-        if (-not [string]::IsNullOrWhiteSpace($parent)) {
-            New-Item -ItemType Directory -Path $parent -Force | Out-Null
-        }
+    $outputFullPath = [IO.Path]::GetFullPath((Join-Path (Get-Location).Path $OutputPath))
+    $parent = Split-Path -Parent $outputFullPath
+    if (-not [string]::IsNullOrWhiteSpace($parent)) {
+        New-Item -ItemType Directory -Path $parent -Force | Out-Null
     }
-    [IO.File]::WriteAllText((Join-Path (Get-Location).Path $OutputPath), $output, [Text.UTF8Encoding]::new($false))
-    Write-Output "Source dump written to $OutputPath"
+    [IO.File]::WriteAllText($outputFullPath, $output, [Text.UTF8Encoding]::new($false))
+    Write-Output "Source dump written to $outputFullPath"
 }
