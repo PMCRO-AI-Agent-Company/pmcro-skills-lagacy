@@ -40,6 +40,25 @@ substitutes for current evidence.
 `colony-laws.md` remains the authoritative cross-repo law. It is intentionally
 kept at repository root rather than duplicated into runtime constraints.
 `docs/architecture-governance.md` governs structural reconciliation and
-validation evidence. Legacy split role-plugin packages are archived under
-`docs/legacy/role-plugins/`; `plugins/` contains only the canonical lifecycle
-plugin.
+validation evidence. Legacy split role-plugin packages (5 separate
+`pmcro-{role}` plugins) are archived under `docs/legacy/role-plugins/`.
+
+## Plugin registration (monorepo-wide)
+
+The live marketplace manifest is `P:\agent-skills\.claude-plugin\marketplace.json`
+at the **agent-skills monorepo root**, not inside this project. This project's
+own `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`
+are stale local copies and are not what Claude Code actually reads.
+
+The canonical `pmcro-loop` lifecycle plugin (7 skills: `orchestrate`,
+`plan-frame`, `make-frame`, `check-frame`, `reflect-and-seed`, `queue-claim`,
+`queue-enqueue`) lives at `P:\agent-skills\plugins\pmcro-loop\` — a top-level
+monorepo plugin, sibling to `agentskills` and `agent-design-patterns` — and is
+registered there, not under `projects/pmcro-skills/plugins/`.
+
+`projects/pmcro-skills/plugins/pmcro-loop/` (role-named skills:
+`orchestrator-role`, `planner-role`, `maker-role`, `checker-role`,
+`reflector-role`) is an **orphaned duplicate**, not referenced by the live
+marketplace.json. It overlaps with the TYPE1-gated `task-repo-cleanup` queue
+item and should not be assumed current without checking that item's
+resolution first.

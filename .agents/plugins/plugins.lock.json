@@ -26,6 +26,12 @@
                         "version":  "0.1.0",
                         "pinnedCommit":  "43779e337c1225ecf408348fc71b99a087db62b7",
                         "upstream":  "https://github.com/ShawnDelaineBellazanLoop/pmcro-loop"
+                    },
+                    {
+                        "name":  "pmcro-skills",
+                        "source":  "./projects/pmcro-skills",
+                        "trust":  "first-party",
+                        "version":  "0.1.0"
                     }
                 ]
 }
