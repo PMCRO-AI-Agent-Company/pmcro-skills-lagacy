@@ -1,0 +1,6 @@
+{
+  "name": "pmcro",
+  "version": "0.1.0",
+  "description": "Canonical PMCR-O semantic model for goals, messy seed intent, evolving seed intent, intent lineage, reflection, and convergence.",
+  "skills": ["./skills/"]
+}
