@@ -1,29 +1,24 @@
 # Session State
 
 status: idle
-seed_intent: (idle -- queue.jsonl fully drained. Most recent work (trail
-  cycle-20260903-181500-task-execution-law-and-runtime-handoff) added a
-  colony-laws.md Dispatch clause: execution always happens inside a
-  dispatched PMCR-O cycle, Checker-caught errors resolve via Reflector's
-  next_seed_intent in the *next* cycle, not patched inline. Stopped an
-  in-progress ad hoc dotnet-build/fix loop in pmcro-runtime the moment
-  this was named, left two already-made XML-comment fixes uncommitted
-  there, and queued the remaining build/test verification plus a
-  human-requested AgentsRuntime.* rename (blocked on coordination with a
-  second, concurrently-running session) into pmcro-runtime's own
-  .pmcro/queue/pending/ -- that repo owns its own schema/queue per
-  trail-format.md, so its work lives there, not here.)
+seed_intent: (idle -- 3 new open queue items filed 2026-09-03T18:06:24Z
+  per human "file all as recommended", none claimed yet: task-git-
+  lifecycle-plugin (priority 3), task-desktop-commander-plugin
+  (priority 3), task-anthropic-agent-design-pattern-mapping (priority
+  4). All three were filed per the Dispatch law added this session --
+  enqueued, not built ad hoc -- and per queue-enqueue's own schema, read
+  from its SKILL.md rather than assumed. A future Orchestrator dispatch
+  claims and runs each through the full cycle.)
 task_id: null
 domain: null
 priority: null
 last_cycle_id: cycle-20260903-181500-task-execution-law-and-runtime-handoff
-notes: Backlog, not yet scoped or queued anywhere: (1) git commits should
-  go through a plugin script, not raw git -- widens the provisional
-  ad-hoc-tool-use constraint's scope, needs a new record per its own
-  supersession rule, not an edit in place; (2) Desktop Commander (the MCP
-  connector this session uses for the linked Windows machine) needs its
-  own plugin, same reasoning; (3) PMCR-O <-> Anthropic agent-design-
-  pattern mapping belongs in plugins/agent-design-patterns/, not a new
-  doc. Also unresolved: pmcro-runtime/.pmcro/README.md's own Provider
-  rule ("does not wrap providers merely to rename them") is in tension
-  with (1)/(2) and should be reconciled when those are actually scoped.
+notes: pmcro-runtime's own queue (.pmcro/queue/pending/) separately
+  carries verify-scaffold-build and agentsruntime-namespace-rename
+  (blocked) -- that repo owns its own schema/queue, not this one. The
+  three items filed here each name their recommended approach in their
+  seed_intent (new superseding constraint record for the widened ad-hoc-
+  tool-use scope; reconcile pmcro-runtime's own Provider-rule tension
+  before building the Desktop Commander wrapper; plugins/agent-design-
+  patterns/ as the doc's home, not a new location) so the cycle that
+  claims each doesn't have to rediscover the reasoning from scratch.
