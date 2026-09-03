@@ -7,6 +7,13 @@
 - `.pmcro/trails/` contains sealed historical execution evidence.
 - `.pmcro/constraints/` contains earned authoritative constraints.
 
+## Skill invocation
+- The canonical public selector for every skill in this project is `/pmcro-skills:<skill-name> [optional arguments]`.
+- `<skill-name>` MUST match the skill directory and SKILL.md frontmatter `name`.
+- Agents must use the namespaced selector when explicitly invoking a pmcro-skills skill; never use an unqualified `/skill-name` form.
+- Cross-plugin skills retain their own namespace, e.g. `/pmcro-loop:<skill-name>`.
+- See `.agents/references/invocation.md` for the complete invocation and resolution contract.
+
 ## Lifecycle
 - Orchestrator dispatches one shared queue.
 - Planner produces PlanFrame; Maker executes; Checker independently verifies; Reflector closes the cycle.
