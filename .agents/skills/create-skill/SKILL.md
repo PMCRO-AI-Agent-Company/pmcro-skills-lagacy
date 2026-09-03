@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: Creates or improves an Agent Skill package using the repository's complete SKILL.md, flat assets, references, and scripts contract. Use when authoring, scaffolding, validating, or composing skills for MAF-based agents and workflows.
+description: Creates or improves an Agent Skill package using the repository's complete SKILL.md, flat assets, references, and scripts contract. Use when authoring, scaffolding, validating, or composing skills for MAF-based agents and workflows. Invoke as /pmcro-skills:create-skill.
 license: MIT
 ---
 
@@ -8,6 +8,23 @@ license: MIT
 
 Create a focused, reusable Agent Skill that follows Agent Skills principles and
 this repository's stronger packaging contract.
+
+## Invocation Contract
+
+All skills in this plugin use the canonical namespaced selector:
+
+```text
+/pmcro-skills:<skill-name> [optional arguments]
+```
+
+For this skill:
+
+```text
+/pmcro-skills:create-skill
+```
+
+Never document or generate an unqualified `/create-skill` invocation. See
+`../references/invocation.md` for the complete resolution contract.
 
 ## Architecture
 
@@ -33,12 +50,14 @@ needed; do not create an agent or workflow merely because a skill exists.
 9. Add or update the behavioral evaluation for the skill.
 10. Validate structure, paths, frontmatter, scripts, and representative behavior.
 11. Inspect the final diff; preserve existing user content unless replacement is explicit.
+12. Ensure the generated skill's public invocation is `/pmcro-skills:<skill-name>` and that examples use the same selector.
 
 ## MAF Composition
 
 ```text
 MAF Agent
   -> activates Skill
+       -> /pmcro-skills:<skill-name>
        -> SKILL.md + references/ + assets/ + scripts/
   -> uses tools/MCP
   -> participates in Workflow
@@ -61,8 +80,13 @@ repository intentionally strengthens that contract: every distributed skill
 must contain `assets/`, `references/`, and `scripts/`; use `.gitkeep` when one is
 empty. Specification-required `SKILL.md` remains canonical.
 
+The plugin namespace is part of the public skill contract. A skill directory
+name and its SKILL.md `name` field must resolve to the same selector:
+`/pmcro-skills:<name>`.
+
 ## References
 
+- `../references/invocation.md` — canonical `/pmcro-skills:<skill>` invocation and resolution rules.
 - `references/skill-structure.md` — package shape and authoring invariants.
 - `references/artifact-catalog.md` — supported project artifact templates.
 - `references/agents-md.md` — AGENTS.md guidance.
