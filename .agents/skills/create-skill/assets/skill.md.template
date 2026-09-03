@@ -1,13 +1,24 @@
 ﻿---
 name: <skill-name>
 description: >
-  <What the skill does and when it should be invoked.>
+  <What the skill does and when it should be invoked. Invoke as /pmcro-skills:<skill-name>.>
 license: MIT
 ---
 
 # <Skill Title>
 
 <One-paragraph purpose and scope.>
+
+## Invocation
+
+Every skill in this plugin is invoked with its namespaced selector:
+
+```text
+/pmcro-skills:<skill-name> [optional arguments]
+```
+
+The selector MUST match the package directory name and frontmatter `name`.
+Never generate an unqualified `/skill-name` selector.
 
 ## When to Use
 
@@ -37,8 +48,7 @@ Every completed skill MUST have this structure, with real support files:
 <skill-name>/
 ├── SKILL.md
 ├── assets/
-│   └── templates/
-│       └── <full-file-template>
+│   └── <full-file-template>
 ├── references/
 │   └── <authoritative-reference>.md
 └── scripts/
@@ -57,6 +67,8 @@ Run `scripts/<script>.ps1` when <condition>.
 - [ ] Every claimed capability has implementation backing.
 - [ ] The full package structure is present.
 - [ ] Relevant implementation and tests were actually executed.
+- [ ] The skill is invokable as `/pmcro-skills:<skill-name>`.
+- [ ] All examples and agent handoffs use the namespaced selector.
 
 ## Implementation Gate
 
