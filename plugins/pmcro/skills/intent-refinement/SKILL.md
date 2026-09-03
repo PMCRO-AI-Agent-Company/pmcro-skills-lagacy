@@ -1,27 +1,28 @@
 ---
 name: intent-refinement
-description: Refine messy seed intent into the best current Seed Intent using the PMCR-O cycle and preserve intent lineage. Invoke with /pmcro:intent-refinement.
+description: Carry PMCR-O from human Messy Seed Intent into executable Seed Intents through accountable Plan/Make/Check/Reflect cycles. Invoke with /pmcro:intent-refinement.
 ---
 
 # PMCR-O Intent Refinement
 
-Transform intent through the loop rather than demanding a perfect task statement up front.
+Refine intent through accountable cycles rather than requiring a perfect task statement up front.
 
-## Refinement contract
+## Contract
 
-1. Accept the raw human message as Messy Seed Intent.
-2. Derive the first Seed Intent from the available evidence, constraints, and desired outcome.
-3. Execute the PMCR-O cycle against that Seed Intent.
-4. Record what the cycle learned, changed, verified, or rejected.
-5. Have the Reflector produce the next Seed Intent when another cycle is warranted.
-6. Carry the lineage forward so every Seed Intent can be traced to the original human input and prior reflections.
+1. Preserve the literal human message as Messy Seed Intent.
+2. Let the Orchestrator establish/manage the durable Goal and discover relevant capabilities.
+3. Let Planner, Maker, and Checker produce the evidence needed to understand the operational problem.
+4. Let Reflector synthesize that evidence into the next executable Seed Intent using `/[plugin]:[skill] [optional instructions]`.
+5. Carry intent lineage through every cycle.
+6. Continue consuming Reflector-produced Seed Intents until complete, blocked, superseded, or converged.
 
-The next Seed Intent is a hypothesis for the next cycle, not a declaration that the prior interpretation was perfect.
+The first canonical Seed Intent is an operational interpretation established through the first cycle. Subsequent Seed Intents are normally Reflector-owned outputs, not rephrased human messages.
 
-## Refinement principles
+## Principles
 
-- Preserve the human Goal while allowing the operational Seed Intent to change.
-- Prefer clarification through evidence and checking over speculative assumptions.
-- Do not silently replace a human objective with a locally convenient task.
-- Do not broaden mutation scope merely because a new interpretation is attractive; governed TYPE1 approval still applies.
-- Stop refining when the objective is complete, converged, blocked, or requires human decision.
+- Preserve the human Goal while allowing the operational Seed Intent to evolve.
+- Prefer evidence and checking over unsupported assumptions.
+- Do not silently replace a human objective with a convenient local task.
+- Use the marketplace capability surface to resolve plugin/skill addresses.
+- Repeated failures should trigger O-Mode strategy reassessment rather than blind repetition.
+- Do not broaden mutation scope without governance and required approvals.
