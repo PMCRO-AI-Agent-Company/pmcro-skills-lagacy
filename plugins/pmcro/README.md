@@ -71,7 +71,18 @@ Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilitie
 
 ## Text-only source transport
 
-Use `/pmcro:source-dump` or `scripts/export-source-dump.ps1` to produce a text-only Source Dump for third-party LLMs that cannot directly consume ZIP files or repository trees.
+Use `/pmcro:source-dump` or the bundled `skills/source-dump/scripts/export-source-dump.ps1` to produce a text-only Source Dump for third-party LLMs that cannot directly consume ZIP files or repository trees.
+
+The Source Dump skill keeps its contract and exporter under its own skill directory, following the Agent Skills layout:
+
+```text
+skills/source-dump/
+├── SKILL.md
+├── references/
+│   └── source-dump.md
+└── scripts/
+    └── export-source-dump.ps1
+```
 
 The Source Dump preserves repository-relative paths and file boundaries and can carry selected source, assets, references, scripts, skills, templates, configuration, and permitted state. Protected material is excluded by default.
 
@@ -82,25 +93,10 @@ Repository/project context → Source Dump
 PMCR-O operational state   → Text Protocol
 ```
 
-See `references/source-dump.md` for the contract and format.
-
 ## Plugin boundaries
 
 - `pmcro` — semantic contracts and lifecycle.
 - `pmcro-loop` — runtime/execution engine.
 - `pmcro-skills` — executable governance and capabilities.
-- Assets, templates, and generated artifact catalogs remain outside `pmcro` unless another capability explicitly consumes them.
 
-## References
-
-- `references/architecture.md`
-- `references/seed-intent-contract.md`
-- `references/o-mode.md`
-- `references/accountability-and-trails.md`
-- `references/trail-frame-schema.md`
-- `references/governance-knowledge.md`
-- `references/knowledge-promotion.md`
-- `references/trail-as-product.md`
-- `references/session-bootstrap.md`
-- `references/intent-lifecycle.md`
-- `references/source-dump.md`
+Core semantic references for the plugin remain under `plugins/pmcro/references/`; skill-specific supporting material belongs inside its corresponding `plugins/pmcro/skills/<skill>/` directory.
