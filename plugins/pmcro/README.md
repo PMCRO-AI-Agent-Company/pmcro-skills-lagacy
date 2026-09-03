@@ -1,6 +1,6 @@
 # PMCR-O Semantic Model
 
-The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, convergence, and text-only context transport.
+The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, convergence, and external context transport.
 
 ## Core loop
 
@@ -63,40 +63,32 @@ PMCR-O distinguishes **laws/principles**, **constraints**, **rules/policies**, *
 
 Trails can be promoted into scoped constraints, rules/policies, strategy evidence, skill candidates, training examples, evaluation cases, or audit-only history. A Trail Product packages validated operational experience for reuse; execution identity, credentials, accounts, and approvals come from the consumer runtime.
 
-Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is optional and is not a prerequisite for the core runtime.
-
 ## Session bootstrap
 
 Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
 
-## Text-only source transport
+## Packaging and external LLM transport
 
-Use `/pmcro:source-dump` or the bundled `skills/source-dump/scripts/export-source-dump.ps1` to produce a text-only Source Dump for third-party LLMs that cannot directly consume ZIP files or repository trees.
+Use `/pmcro:package` to generate a consumer-specific projection from canonical PMCR-O source. Supported projections are text, ZIP, directory, Gemini, and Agent Skills directory layouts.
 
-The Source Dump skill keeps its contract and exporter under its own skill directory, following the Agent Skills layout:
+The lower-level `/pmcro:source-dump` capability supplies the `PMCR-O-SOURCE-DUMP/1` text transport used by the `txt` projection. Runtime-specific layouts are generated projections, not alternate canonical source trees.
+
+Skill-specific resources remain colocated with their skill:
 
 ```text
-skills/source-dump/
+skills/<skill>/
 ├── SKILL.md
 ├── references/
-│   └── source-dump.md
-└── scripts/
-    └── export-source-dump.ps1
+├── scripts/
+└── assets/
 ```
 
-The Source Dump preserves repository-relative paths and file boundaries and can carry selected source, assets, references, scripts, skills, templates, configuration, and permitted state. Protected material is excluded by default.
-
-The Source Dump and PMCR-O Text Protocol are complementary:
-
-```text
-Repository/project context → Source Dump
-PMCR-O operational state   → Text Protocol
-```
+The cross-cutting PMCR-O semantic contracts are owned by the `foundation` Agent Skill at `skills/foundation/`.
 
 ## Plugin boundaries
 
-- `pmcro` — semantic contracts and lifecycle.
+- `pmcro` — plugin manifests and discovery boundary.
 - `pmcro-loop` — runtime/execution engine.
 - `pmcro-skills` — executable governance and capabilities.
 
-Core semantic references for the plugin remain under `plugins/pmcro/references/`; skill-specific supporting material belongs inside its corresponding `plugins/pmcro/skills/<skill>/` directory.
+The plugin directory does not carry a plugin-level `references/` or `scripts/` tree. Supporting material belongs to the Agent Skill that owns it.
