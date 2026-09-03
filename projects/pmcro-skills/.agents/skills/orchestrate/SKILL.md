@@ -1,9 +1,18 @@
 ---
 name: orchestrate
-description: Run one full PMCR-O cycle. Claims from this repo's colony priority queue when session is idle, then plan → make → check → reflect. Use whenever this repo should advance autonomously or a human hands off an intent.
+description: Run one full PMCR-O cycle. Claims this repo's colony priority queue when idle, then plan → make → check → reflect. Invoke as /pmcro-skills:orchestrate.
 ---
 
 # Orchestrate (PMCR-O)
+
+## Invocation
+
+```text
+/pmcro-skills:orchestrate [optional arguments]
+```
+
+Use the canonical `/pmcro-skills:<skill-name>` namespace for every skill this
+plugin explicitly invokes.
 
 ## Preconditions
 - `.pmcro/` exists at this repo's root.
@@ -12,11 +21,11 @@ description: Run one full PMCR-O cycle. Claims from this repo's colony priority 
 
 ## Algorithm
 1. **Read session-state** (`.pmcro/session-state.md`).
-2. **If idle / no seed** → run `queue-claim`. A queue snapshot with no open item is not sufficient reason to declare the colony complete; Reflector owns the justified idle disposition.
-3. **Plan** → load `plan-frame` with current seed + domain + earned constraints.
-4. **Make** → load `make-frame` (or spawn Maker subagent) with PlanFrame.
-5. **Check** → load `check-frame` with PlanFrame + Maker artifacts.
-6. **Reflect** → load `reflect-and-seed`. Reflector closes the queue item and may enqueue follow-ups.
+2. **If idle / no seed** → invoke `/pmcro-skills:queue-claim`. A queue snapshot with no open item is not sufficient reason to declare the colony complete; Reflector owns the justified idle disposition.
+3. **Plan** → invoke `/pmcro-skills:plan-frame` with current seed + domain + earned constraints.
+4. **Make** → invoke `/pmcro-skills:make-frame` (or spawn Maker subagent) with PlanFrame.
+5. **Check** → invoke `/pmcro-skills:check-frame` with PlanFrame + Maker artifacts.
+6. **Reflect** → invoke `/pmcro-skills:reflect-and-seed`. Reflector closes the queue item and may enqueue follow-ups.
 7. Write trail id into session-state. If Reflector left a new seed, the next cycle can start immediately or on heartbeat.
 
 ## Dispatch contract
@@ -32,8 +41,8 @@ Reflector, with no shortcuts on failure. If Checker's CheckFrame is
 `verdict: fail`, Orchestrator does **not** dispatch back to Maker or
 Planner mid-cycle. Checker hands the fail to Reflector; Reflector closes
 this cycle (queue item -> `blocked`, RetryContext recorded, new seed
-intent written per `reflect-and-seed`); only then does Orchestrator open
-the **next** cycle and dispatch it fresh to Planner. A failed check is a
+intent written per `reflect-and-seed`); only then does Orchestrator open the
+**next** cycle and dispatch it fresh to Planner. A failed check is a
 cycle boundary, never an in-cycle loop.
 
 ## Hard rules
