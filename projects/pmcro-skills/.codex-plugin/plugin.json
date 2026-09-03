@@ -1,7 +1,11 @@
 {
   "name": "pmcro-skills",
   "version": "0.1.0",
-  "description": "PMCR-O meta-governance skill repo — colony laws, trail-format conventions, cross-repo reference docs, plus its own self-contained PMCR-O agent loop.",
+  "description": "PMCR-O meta-governance skill repo. Skills use the canonical namespaced invocation form /pmcro-skills:<skill>.",
   "skills": ["./.agents/skills/"],
-  "agents": ["./.agents/agents/"]
+  "agents": ["./.agents/agents/"],
+  "invocation": {
+    "syntax": "/pmcro-skills:<skill-name> [optional arguments]",
+    "namespace": "pmcro-skills"
+  }
 }
