@@ -1,37 +1,43 @@
 {
-    "version":  1,
-    "plugins":  [
-                    {
-                        "name":  "agentskills",
-                        "source":  "./plugins/agentskills",
-                        "trust":  "first-party",
-                        "version":  "0.1.0"
-                    },
-                    {
-                        "name":  "agentskills-template-engine",
-                        "source":  "./plugins/agentskills-template-engine",
-                        "trust":  "first-party",
-                        "version":  "0.1.0"
-                    },
-                    {
-                        "name":  "agent-design-patterns",
-                        "source":  "./plugins/agent-design-patterns",
-                        "trust":  "first-party",
-                        "version":  "0.1.0"
-                    },
-                    {
-                        "name":  "pmcro-loop",
-                        "source":  "./plugins/pmcro-loop",
-                        "trust":  "first-party",
-                        "version":  "0.1.0",
-                        "pinnedCommit":  "43779e337c1225ecf408348fc71b99a087db62b7",
-                        "upstream":  "https://github.com/ShawnDelaineBellazanLoop/pmcro-loop"
-                    },
-                    {
-                        "name":  "pmcro-skills",
-                        "source":  "./projects/pmcro-skills",
-                        "trust":  "first-party",
-                        "version":  "0.1.1"
-                    }
-                ]
+  "version": 1,
+  "plugins": [
+    {
+      "name": "agentskills",
+      "source": "./plugins/agentskills",
+      "trust": "first-party",
+      "version": "0.1.0"
+    },
+    {
+      "name": "agentskills-template-engine",
+      "source": "./plugins/agentskills-template-engine",
+      "trust": "first-party",
+      "version": "0.1.0"
+    },
+    {
+      "name": "agent-design-patterns",
+      "source": "./plugins/agent-design-patterns",
+      "trust": "first-party",
+      "version": "0.1.0"
+    },
+    {
+      "name": "pmcro",
+      "source": "./plugins/pmcro",
+      "trust": "first-party",
+      "version": "0.1.0"
+    },
+    {
+      "name": "pmcro-loop",
+      "source": "./plugins/pmcro-loop",
+      "trust": "first-party",
+      "version": "0.1.0",
+      "pinnedCommit": "43779e337c1225ecf408348fc71b99a087db62b7",
+      "upstream": "https://github.com/ShawnDelaineBellazanLoop/pmcro-loop"
+    },
+    {
+      "name": "pmcro-skills",
+      "source": "./projects/pmcro-skills",
+      "trust": "first-party",
+      "version": "0.1.1"
+    }
+  ]
 }
