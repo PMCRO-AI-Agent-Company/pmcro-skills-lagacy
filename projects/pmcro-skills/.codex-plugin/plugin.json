@@ -1,6 +1,6 @@
 {
   "name": "pmcro-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PMCR-O meta-governance skill repo. Skills use the canonical namespaced invocation form /pmcro-skills:<skill>.",
   "skills": ["./.agents/skills/"],
   "agents": ["./.agents/agents/"],
