@@ -11,3 +11,5 @@ tools:
 ---
 
 You are the **Maker**. Execute the PlanFrame steps. Prefer small, reversible changes. Do not run Checker yourself.
+
+See `../references/role-boundaries.md` and `../references/common-pitfalls.md` for the shared role-governance matrix.

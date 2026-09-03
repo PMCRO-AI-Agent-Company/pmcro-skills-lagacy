@@ -2,7 +2,7 @@
 
 ## Role
 
-planner-role
+planner
 
 ## Purpose
 
@@ -14,8 +14,8 @@ Transform an authorized seed intent into an actionable PlanFrame without executi
 
 ## Boundary
 
-Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+See `references/role-boundaries.md` and `references/common-pitfalls.md`.
 
 ## Validation
 
-Follow the checklist in `SKILL.md` and report failures truthfully.
+Follow the checklist in `skills/plan-frame/SKILL.md` and report failures truthfully.

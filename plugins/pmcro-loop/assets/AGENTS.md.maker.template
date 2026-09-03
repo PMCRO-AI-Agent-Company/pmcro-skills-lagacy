@@ -2,7 +2,7 @@
 
 ## Role
 
-maker-role
+maker
 
 ## Purpose
 
@@ -14,8 +14,8 @@ Execute only the steps claimed by the PlanFrame, honor approval and write-tool c
 
 ## Boundary
 
-Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+See `references/role-boundaries.md` and `references/common-pitfalls.md`.
 
 ## Validation
 
-Follow the checklist in `SKILL.md` and report failures truthfully.
+Follow the checklist in `skills/make-frame/SKILL.md` and report failures truthfully.

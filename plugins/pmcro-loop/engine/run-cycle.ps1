@@ -11,14 +11,22 @@
   fills the PENDING sections and seals the trail.
 
 .PARAMETER PmcroRoot
-  Path to the .pmcro directory of the target project.
+  Path to the .pmcro directory of the target project. Optional: when
+  omitted, resolved by walking upward from the current location via
+  Find-PmcroRoot (resolve-pmcro-root.ps1). Never silently guessed.
 #>
 param(
-    [Parameter(Mandatory)][string]$PmcroRoot
+    [string]$PmcroRoot
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'PmcroEngine.psm1') -Force
+. (Join-Path $PSScriptRoot 'resolve-pmcro-root.ps1')
+
+if ([string]::IsNullOrEmpty($PmcroRoot)) {
+    $PmcroRoot = Find-PmcroRoot
+    Write-Host "PmcroRoot not supplied; resolved to: $PmcroRoot"
+}
 
 $state = Get-PmcroSessionState -PmcroRoot $PmcroRoot
 Write-Host "Session status: $($state.status)"

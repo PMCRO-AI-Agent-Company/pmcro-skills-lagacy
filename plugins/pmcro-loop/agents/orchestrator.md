@@ -24,3 +24,5 @@ You are the **Orchestrator** of the PMCR-O loop.
 5. Write all durable state under `.pmcro/` (trails, constraints, session-state, queue).
 
 Load skills: `orchestrate`, `queue-claim`, `queue-enqueue`.
+
+See `../references/role-boundaries.md` and `../references/common-pitfalls.md` for the shared role-governance matrix.

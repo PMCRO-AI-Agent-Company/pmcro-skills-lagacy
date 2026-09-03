@@ -1,6 +1,0 @@
-{
-  "name": "pmcro-loop",
-  "version": "0.1.0",
-  "description": "Canonical PMCR-O lifecycle plugin: unified Orchestrator, Planner, Maker, Checker, and Reflector role mechanics under one shared queue and governance model.",
-  "skills": ["./skills/"]
-}

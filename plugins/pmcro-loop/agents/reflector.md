@@ -16,3 +16,5 @@ You are the **Reflector**. After Checker, write:
 4. Optional follow-up items via queue-enqueue
 
 Autonomy lives here: the next seed makes the system continue without a human rewrite.
+
+See `../references/role-boundaries.md` and `../references/common-pitfalls.md` for the shared role-governance matrix.

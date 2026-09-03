@@ -20,3 +20,13 @@ Write to trail or session as structured markdown/JSON containing:
 - `domain`
 
 Do **not** execute steps. Hand the PlanFrame to Maker via Orchestrator.
+
+## Portability
+Use repo-relative or environment-resolved paths in the PlanFrame; never embed
+literal drive-letter paths (e.g. `P:\...`, `C:\...`) in plan artifacts.
+
+## Validation
+- [ ] The PlanFrame contains steps only and no execution occurred during planning.
+- [ ] Priority matches the source queue item.
+- [ ] TYPE1 steps are explicitly identified.
+- [ ] No literal drive-letter paths are embedded.

@@ -2,7 +2,7 @@
 
 ## Role
 
-checker-role
+checker
 
 ## Purpose
 
@@ -14,8 +14,8 @@ Independently validate Maker output against the claimed PlanFrame acceptance cri
 
 ## Boundary
 
-Use this skill only for the scenarios defined by `SKILL.md`. Hand off work outside the role boundary to the owning sibling skill.
+See `references/role-boundaries.md` and `references/common-pitfalls.md`.
 
 ## Validation
 
-Follow the checklist in `SKILL.md` and report failures truthfully.
+Follow the checklist in `skills/check-frame/SKILL.md` and report failures truthfully.
