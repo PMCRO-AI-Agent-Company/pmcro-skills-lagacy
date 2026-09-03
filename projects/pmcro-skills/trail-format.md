@@ -32,3 +32,11 @@ form) without confirming it against that runtime's actual writer.
 `pmcro-skills` documents schema classes generically and does not hold
 a stake in — or hardcode a path to — any specific external repo's
 instance of either class.
+
+## Retrospective trails
+This repo's own live engine additionally produces a third, derived shape:
+a retrospective trail (`retro-<timestamp>-<slug>.md`, via
+`New-PmcroRetrospectiveTrail`) — Class A, but reconstructing a Run from a
+historical/third-party export rather than recording one as it happens. No
+`run_id`/queue claim, since there is nothing live to recover. See
+`pmcro:foundation` -> `retrospective-trail-reconstruction.md`.

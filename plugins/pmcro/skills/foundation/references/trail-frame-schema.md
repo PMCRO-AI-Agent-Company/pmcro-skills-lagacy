@@ -15,6 +15,9 @@ frame:
   evidence_refs: []
   backward_refs: []
   timestamp: 2026-09-03T00:00:00Z
+  run_id: null            # set only if this frame's cycle involved a live Run
+  checkpoint_ref: null    # path to the checkpoint that was active, if any
+  recovery_decision: null # resume|compensate|retry|null, plus evidence, if this frame followed an interruption
 ```
 
 ## Role additions

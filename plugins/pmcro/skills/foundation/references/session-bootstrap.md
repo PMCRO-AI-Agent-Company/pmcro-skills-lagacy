@@ -7,6 +7,8 @@ A runtime session should initialize PMCR-O context before accepting autonomous w
 1. Discover the `.agents/` framework instructions and installed capability surface.
 2. Load PMCR-O semantic contracts from the `pmcro` plugin.
 3. Load `.pmcro/session-state.md`, queue, constraints, approvals, and relevant active trails.
+3.4. Scan for `status: intake` queue items (a message durably captured by `/send-message` but never classified, per `seed-intent-contract.md`). Resolve each one (`enqueued` | `informational` | `split`) before claiming any other work — a human/agent/external message is never silently skipped just because the session that received it disappeared.
+3.5. Scan claimed queue items for a stale lease (`lease_expires_at` passed or missing heartbeat). Treat any such item as an interrupted Run and apply Recovery (`run-recovery-lease.md`) before doing anything else with it — never resume or retry it blindly.
 4. Establish the current Goal and determine whether an active Seed Intent exists.
 5. If this is a new human task, preserve the incoming message as Messy Seed Intent.
 6. Resolve any explicit `/[plugin]:[skill]` command against the marketplace.

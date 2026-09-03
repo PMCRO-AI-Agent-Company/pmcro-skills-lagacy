@@ -25,9 +25,27 @@ $rootPath = (Resolve-Path -LiteralPath $Root).Path
 function Get-RepoRelativePath {
     param([string]$Path)
 
-    $full = [IO.Path]::GetFullPath($Path)
-    $root = [IO.Path]::GetFullPath($rootPath)
-    $relative = [IO.Path]::GetRelativePath($root, $full)
+    try {
+        $full = [IO.Path]::GetFullPath($Path)
+    }
+    catch {
+        Write-Warning "GetFullPath failed for: $Path"
+        throw
+    }
+    try {
+        $root = [IO.Path]::GetFullPath($rootPath)
+    }
+    catch {
+        Write-Warning "GetFullPath failed for rootPath: $rootPath"
+        throw
+    }
+    if (-not $root.EndsWith([IO.Path]::DirectorySeparatorChar)) {
+        $root = $root + [IO.Path]::DirectorySeparatorChar
+    }
+    $relative = $full
+    if ($full.StartsWith($root, [StringComparison]::OrdinalIgnoreCase)) {
+        $relative = $full.Substring($root.Length)
+    }
     return ($relative -replace '\\', '/')
 }
 
@@ -83,7 +101,14 @@ function Test-TextFile {
     }
 }
 
-$files = Get-ChildItem -LiteralPath $rootPath -File -Recurse -Force |
+$scanRoots = @($rootPath)
+if ($Include.Count -gt 0) {
+    $scanRoots = $Include | ForEach-Object { Join-Path $rootPath ($_ -replace '/', [IO.Path]::DirectorySeparatorChar) }
+}
+
+$files = $scanRoots |
+    Where-Object { Test-Path -LiteralPath $_ } |
+    ForEach-Object { Get-ChildItem -LiteralPath $_ -File -Recurse -Force } |
     ForEach-Object {
         $relative = Get-RepoRelativePath -Path $_.FullName
         [pscustomobject]@{ Item = $_; RelativePath = $relative }
@@ -145,7 +170,12 @@ if ([string]::IsNullOrWhiteSpace($OutputPath)) {
     [Console]::Out.Write($output)
 }
 else {
-    $outputFullPath = [IO.Path]::GetFullPath((Join-Path (Get-Location).Path $OutputPath))
+    if ([IO.Path]::IsPathRooted($OutputPath)) {
+        $outputFullPath = [IO.Path]::GetFullPath($OutputPath)
+    }
+    else {
+        $outputFullPath = [IO.Path]::GetFullPath((Join-Path (Get-Location).Path $OutputPath))
+    }
     $parent = Split-Path -Parent $outputFullPath
     if (-not [string]::IsNullOrWhiteSpace($parent)) {
         New-Item -ItemType Directory -Path $parent -Force | Out-Null

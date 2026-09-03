@@ -8,8 +8,8 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\AgentSkills.AppHost\AgentSkills.AppHost.csproj" />
-    <PackageReference Include="Aspire.Hosting.Testing" />
-    <PackageReference Include="xunit.v3.mtp-v2" />
+    <PackageReference Include="Aspire.Hosting.Testing" Version="13.5.3" />
+    <PackageReference Include="xunit.v3.mtp-v2" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Xunit" />

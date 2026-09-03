@@ -73,3 +73,7 @@ The narrowest valid scope should be preserved. Evidence should support confidenc
 ## Example
 
 A Maker using a permitted interaction path receives a service challenge. Checker verifies the workflow did not complete. Reflector records an earned constraint scoped to the affected service and interaction context, then issues a new Seed Intent using a compliant alternative strategy. The original failure remains part of the trail instead of being erased.
+
+## Retrospective trails
+
+The schema above assumes a live cycle producing Frames as work happens. Pre-colony work — a prior chat transcript, a non-PMCR-O agent session, an earlier interrupted session's own summary — can also be brought into accountable history, but only through deliberate reconstruction with weaker, explicitly-marked evidence. See `retrospective-trail-reconstruction.md`.

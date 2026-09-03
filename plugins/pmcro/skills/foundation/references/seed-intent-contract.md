@@ -6,6 +6,14 @@ A human message is **Messy Seed Intent**. It may be a sentence, a command, a fra
 
 A canonical **Seed Intent** is produced for the next cycle by PMCR-O. The Reflector is the default owner of the next-seed handoff after the first cycle.
 
+## Durable capture at the message boundary
+
+`/send-message` is the canonical ingress for a Messy Seed Intent into the colony's one shared queue (`.pmcro/queue.jsonl`). Before any classification reasoning happens, the raw message is durably persisted verbatim as a queue item with `status: intake` (`Add-PmcroIntake` / `plugins/pmcro-loop/scripts/intake-message.ps1`) — deterministic bookkeeping, no model call — so the message survives a session interruption that happens immediately after receipt. Orchestrator later classifies it and resolves the item (`Resolve-PmcroIntake` / `resolve-intake.ps1`) into exactly one disposition: `enqueued` (rewritten into a normal canonical Seed Intent, `status: open`), `informational` (`status: done`, no work follows), or `split` (closed `done`, with each derived item separately enqueued and pointing back via `derived_from_intake`). The original message is preserved permanently in `messy_seed_text` regardless of disposition. See `.agents/commands/send-message.md` and `.pmcro/queue.schema.md`.
+
+An `intake` item that is never resolved (session interrupted mid-classification) is not silently dropped: `session-bootstrap.md` step 3.4 and `engine/run-cycle.ps1`'s Step -1 both scan for it on reconnect and refuse to claim other work until it is classified — the same never-blindly-retry discipline `run-recovery-lease.md` applies to interrupted Runs, applied here to interrupted intake.
+
+`/seed-intent`'s typed API/MCP path is a separate, already-durable ingress and is not affected by this mechanism.
+
 ## Canonical command form
 
 ```text

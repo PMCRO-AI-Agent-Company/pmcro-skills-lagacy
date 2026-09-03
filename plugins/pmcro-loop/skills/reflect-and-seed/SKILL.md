@@ -10,9 +10,13 @@ description: Close the cycle. Write trail, promote earned constraints, set next 
 - Current task_id from session-state
 
 ## Actions
-1. **Trail** — append under `.pmcro/trails/<cycle-id>.md` (or jsonl) summarizing plan / make / check / outcome / lessons.
-2. **Earned constraints** — if Checker or experience produced durable rules, write under `.pmcro/constraints/`.
-3. **Queue item** — set status `done` or `blocked` on the claimed task in `queue.jsonl`.
+1. **Trail** — append under `.pmcro/trails/<cycle-id>.md` (or jsonl) summarizing plan / make / check / outcome / lessons. If this cycle's own work was reconstructing pre-colony history from an export rather than performing a live Run, use `../../scripts/new-retrospective-trail.ps1` / `New-PmcroRetrospectiveTrail` instead — see `retrospective-trail-reconstruction.md` for the evidenced/inferred discipline that applies there.
+2. **Earned constraints** — if Checker or experience produced durable rules, write under `.pmcro/constraints/` via `../../scripts/new-constraint.ps1` / `New-PmcroConstraint` (see `.pmcro/constraints.schema.md` and `knowledge-promotion.md`). If validated trails are ready to be packaged for reuse in another runtime, write a manifest under `.pmcro/products/` via `../../scripts/new-trail-product.ps1` / `New-PmcroTrailProduct` (see `.pmcro/products.schema.md` and `trail-as-product.md`). Both are file-mechanics only — the promotion/packaging judgment itself belongs to this step, not to the script.
+3. **Queue item** — set status `done` or `blocked` on the claimed task in `queue.jsonl`, and close out the Run: clear
+   `lease_owner`/`heartbeat_at`/`lease_expires_at`/`checkpoint_ref` and delete the checkpoint file at `checkpoint_ref`
+   (`../../scripts/complete-run.ps1` / `Complete-PmcroRun` does this deterministically). The Trail just sealed
+   in step 1 is what persists; the Run is not needed after this cycle closes — see `run-recovery-lease.md`
+   "Relationship to Trail/Frame".
 4. **Next seed**
    - If natural follow-up exists → write it into session-state **or** enqueue via `queue-enqueue` and set session idle.
    - If cycle complete with no follow-up → `status: idle`.
