@@ -11,7 +11,7 @@ description: Close the cycle, preserve accountable Frame history, promote earned
 /pmcro-skills:reflect-and-seed
 ```
 
-Use `/pmcro-skills:queue-enqueue` for follow-up queue writes. Consult `/pmcro:intent-refinement`, `/pmcro:accountability-and-trails`, and `/pmcro:seed-intent-contract` for semantic contracts.
+Use `/pmcro-skills:queue-enqueue` for follow-up queue writes. Consult the `pmcro` references `seed-intent-contract.md`, `accountability-and-trails.md`, and `knowledge-promotion.md` for semantic contracts.
 
 ## Ownership
 
