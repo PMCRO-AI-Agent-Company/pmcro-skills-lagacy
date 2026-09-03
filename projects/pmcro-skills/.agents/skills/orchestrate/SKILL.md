@@ -1,13 +1,13 @@
 ---
 name: orchestrate
-description: Run one full PMCR-O cycle. Claims from the colony priority queue when session is idle, then plan → make → check → reflect. Use whenever the project should advance autonomously or a human hands off an intent.
+description: Run one full PMCR-O cycle. Claims from this repo's colony priority queue when session is idle, then plan → make → check → reflect. Use whenever this repo should advance autonomously or a human hands off an intent.
 ---
 
 # Orchestrate (PMCR-O)
 
 ## Preconditions
-- `.pmcro/` exists (copy from `template/.pmcro/` if missing).
-- Colony queue lives at `.pmcro/queue.jsonl` (single backlog for the whole colony).
+- `.pmcro/` exists at this repo's root.
+- Colony queue lives at `.pmcro/queue.jsonl` (single backlog for this repo).
 
 ## Algorithm
 1. **Read session-state** (`.pmcro/session-state.md`).
@@ -20,9 +20,9 @@ description: Run one full PMCR-O cycle. Claims from the colony priority queue wh
 
 ## Hard rules
 - Orchestrator is the **only** role that dispatches.
-- C-suite plugins supply **domain scope** (Owns / Does-not-own), never their own loop.
 - Priority scale: 0 stop-the-line → 1 CEO/CoS → 2 domain critical → 3 normal → 4 backlog.
 - Never invent priority; only CEO/CoS or Reflector policy may reorder.
+- Never read or write another repo's `.pmcro/` state.
 
 ## Outputs
 - Updated `.pmcro/session-state.md`
@@ -31,11 +31,10 @@ description: Run one full PMCR-O cycle. Claims from the colony priority queue wh
 
 ## Implementation
 Steps 1-2 (read state, claim if idle) and trail allocation are
-deterministic and implemented in `../../engine/PmcroEngine.psm1`,
-runnable via `../../engine/run-cycle.ps1 -PmcroRoot <path to .pmcro>`.
+deterministic and implemented in `../../../engine/PmcroEngine.psm1`,
+runnable via `../../../engine/run-cycle.ps1 -PmcroRoot <path to .pmcro>`.
 This script performs no reasoning: it claims a task and writes a trail
 skeleton with PlanFrame/MakeFrame/CheckFrame/Reflection sections marked
-`PENDING`, then stops. Steps 3-6 (the actual Plan/Make/Check/Reflect
-content) require a model and are not automated by this script -- an
-agent must fill in the PENDING sections and seal the trail
-(`trail_sealed: true`).
+`PENDING`, then stops. Steps 3-6 require a model and are not automated
+by this script — an agent must fill in the PENDING sections and seal
+the trail (`trail_sealed: true`).

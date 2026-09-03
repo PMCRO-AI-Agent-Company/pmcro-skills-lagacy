@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "pathFilters": [
+    ".agents/",
+    ".pmcro/",
+    "engine/",
+    "colony-laws.md",
+    "trail-format.md",
+    "plugin.json"
+  ]
+}
