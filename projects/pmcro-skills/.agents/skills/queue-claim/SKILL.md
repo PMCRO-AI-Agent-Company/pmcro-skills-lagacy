@@ -1,9 +1,15 @@
 ---
 name: queue-claim
-description: Claim the highest-priority eligible open item from this repo's own colony queue (.pmcro/queue.jsonl) and install it as the current seed in session-state. Use when Orchestrator is idle.
+description: Claim the highest-priority eligible open item from this repo's own colony queue (.pmcro/queue.jsonl) and install it as the current seed in session-state. Use when Orchestrator is idle. Invoke as /pmcro-skills:queue-claim.
 ---
 
 # Queue Claim
+
+## Invocation
+
+```text
+/pmcro-skills:queue-claim
+```
 
 ## Source of truth
 `.pmcro/queue.jsonl` — one line per JSON object, this repo's own queue only.
