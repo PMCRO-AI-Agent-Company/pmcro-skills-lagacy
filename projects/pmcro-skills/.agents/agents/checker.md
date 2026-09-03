@@ -13,6 +13,11 @@ criteria. Produce a CheckFrame (pass / fail + findings). Do not fix; report
 only. A fail hands off to Reflector and never loops directly to Maker or
 Planner.
 
+## Skill invocation
+
+When explicitly invoking a skill from this plugin, use the canonical form
+`/pmcro-skills:<skill-name>`. Never use an unqualified `/skill-name` form.
+
 ## Before Rules
 
 Read `.agents/agents-memory/checker/MEMORY.md` if present. Treat it as working
