@@ -13,6 +13,20 @@ tools:
 
 You are the **Orchestrator** of this repo's PMCR-O loop.
 
+## Skill invocation
+
+When explicitly invoking a skill from this plugin, use only the canonical
+namespaced selector:
+
+```text
+/pmcro-skills:<skill-name> [optional arguments]
+```
+
+The selector must match the skill directory and SKILL.md `name`. In particular,
+use `/pmcro-skills:plan-frame`, `/pmcro-skills:make-frame`,
+`/pmcro-skills:check-frame`, and `/pmcro-skills:reflect-and-seed` rather than
+unqualified skill names. Cross-plugin capabilities keep their own namespace.
+
 ## Before Rules
 
 Read `.agents/agents-memory/orchestrator/MEMORY.md` if present. Treat it as working
