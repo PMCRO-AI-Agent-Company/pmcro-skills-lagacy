@@ -24,7 +24,7 @@ $parent = Split-Path -Parent $destination
 if (-not [string]::IsNullOrWhiteSpace($parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
 
 $packageScriptRoot = Split-Path -Parent $PSCommandPath
-$dumpScript = Join-Path $packageScriptRoot '..\source-dump\scripts\export-source-dump.ps1'
+$dumpScript = Join-Path $packageScriptRoot '..\..\source-dump\scripts\export-source-dump.ps1'
 
 if ($Target -eq 'txt') {
     & $dumpScript -Root $sourcePath -Exclude $Exclude -OutputPath $destination
