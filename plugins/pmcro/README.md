@@ -1,48 +1,90 @@
-# PMCR-O Intent Model
+# PMCR-O Semantic Model
 
-The `pmcro` plugin is the semantic layer for PMCR-O. It defines what an objective, intent, seed intent, reflection, lineage, and convergence mean without owning execution mechanics.
+The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, and convergence.
 
-## Intent progression
+## Core loop
 
 ```text
-Human input
-   ↓
-Messy Seed Intent
-   ↓
-PMCR-O cycle
-   ↓
-Seed Intent
-   ↓
+Human
+  ↓
+Messy Seed Intent (literal human message/command)
+  ↓
+Orchestrator (Goal + capability discovery + O-Mode)
+  ↓
+Planner
+  ↓
+Maker
+  ↓
+Checker
+  ↓
 Reflector
-   ↓
-Next Seed Intent
-   ↓
-...repeat...
-   ↓
-Converged / Resolved Intent
+  ↓
+Seed Intent: /[plugin]:[skill] [optional instructions]
+  ↓
+next PMCR-O cycle
+  ↓
+...
+  ↓
+Converged Intent
 ```
 
-Human input is intentionally treated as **messy seed intent**. The system must not require the human to pre-format a perfect task specification.
+## Intent
 
-A **Seed Intent** is the current operational hypothesis for the next PMCR-O cycle. The Reflector owns the handoff of the next Seed Intent after each cycle.
+- **Goal** — durable high-level objective managed by the Orchestrator.
+- **Messy Seed Intent** — raw human message/command preserved verbatim as provenance.
+- **Seed Intent** — structured executable command for the next cycle, normally produced by Reflector after the first cycle.
+- **Converged Intent** — sufficiently resolved operational intent under current evidence, constraints, and acceptance conditions.
 
-A **Goal** is the durable high-level objective managed by the Orchestrator. A Seed Intent is a current step toward that goal, not the goal itself.
+Once canonical Seed Intent exists, the original Messy Seed Intent remains historical provenance and is not the active control instruction.
 
-A **Converged Intent** is the resolved operational objective after sufficient refinement, evidence, constraint discovery, and checking. `True Intent` may be used informally, but executable contracts should prefer `converged_intent` or `resolved_intent`.
+## Seed Intent command form
 
-## Boundaries
+```text
+/[plugin]:[skill] [optional instructions]
+```
 
-- `pmcro` defines semantic contracts and lifecycle meaning.
-- `pmcro-skills` provides executable skills and governance capabilities.
-- `pmcro-loop` provides the execution runtime.
-- Assets, templates, generated artifacts, and asset catalogs do not belong in this plugin.
+The command resolves against the installed marketplace capability surface. Planner/Maker/Checker evidence informs the capability choice; Reflector packages the next operational command.
 
-## Invocation
+## O-Mode: Dynamic Resonance
 
-The conceptual skills are invoked with the plugin namespace, for example:
+`O` is the adaptive strategy/output layer. Orchestrate keeps PMCR-O moving; O-Mode can select or change strategies such as direct execution, repeated optimization, options/clarification, chain/tree/graph-style deliberation, ReAct-style interaction, or future strategies supported by available capabilities.
 
-`/pmcro:intent-model`
+Repeated failure is evidence for strategy reassessment, not blind retry.
 
-`/pmcro:intent-refinement`
+## Accountability and trails
 
-`/pmcro:convergence`
+Trails are composed of self-referential role Frames. Frames point backward to relevant inputs, artifacts, evidence, and prior Frames so decisions can be audited. A Trail is not a transcript; it is durable operational memory and accountability.
+
+## Governance knowledge
+
+PMCR-O distinguishes **laws/principles**, **constraints**, **rules/policies**, **strategies**, and **skills**. Laws are framework invariants; constraints are scoped boundaries; rules are learned operational guidance; strategies are O-Mode choices; skills are reusable executable capabilities.
+
+## Learning and Trail Products
+
+Trails can be promoted into scoped constraints, rules/policies, strategy evidence, skill candidates, training examples, evaluation cases, or audit-only history. A Trail Product packages validated operational experience for reuse; execution identity, credentials, accounts, and approvals come from the consumer runtime.
+
+Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is optional and is not a prerequisite for the core runtime.
+
+## Session bootstrap
+
+Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
+
+## Plugin boundaries
+
+- `pmcro` — semantic contracts and lifecycle.
+- `pmcro-loop` — runtime/execution engine.
+- `pmcro-skills` — executable governance and capabilities.
+- Assets, templates, and generated artifact catalogs remain outside `pmcro` unless another capability explicitly consumes them.
+
+## References
+
+- `references/architecture.md`
+- `references/seed-intent-contract.md`
+- `references/o-mode.md`
+- `references/accountability-and-trails.md`
+- `references/trail-frame-schema.md`
+- `references/governance-knowledge.md`
+- `references/knowledge-promotion.md`
+- `references/trail-as-product.md`
+- `references/session-bootstrap.md`
+- `references/intent-lifecycle.md`

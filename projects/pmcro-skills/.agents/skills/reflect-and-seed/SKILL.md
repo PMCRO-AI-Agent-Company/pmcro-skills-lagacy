@@ -1,6 +1,6 @@
 ---
 name: reflect-and-seed
-description: Close the cycle. Write trail, promote earned constraints, set the next Seed Intent or terminal status, mark queue item done/blocked, and optionally enqueue follow-ups. This is the autonomy engine. Invoke as /pmcro-skills:reflect-and-seed.
+description: Close the cycle, preserve accountable Frame history, promote earned knowledge, and produce the next executable Seed Intent or terminal disposition. Invoke as /pmcro-skills:reflect-and-seed.
 ---
 
 # Reflect and Seed
@@ -11,37 +11,39 @@ description: Close the cycle. Write trail, promote earned constraints, set the n
 /pmcro-skills:reflect-and-seed
 ```
 
-Use `/pmcro-skills:queue-enqueue` for follow-up queue writes. Consult `/pmcro:intent-refinement` for the semantic intent-handoff contract.
+Use `/pmcro-skills:queue-enqueue` for follow-up queue writes. Consult the `pmcro` references `seed-intent-contract.md`, `accountability-and-trails.md`, and `knowledge-promotion.md` for semantic contracts.
 
-## Inputs
-- PlanFrame, MakeFrame, CheckFrame
-- Current task_id from session-state
-- Current Goal and Seed Intent
+## Ownership
+
+The Reflector is the default and authoritative producer of the next canonical Seed Intent after a cycle. It does not invent a seed without evidence: the next Seed Intent is synthesized from Goal, Orchestrator/Planner/Maker/Checker Frames, artifacts, observations, constraints, failures, strategy history, and learned outcomes.
+
+## Required Seed form
+
+The next Seed Intent is executable and capability-addressable:
+
+```text
+/[plugin]:[skill] [optional instructions]
+```
+
+Record the command plus lineage metadata. The original human message remains Messy Seed Intent provenance and is not the active next-cycle command.
 
 ## Actions
-1. **Trail** — write under `.pmcro/trails/<cycle-id>.md` summarizing plan / make / check / outcome / lessons and preserve the intent transition.
-2. **Earned constraints** — if Checker or experience produced durable rules, write under `.pmcro/constraints/`.
-3. **Queue item** — set status `done` or `blocked` on the claimed task in `queue.jsonl`.
-4. **Next seed** — the Reflector is the default producer of the next Seed Intent.
-   - Before choosing `idle`, inspect the queue for any open backlog, including priority-4 opportunistic work.
-   - Inspect `.pmcro/constraints/` for known gaps or newly surfaced constraints that imply follow-up work.
-   - Inspect current session notes and unresolved earlier-session notes for unfinished work.
-   - If the Goal remains unresolved and a next operational step is justified, produce a new Seed Intent that carries forward the relevant evidence, constraints, and lessons; do not repeat the prior seed verbatim unless repetition is itself justified.
-   - If a natural follow-up exists, enqueue it via `/pmcro-skills:queue-enqueue` and record the resulting Seed Intent/lineage.
-   - If the Goal is converged or complete with no qualifying follow-up, set `status: idle` and record why no next seed qualified in the trail.
-5. **Lessons** — short note for future Planners.
+1. Write the cycle trail under `.pmcro/trails/<cycle-id>.md`, preserving the role Frames and intent transition.
+2. Record what was planned, executed, checked, learned, and rejected.
+3. Promote justified observations into scoped constraints, rules/policies, O-Mode strategy evidence, skill candidates, training/evaluation examples, or audit-only history.
+4. Mark the queue item `done` or `blocked` as appropriate.
+5. Determine whether another cycle is justified.
+6. When another cycle is justified, emit the next executable Seed Intent from the accumulated evidence and preserve its parent lineage.
+7. When the Goal is complete, converged, superseded, or blocked, record the terminal disposition and evidence.
 
-## Failure / retry path
+## Knowledge discipline
 
-When the closing CheckFrame's `verdict` is `fail`:
-1. Do **not** reopen this cycle or hand control back to Maker/Planner — the cycle closes exactly like any other.
-2. Mark the claimed queue item `blocked` (not `done`), carrying a `RetryContext` note: which acceptance criterion failed, Checker's findings/blockers, and the recommendation (`retry` | `escalate`).
-3. Write the next Seed Intent as a **new** cycle seed derived from the original intent plus the RetryContext, rather than re-running the same seed verbatim — Planner needs the failure context on the next pass.
-4. `escalate` recommendations still produce a seed (do not silently drop to idle); note escalation in the trail so a human can intervene before the next cycle dispatches, if warranted.
-5. Orchestrator, not Reflector, dispatches that next cycle fresh to Planner — Reflector only writes the seed and closes.
+A single observation is not automatically a universal rule. Preserve scope, confidence, provenance, recurrence, and supersession. Repeated validated experience may strengthen operational policy or become a candidate reusable skill.
 
-## Auto-run stop condition
-A queue-looking-empty condition is not by itself a stop-the-line condition. An auto-run may halt for a **priority-0 stop-the-line condition** (for example a Checker hard fail or security issue). Human handoffs must enter through the queue, so Reflector must justify any idle disposition from the file-backed checks above rather than treating an empty snapshot as proof that work is complete.
+## Failure / strategy change
+
+When Checker's `verdict` is `fail`, close the current cycle and record RetryContext. Do not send control back to Maker or Planner mid-cycle. The Reflector should consider whether repeated failure warrants an O-Mode strategy transition before producing the next Seed Intent.
 
 ## Autonomy contract
-The next cycle must be able to start from files alone (session-state + queue) in this repo. Chat memory is not required for continuity.
+
+The next cycle must be restartable from durable repository state: session-state, queue, constraints, approvals, and trails. Chat memory is optional enrichment, not the continuity boundary.

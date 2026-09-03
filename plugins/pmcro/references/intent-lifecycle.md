@@ -1,6 +1,6 @@
 # PMCR-O Intent Lifecycle
 
-PMCR-O treats intent as something that can be progressively refined without losing the original human objective.
+PMCR-O treats intent as progressively refined while preserving the original human objective.
 
 ```text
 Human message
@@ -9,54 +9,48 @@ Human message
 Messy Seed Intent
     │
     ▼
-Initial Seed Intent
+Orchestrator establishes Goal/capabilities
     │
     ▼
-┌──────────────────────────────┐
-│ PMCR-O cycle                 │
-│ Plan → Make → Check → Reflect│
-└──────────────┬───────────────┘
-               │
-               ▼
-        Next Seed Intent
-               │
-               └───────► next cycle
+PMCR-O cycle
+Plan → Make → Check → Reflect
+    │                         │
+    │                         ▼
+    │                  next Seed Intent
+    │               /[plugin]:[skill] ...
+    │                         │
+    └─────────────────────────┘
+              next cycle
 
-Goal persists across the cycles.
-Intent lineage records each transition.
-Convergence establishes when another refinement cycle is not materially useful.
+Goal persists across cycles.
+Intent lineage records every transition.
+Convergence establishes when further refinement is not materially useful.
 ```
 
 ## Responsibility boundaries
 
-The Orchestrator manages the Goal and decides whether another cycle should run.
+The Orchestrator manages the Goal, discovers/resolves capabilities, selects O-Mode strategy, and dispatches the cycle.
 
-The Planner turns the current Seed Intent into a cycle plan.
+The Planner turns the current Seed Intent into the minimum sufficient plan and identifies the capabilities needed to execute it.
 
 The Maker executes permitted work under the governing approval boundary.
 
-The Checker evaluates the work and its evidence.
+The Checker independently evaluates the work and evidence.
 
-The Reflector synthesizes the cycle into the next Seed Intent or a terminal status.
+The Reflector synthesizes the cycle, records lessons/constraints, and owns the next Seed Intent or terminal disposition.
 
-## Human input
+## Intent states
 
-A human message is the initial Messy Seed Intent. The system may normalize it into structured intent, but it must preserve the original input in the trail and must not pretend that the normalized interpretation was explicitly supplied by the human.
+The first human message is immutable **Messy Seed Intent**. Once the first cycle establishes a canonical operational command, the loop operates on **Seed Intent**. The messy input remains provenance, not the active control instruction.
 
-## Intent lineage
+## Self-reference
 
-Every Seed Intent should be traceable to:
-
-- the originating human message or command,
-- its parent Seed Intent,
-- the PMCR-O cycle that produced it,
-- the reflection/evidence supporting the transition,
-- and its terminal or successor state.
-
-This allows the system to explain how an operational objective evolved.
+Each role writes a Frame that identifies its role and points to its relevant inputs and outputs. A later Frame can trace backward through prior Frames to the evidence that caused its decision. This makes the trail an accountability layer.
 
 ## Autonomy
 
-Autonomous operation means the Orchestrator can continue through eligible PMCR-O cycles without requiring the human to restate the next Seed Intent. The Reflector supplies the next Seed Intent by default.
+Autonomous operation means the Orchestrator can continue through eligible cycles without the human restating the next Seed Intent because the Reflector supplies it. Autonomy does not bypass TYPE1 approvals, constraints, human handoffs, or the configured cycle limits.
 
-Autonomy does not remove governance. TYPE1 mutation approvals, scope limits, and human-decision boundaries remain authoritative.
+## Continuity
+
+The durable session record is `.pmcro/` plus the installed framework/capability metadata. Chat context may enrich a session but is not required to reconstruct the next cycle.
