@@ -1,9 +1,15 @@
 ---
 name: make-frame
-description: Execute a PlanFrame. Maker role — perform the steps, produce artifacts, report results. Do not self-check.
+description: Execute a PlanFrame. Maker role — perform the steps, produce artifacts, report results. Do not self-check. Invoke as /pmcro-skills:make-frame.
 ---
 
 # Make Frame
+
+## Invocation
+
+```text
+/pmcro-skills:make-frame
+```
 
 ## Inputs
 - PlanFrame from Planner
