@@ -1,6 +1,6 @@
 # PMCR-O Semantic Model
 
-The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, knowledge promotion, session bootstrap, and convergence.
+The `pmcro` plugin is the canonical semantic layer for PMCR-O. It defines the Goal, Messy Seed Intent, executable Seed Intent, self-referential cycle, O-Mode: Dynamic Resonance, accountability Frames, governance knowledge, session bootstrap, learning, Trail Products, and convergence.
 
 ## Core loop
 
@@ -19,7 +19,7 @@ Checker
   ↓
 Reflector
   ↓
-Seed Intent (executable /[plugin]:[skill] command)
+Seed Intent: /[plugin]:[skill] [optional instructions]
   ↓
 next PMCR-O cycle
   ↓
@@ -28,58 +28,62 @@ next PMCR-O cycle
 Converged Intent
 ```
 
-### Intent
+## Intent
 
 - **Goal** — durable high-level objective managed by the Orchestrator.
-- **Messy Seed Intent** — the raw human message/command. It is preserved verbatim and is not required to be perfectly structured.
-- **Seed Intent** — the structured executable command for the next PMCR-O cycle. The Reflector normally produces it after the first cycle.
+- **Messy Seed Intent** — raw human message/command preserved verbatim as provenance.
+- **Seed Intent** — structured executable command for the next cycle, normally produced by Reflector after the first cycle.
 - **Converged Intent** — sufficiently resolved operational intent under current evidence, constraints, and acceptance conditions.
 
-The original Messy Seed Intent remains provenance after the first canonical Seed Intent exists; it is not silently rewritten into the canonical history.
+Once canonical Seed Intent exists, the original Messy Seed Intent remains historical provenance and is not the active control instruction.
 
-### Seed Intent command form
+## Seed Intent command form
 
 ```text
 /[plugin]:[skill] [optional instructions]
 ```
 
-The command is resolved through the installed marketplace capability surface.
+The command resolves against the installed marketplace capability surface. Planner/Maker/Checker evidence informs the capability choice; Reflector packages the next operational command.
 
-### O-Mode: Dynamic Resonance
+## O-Mode: Dynamic Resonance
 
-`O` is the adaptive strategy/output layer. Orchestrate keeps PMCR-O moving, while O-Mode selects or changes strategies such as direct execution, repeated optimization, options/clarification, tree/graph-style deliberation, ReAct-style interaction, or future strategies supported by available capabilities.
+`O` is the adaptive strategy/output layer. Orchestrate keeps PMCR-O moving; O-Mode can select or change strategies such as direct execution, repeated optimization, options/clarification, chain/tree/graph-style deliberation, ReAct-style interaction, or future strategies supported by available capabilities.
 
-Repeated failure is evidence for changing strategy, not permission to retry forever.
+Repeated failure is evidence for strategy reassessment, not blind retry.
 
-### Accountability
+## Accountability and trails
 
-Trails are made of self-referential role Frames. Each Frame identifies who acted, what input it used, what it produced, and what later evidence validated or contradicted it. The backward references form the accountability layer.
+Trails are composed of self-referential role Frames. Frames point backward to relevant inputs, artifacts, evidence, and prior Frames so decisions can be audited. A Trail is not a transcript; it is durable operational memory and accountability.
 
-A Trail is not a transcript. It is a durable record of decisions, actions, observations, constraints, strategy changes, outcomes, and next intent.
+## Governance knowledge
 
-### Learning
+PMCR-O distinguishes **laws/principles**, **constraints**, **rules/policies**, **strategies**, and **skills**. Laws are framework invariants; constraints are scoped boundaries; rules are learned operational guidance; strategies are O-Mode choices; skills are reusable executable capabilities.
 
-Trails can be promoted into scoped constraints, rules/policies, strategy evidence, skill candidates, training examples, evaluation cases, or audit-only history. A trail is experience; a skill is a generalized reusable capability.
+## Learning and Trail Products
 
-Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is optional and must not be confused with the core runtime.
+Trails can be promoted into scoped constraints, rules/policies, strategy evidence, skill candidates, training examples, evaluation cases, or audit-only history. A Trail Product packages validated operational experience for reuse; execution identity, credentials, accounts, and approvals come from the consumer runtime.
 
-### Session bootstrap
+Trail Frames may form a future PMCR-O training/evaluation corpus. Fine-tuning is optional and is not a prerequisite for the core runtime.
+
+## Session bootstrap
 
 Use `/pmcro:initialize` to load `.agents/` instructions, marketplace capabilities, `.pmcro/` state, constraints, approvals, and relevant trails before autonomous execution.
 
-### Plugin boundaries
+## Plugin boundaries
 
-- `pmcro` — semantics and contracts.
+- `pmcro` — semantic contracts and lifecycle.
 - `pmcro-loop` — runtime/execution engine.
-- `pmcro-skills` — executable governance and domain capabilities.
-- Assets, templates, and generated artifact catalogs are outside `pmcro` unless a capability explicitly consumes them.
+- `pmcro-skills` — executable governance and capabilities.
+- Assets, templates, and generated artifact catalogs remain outside `pmcro` unless another capability explicitly consumes them.
 
-## Reference documents
+## References
 
 - `references/architecture.md`
 - `references/seed-intent-contract.md`
 - `references/o-mode.md`
 - `references/accountability-and-trails.md`
+- `references/trail-frame-schema.md`
+- `references/governance-knowledge.md`
 - `references/knowledge-promotion.md`
 - `references/trail-as-product.md`
 - `references/session-bootstrap.md`
