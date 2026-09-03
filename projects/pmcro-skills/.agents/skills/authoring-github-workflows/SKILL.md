@@ -1,10 +1,19 @@
 ---
 name: authoring-github-workflows
-description: "Author and review GitHub Actions workflow YAML safely so syntactically-valid YAML can't ship a workflow that GitHub Actions refuses to run. USE FOR: editing, adding, or reviewing any file under .github/workflows/, writing run-name/name/if/env/run values that contain ${{ }} expressions, diagnosing a run that fails with 'This run likely failed because of a workflow file issue' and no jobs starting, deciding when a workflow scalar must be quoted, validating workflows with actionlint. DO NOT USE FOR: authoring application YAML unrelated to GitHub Actions, Azure Pipelines, GitLab CI, or non-workflow YAML. SCOPE: this skill covers *syntactic/structural* correctness of workflow YAML (quoting, parsing, actionlint); for *semantic and functional* workflow design (what a workflow should do, agentic-workflow behavior), see .github/agents/agentic-workflows.agent.md — the two are complementary. INVOKES: actionlint (downloaded pinned binary) plus git/grep for inspection."
+description: "Author and review GitHub Actions workflow YAML safely so syntactically-valid YAML can't ship a workflow that GitHub Actions refuses to run. USE FOR: editing, adding, or reviewing any file under .github/workflows/, writing run-name/name/if/env/run values that contain ${{ }} expressions, diagnosing a run that fails with 'This run likely failed because of a workflow file issue' and no jobs starting, deciding when a workflow scalar must be quoted, validating workflows with actionlint. DO NOT USE FOR: authoring application YAML unrelated to GitHub Actions, Azure Pipelines, GitLab CI, or non-workflow YAML. SCOPE: this skill covers *syntactic/structural* correctness of workflow YAML (quoting, parsing, actionlint); for *semantic and functional* workflow design (what a workflow should do, agentic-workflow behavior), see .github/agents/agentic-workflows.agent.md — the two are complementary. INVOKES: actionlint (downloaded pinned binary) plus git/grep for inspection. Invoke this skill as /pmcro-skills:authoring-github-workflows."
 license: MIT
 ---
 
 # Authoring GitHub Actions Workflows Safely
+
+## Invocation
+
+```text
+/pmcro-skills:authoring-github-workflows
+```
+
+All explicit invocations of skills owned by this plugin use the
+`/pmcro-skills:<skill-name>` namespace. Do not use an unqualified skill selector.
 
 GitHub Actions workflow files are YAML, but **valid YAML is not the same as a valid workflow**. A workflow can parse cleanly with `yaml.safe_load` (or a casual review) yet still be rejected by GitHub Actions at load time — producing the opaque failure *"This run likely failed because of a workflow file issue"* with **zero jobs started**. This skill teaches the YAML-vs-Actions traps (the `#`-as-comment trap above all), how to quote expression scalars correctly, and how to validate with `actionlint` before merge.
 
@@ -108,6 +117,7 @@ This repository runs `actionlint` automatically (see `.github/workflows/actionli
 - [ ] `actionlint -shellcheck= -pyflakes= .github/workflows/*.yml` exits `0`.
 - [ ] No workflow run reports *"This run likely failed because of a workflow file issue"*.
 - [ ] The `actionlint` CI check is green on the PR.
+- [ ] This skill is referenced as `/pmcro-skills:authoring-github-workflows`.
 
 ## Common Pitfalls
 
@@ -125,4 +135,4 @@ This repository runs `actionlint` automatically (see `.github/workflows/actionli
 - [actionlint](https://github.com/rhysd/actionlint) — static checker for GitHub Actions workflows.
 - [GitHub Actions: workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions)
 - [YAML 1.2 spec — comments](https://yaml.org/spec/1.2.2/#66-comments)
-- Repository skill-authoring guide: [`.agents/skills/create-skill/SKILL.md`](../create-skill/SKILL.md)
+- Repository skill-authoring guide: `/pmcro-skills:create-skill`
