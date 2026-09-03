@@ -1,9 +1,15 @@
 ---
 name: memorykeeper
-description: Retrieve bounded, provenance-linked working memory and continuity context for a PMCR-O role without changing authoritative state.
+description: Retrieve bounded, provenance-linked working memory and continuity context for a PMCR-O role without changing authoritative state. Invoke as /pmcro-skills:memorykeeper.
 ---
 
 # Memorykeeper
+
+## Invocation
+
+```text
+/pmcro-skills:memorykeeper
+```
 
 ## When to use
 Use before role reasoning when prior work, recurring gotchas, or role-specific working knowledge may materially help.
